@@ -9,6 +9,8 @@
       <a href="#tentang">Tentang</a>
     </nav>
     <div class="nav-btn">
-      <button class="btn-login btn" onclick="document.location='login.php'" target="_blank">Login</button>
+      <a href="dashboard.php">
+        <button class="btn-login btn">Login</button>
+      </a>
     </div>
   </header>

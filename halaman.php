@@ -12,7 +12,7 @@
   <title>Website Undangan Digital - Benada.co.id</title>
 </head>
 <body>
-  <?php include("inc_header.php") ?>
+  <?php include("./header/inc_header.php") ?>
   <div class="main">
     <section class="beranda reveal" id="beranda">
       <div class="hero hero-left reveal-left">
@@ -159,7 +159,7 @@
           <div class="price">Gratis</div>
           <div class="features">
             <ul>
-              <li> Domain Bersua.Id</li>
+              <li> Domain Bernada.Id</li>
               <li> 2 Tema Premium</li>
               <li> 3 Foto</li>
               <li> 3 Tamu</li>
@@ -182,7 +182,7 @@
           <div class="price">Rp. 95K</div>
           <div class="features">
             <ul>
-              <li> Domain Bersua.Id</li>
+              <li> Domain Bernada.Id</li>
               <li> 5 Tema Premium</li>
               <li> 10 Tamu</li>
               <li> 10 Foto & 2 Vidio</li>
@@ -246,7 +246,7 @@
               <li> Story</li>
               <li> Scaner QR</li>
               <li> Masa Aktif : Selamanya</li>
-              <li> Revisi : 12x</li>
+              <li> Revisi : Bebas</li>
             </ul>
           </div>
           <a href="#" class="btn-outline">Buat Sekarang</a>
@@ -256,7 +256,7 @@
 
   </div>
   
-  <?php include("inc_footer.php") ?>
+  <?php include("./footer/inc_footer.php") ?>
 </body>
 <script src="script.js"></script>
 </html>

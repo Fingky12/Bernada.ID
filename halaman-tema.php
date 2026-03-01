@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="css/footer-header.css">
+  <link rel="stylesheet" href="css/footer_header.css">
   <link rel="stylesheet" href="css/tema.css">
   <title>Tema Undangan - BERNADA.ID</title>
 </head>
 <body>
-  <?php include("inc_header_second.php") ?>
+  <?php include("./header/inc_header_second.php") ?>
     <section class="section" id="tema">
     <div class="tema-title">
       <h2>Pilih Tema Undangan Digital</h2>
@@ -51,6 +51,6 @@
 
   </section>
   
-  <?php include("inc_footer_second.php") ?>
+  <?php include("./footer/inc_footer_second.php") ?>
 </body>
 </html>

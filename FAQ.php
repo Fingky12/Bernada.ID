@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="css/faq.css">
-  <link rel="stylesheet" href="css/footer-header.css">
+  <link rel="stylesheet" href="css/footer_header.css">
   <title>FAQ - BERNADA.ID</title>
 </head>
 <body>
-  <?php include("inc_header_second.php") ?>
+  <?php include("./header/inc_header_second.php") ?>
   <section class="faq-section">
     <div class="faq-container">
       <h2>Frequently Asked Questions</h2>
@@ -52,7 +52,7 @@
     </div>
   </section>
 
-  <?php include("inc_footer_second.php") ?> 
+  <?php include("./footer/inc_footer_second.php") ?> 
 </body>
 <script src="/js/script.js"></script>
 </html>
