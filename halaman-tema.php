@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="css/footer-header.css">
+  <link rel="stylesheet" href="css/tema.css">
+  <title>Tema Undangan - BERNADA.ID</title>
+</head>
+<body>
+  <?php include("inc_header_second.php") ?>
+    <section class="section" id="tema">
+    <div class="tema-title">
+      <h2>Pilih Tema Undangan Digital</h2>
+      <p>Temukan tema yang paling cocok untuk acara spesial Anda</p>
+    </div>
+    <div class="tema-wrapper">
+      <div class="tema-container">
+        <a href="https://fingky12.github.io/demo-bersua.id/?to=Arjuna" class="tema-card reveal">
+          <img src="img/tema1.jpeg" alt="tema1">
+          <div class="tema-info">
+            <h3>Elegant</h3>
+            <span class="badge free">Gratis</span>
+          </div>
+        </a>
+        <a href="#" class="tema-card reveal">
+          <img src="img/cs.jpg" alt="tema2">
+          <div class="tema-info">
+            <h3>Minimalist</h3>
+            <span class="badge free">Gratis</span>
+          </div>
+        </a>
+        <a href="#" class="tema-card reveal">
+          <img src="img/cs.jpg" alt="tema3">
+          <div class="tema-info">
+            <h3>Modern</h3>
+            <span class="badge free">Gratis</span>
+          </div>
+        </a>
+        <a href="#" class="tema-card reveal">
+          <img src="img/cs.jpg" alt="tema4">
+          <div class="tema-info">
+            <h3>Classic</h3>
+            <span class="badge premium">Premium</span>
+          </div>
+        </a>
+      </div>
+        <a href="index.html#pricing" class="btn-tema">Lihat Harga Paket Premium</a>
+    </div>
+
+  </section>
+  
+  <?php include("inc_footer_second.php") ?>
+</body>
+</html>

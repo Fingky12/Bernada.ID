@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Bebas+Neue&family=Carattere&family=DM+Serif+Display:ital@0;1&family=DM+Serif+Text:ital@0;1&family=Dancing+Script:wght@400..700&family=Dosis:wght@200..800&family=Imperial+Script&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend+Deca:wght@100..900&family=Lexend+Giga:wght@100..900&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Lilita+One&family=Luxurious+Script&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Oswald:wght@200..700&family=Permanent+Marker&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sacramento&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Tangerine:wght@400;700&family=Varela+Round&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+
+  --mg: #ffc400;
+  --ml: #cf2e2e;
+  --m: #a12828;
+  --md: #6d0e1b;
+  --c: #1F1F1F;
+  --g2: #555555;
+  --g: #333333;
+  --g3: #252525;
+  --dr: #C48A8A;
+  --ow: #FAFAFA;
+  --iv: #F7F3EF;
+  --bg-section: #fff0f0;
+  --sg: #B8B2AD;
+}
+
+/* =========================
+  HEADER
+========================= */
+header {
+  position: fixed;
+  width: 100%;
+  height: 5%;
+  top: 0;
+  left: 0;
+  padding: 10px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--iv);
+  box-shadow: 1px 2px 2px 0 rgba(0, 0, 0, .1);
+  z-index: 1000;
+}
+
+span {
+  color: var(--ml);
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--c);
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+
+.navbar a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: var(--g2);
+  font-size: .8rem;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  color: var(--m);
+}
+
+.btn {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 4px 32px;
+  border-radius: 30px;
+  background: var(--m);
+  border: 1px solid var(--m);
+  color: var(--ow);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: var(--ml);
+  color: var(--ow);
+}
+
+
+/*=========================
+  FOOTER – ULTRA MINIMAL
+========================= */
+
+.footer {
+  background: var(--g3);
+  padding: 80px 8% 30px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr;
+  gap: 50px;
+}
+
+.footer-brand .logo-footer {
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: var(--ow);
+}
+
+.footer-brand span {
+  color: var(--ml);
+}
+
+.footer-brand p {
+  font-size: 13px;
+  color: var(--sg);
+  line-height: 1.6;
+  max-width: 500px;
+}
+
+.footer-social{
+  font-size: 2rem;
+  margin-top: 20px;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  margin-right: 10px;
+  color: var(--sg);
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.footer-social a:hover {
+  color: var(--ow);
+  transform: translateY(-3px);
+}
+
+.footer-links h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--ow);
+}
+
+.footer-links a {
+  display: block;
+  text-decoration: none;
+  font-size: 13px;
+  color: var(--sg);
+  margin-bottom: 12px;
+  transition: 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--ow);
+  transform: translateX(4px);
+}
+
+.footer-bottom {
+  margin-top: 60px;
+  padding-top: 25px;
+  border-top: 1px solid var(--sg);
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 11px;
+  color: var(--sg);
+}

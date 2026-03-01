@@ -1,0 +1,15 @@
+  <header>
+    <a href="halaman.php" class="logo">BERNADA.ID</a>
+    <nav class="navbar">
+      <a href="halaman.php">Beranda</a>
+      <a href="halaman.php#fitur">Fitur</a>
+      <a href="halaman.php#tema">Tema</a> 
+      <a href="halaman.php#harga">Harga</a>
+      <a href="halaman.php#contact">Contact</a>
+      <a href="halaman.php#tentang">Tentang</a>
+    </nav>
+    <div class="nav-btn">
+      <button class="btn-login btn" onclick="document.location='login.php'">Login</button>
+    </div>
+  </header>
+    

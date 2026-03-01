@@ -1,0 +1,140 @@
+
+/* =========================
+  PRICING SECTION
+========================= */
+.harga {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-image: url('../img/fitur.jpg');
+}
+
+.pricing-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.pricing-title h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
+  color: var(--c);
+}
+
+.pricing-title p {
+  width: 100%;
+  font-size: 1.1rem;
+  color: var(--g2);
+  line-height: 1.6;
+  padding: 0 20%;
+  margin-top: 12px;
+}
+
+.member-icon-starter {
+  width: 80px;
+  margin: 21px 0;
+}
+
+.member-icon {
+  width: 80px;
+  margin: 10px auto;
+}
+
+.pricing-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.pricing-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pricing-card {
+  background: #fff;
+  width: 250px;
+  padding: 15px 32px;
+  border-radius: 10px;
+  border: 1px solid rgb(160, 160, 160);
+  transition: 0.4s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.pricing-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(0, 0, 0, .14);
+}
+
+.popular {
+  border: 1px solid rgb(160, 160, 160);
+}
+
+.popular:hover {
+  border: 1px solid var(--mg);
+}
+
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: var(--ml);
+  color: var(--ow);
+  padding: 5px 12px;
+  font-size: 12px;
+  border-radius: 20px;
+}
+
+.plan-name {
+  font-family: "Libre Baskerville", serif;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 10px auto;
+  display: flex;
+}
+
+.features {
+  color: var(--g2);
+  margin-bottom: auto;
+  padding: 0 10px;
+}
+
+.features li {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.features .bxs-checkbox-checked {
+  color: green;
+  margin-right: 6px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--g);
+  margin: 3px auto 25px auto;
+}
+
+.btn-outline {
+  margin-top: 35px;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 6px;
+  color: var(--ow);
+  transition: 0.3s;
+  background: var(--m);
+}
+
+.btn-outline:hover {
+  background: var(--ml);
+}
+
