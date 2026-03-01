@@ -4,7 +4,7 @@ session_start();
 require_once 'config/koneksi.php';
 
   if (isset($_POST['register_btn'])) {
-    $name = $_POST['name'];
+    $name = $_POST['username'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
@@ -16,7 +16,7 @@ require_once 'config/koneksi.php';
       ];
       $_SESSION['active_form'] = 'register';
     } else {
-      $conn->query("INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password')");
+      $conn->query("INSERT INTO users (name, email, password) VALUES ('$username', '$email', '$password')");
       $_SESSION['alerts'][] = [
         'type' => 'success',
         'message' => 'Registration Successful'
@@ -24,7 +24,7 @@ require_once 'config/koneksi.php';
       $_SESSION['active_form'] = 'login';
     }
 
-    header('Location: index.php');
+    header('Location: halaman.php');
     exit();
   }
 
@@ -36,7 +36,7 @@ require_once 'config/koneksi.php';
     $user = $result->num_rows > 0 ? $result->fetch_assoc() : null;
 
   if ($user && password_verify($password, $user['password'])) {
-    $_SESSION['name'] = $user['name'];
+    $_SESSION['username'] = $user['username'];
     $_SESSION['alerts'][] = [
         'type' => 'success',
         'message' => 'Login Successful'
@@ -48,7 +48,7 @@ require_once 'config/koneksi.php';
     ];
 $_SESSION['active_form'] = 'login';
   }
-  header('Location: index.php');
+  header('Location: dashboard.php');
   exit();
   }
 ?>

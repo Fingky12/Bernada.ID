@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="css/footer_header.css">
-  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="./css/footer_header.css">
+  <link rel="stylesheet" href="./css/main.css">
   <title>Registrasi Akun - Bernada.Id</title>
 </head>
 <body>
@@ -13,9 +13,9 @@
   <div class="container">
     <div class="form-box register">
       <h2>Register</h2>
-      <form action="auth_process.php" method="POST">
+      <form action="auth_proses.php" method="POST">
         <div class="inputBox">
-          <input type="text" name="name" placeholder="Username" required>
+          <input type="text" name="username" placeholder="Username" required>
           <i class='bx bxs-user' ></i>
         </div>
         <div class="inputBox">
@@ -27,7 +27,7 @@
           <i class='bx bxs-lock-alt' ></i>
         </div>          
         <button type="submit" name="register_btn" class="btn_register">Register</button>
-        <span>Already have an account? <a href="#" class="login-link">Login</a></span>
+        <div>Already have an account? <a href="#" class="login-link">Login</a></div>
       </form>
     </div>
   </div>

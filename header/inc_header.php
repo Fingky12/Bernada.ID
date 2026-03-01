@@ -9,8 +9,11 @@
       <a href="#tentang">Tentang</a>
     </nav>
     <div class="nav-btn">
-      <a href="dashboard.php">
-        <button class="btn-login btn">Login</button>
+      <a href="dashboard_register.php">
+        <button class="btn-register btn">Daftar</button>
+      </a>
+      <a href="dashboard_login.php">
+        <button class="btn-login btn">Masuk</button>
       </a>
     </div>
   </header>
