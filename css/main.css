@@ -221,6 +221,7 @@ form {
 
 .form-box h2 {
   font-size: 2.1rem;
+  margin-top: 30px;
   margin-bottom: 40px;
 }
 
@@ -228,10 +229,17 @@ form {
   position: relative;
   width: 100%;
   height: 40px;
-  background: #333333;
+  background: red;
   margin-bottom: 20px;
   border-radius: 12px;
   border: 1px solid var(--g2);
+}
+
+.inputBox input {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  background: transparent;
 }
 
 .rememberForgot {
@@ -255,4 +263,12 @@ form {
   font-size: 1.2rem;
   font-weight: 600;
   color: var(--iv);
+}
+
+.register_link {
+  align-items: center;
+}
+
+.register_link a {
+  text-decoration: none;
 }
