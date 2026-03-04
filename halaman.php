@@ -14,7 +14,7 @@
 <body>
   <?php include("./header/inc_header.php") ?>
   <div class="main">
-    <section class="beranda reveal" id="beranda">
+    <section class="beranda" id="beranda">
       <div class="hero hero-left reveal-left">
         <h1 class="judul">BERNADA<span>.ID</span></h1>
         <p class="subjudul"> Kami membantu Anda membuat undangan digital berbasis website yang modern, responsif, dan mudah dibagikan ke siapa saja, kapan saja.</p>

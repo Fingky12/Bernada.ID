@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="css/footer_header.css">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/dashboard.css">
   <title>Login Akun - Bernada.Id</title>
 </head>
 <body>
-  <?php include('./header/inc_header_dashboard.php')?>
   <div class="container">
+    <a href="halaman.php" class="logo">BERNADA<span>.ID</span></a>
     <div class="gambarLeft">
       <img src="" alt="Gambar Left">
     </div>
