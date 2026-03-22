@@ -9,10 +9,10 @@
       <a href="#tentang">Tentang</a>
     </nav>
     <div class="nav-btn">
-      <a href="dashboard_register.php">
+      <a href="dashboard.php">
         <button class="btn-register btn">Daftar</button>
       </a>
-      <a href="dashboard_login.php">
+      <a href="dashboard.php">
         <button class="btn-login btn">Masuk</button>
       </a>
     </div>

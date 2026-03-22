@@ -12,7 +12,7 @@
       <a href="dashboard_register.php">
         <button class="btn-register btn">Daftar</button>
       </a>
-      <a href="dashboard_login.php">
+      <a href="dashboard_login.html">
         <button class="btn-login btn">Masuk</button>
       </a>
     </div>
