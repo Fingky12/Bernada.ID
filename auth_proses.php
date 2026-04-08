@@ -16,7 +16,7 @@ require_once 'config/koneksi.php';
       ];
       $_SESSION['active_form'] = 'register';
     } else {
-      $conn->query("INSERT INTO users (name, email, password) VALUES ('$username', '$email', '$password')");
+      $conn->query("INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')");
       $_SESSION['alerts'][] = [
         'type' => 'success',
         'message' => 'Registration Successful'
