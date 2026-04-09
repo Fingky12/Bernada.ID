@@ -47,7 +47,7 @@
 
       <div class="formBox" id="register-form">
         <h2>Sign Up Account</h2>
-        <form action="">
+        <form action="#">
           <div class="inputBox">
             <div class="icon"><i class='bx bx-envelope'></i></div>
             <input type="name" placeholder="Username" required></input>
