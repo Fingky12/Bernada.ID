@@ -26,9 +26,6 @@
   font-family: 'Inter', sans-serif;
 }
 
-span {
-  color: var(--ml);
-}
 .logo {
   font-family: 'Playfair Display', serif;
   font-size: 44px;
@@ -41,6 +38,9 @@ span {
   top: 8%;
   left: 50%;
   transform: translateX(-50%);
+}
+.logo span {
+  color: var(--m);
 }
 
 .img-dashboard img {
@@ -56,46 +56,71 @@ span {
   background: var(--iv);
 }
 
-.wrapper {
-  text-align: center;
+.form-box {
+  position: relative;
   display: flex;
-}
-
-.formBox.active {
-  display: block;
-}
-
-.formBox {
-  width: 100%;
-  display: none;
-  width: 430px;
-  padding: 30px 30px;
-  border-radius: 32px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 407px;
+  height: 497px;
   background: var(--ow);
-  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, .12);
+  margin: 30px;
+  border-radius: 17px;
+  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.1);
+  /* opacity: 0; */
   overflow: hidden;
 }
 
-.formBox h2 {
-  font-size: 2.1rem;
-  margin-bottom: 30px;
-}
-
-.formBox form {
-  width: 100%;
+.form {
+  position: absolute;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  align-items: center;
+  padding: 34px;
+  width: 100%;
+  height: 100%;
+  gap: 25px;
 }
 
-.inputBox {
+.form h2 {
+  font-size: 2rem;
+  color: var(--c);
+  padding-bottom: 25px;
+}
+
+.form.login {
+  transform: translateX(400px);
+  transition: .2s ease-in-out;
+}
+.form.login.active {
+  transform: translateX(0px);
+  pointer-events: auto;
+  transition: 1.6s;
+}
+
+.form.register.active {
+  transform: translateX(0px);
+  pointer-events: auto;
+  transition: 1.6s;
+}
+
+.form.register {
+  transform: translateX(-400px);
+  transition: .3s ease-in-out;
+}
+.form.register h2 {
+  padding-bottom: 0;
+}
+
+.input-box {
   position: relative;
   width: 100%;
   display: flex;
   height: 40px;
 }
 
-.inputBox input {
+.input-box input {
   width: 100%;
   border-radius: 12px;
   outline: none;
@@ -103,7 +128,7 @@ span {
   background: transparent;
   padding: 0 28px 0 10px;
 }
-.inputBox i {
+.input-box i {
   font-size: 1.1rem;
   color: var(--g2);
   position: absolute;
@@ -115,6 +140,7 @@ span {
 .remember-forgot {
   display: flex;
   justify-content: space-between;
+  width: 100%;
   font-size: .79rem;
 }
 
@@ -128,8 +154,9 @@ span {
   color: var(--ml);
 }
 
-button {
+.btn {
   height: 40px;
+  width: 100%;
   border: none;
   border-radius: 12px;
   color: var(--iv);
@@ -138,20 +165,20 @@ button {
   font-weight: 500;
 }
 
-button:hover {
+.btn:hover {
   background: var(--ml);
 }
 
-.loginRegister {
+.register-link, .login-link{
   font-size: .87rem;
 }
 
-.loginRegister a {
+.register-link a {
   text-decoration: none;
   color: var(--m);
 }
 
-.loginRegister a:hover {
+.register-link a:hover {
   text-decoration: underline;
   color: var(--ml);
 }
