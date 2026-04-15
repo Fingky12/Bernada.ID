@@ -38,3 +38,87 @@ document.addEventListener("DOMContentLoaded", function(){
     };
 
 });
+
+
+  let currentStep = 1;
+
+  function setStep(step) {
+    for (let i = 1; i <= 4; i++) {
+      const sec = document.getElementById('sec' + i);
+      const tab = document.getElementById('tab' + i);
+      sec.style.display = (i === step) ? 'block' : 'none';
+      tab.className = 'step-item' + (i === step ? ' active' : '') + (i < step ? ' done' : '');
+    }
+    currentStep = step;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function nextStep(from) {
+    if (from === 1) {
+      const p = document.querySelector('[name=nama_pria]').value.trim();
+      const w = document.querySelector('[name=nama_wanita]').value.trim();
+      if (!p || !w) { showAlert('error', 'Nama pengantin pria dan wanita wajib diisi!'); return; }
+    }
+    if (from === 2) {
+      const tgl = document.querySelector('[name=tanggal_nikah]').value;
+      const lok = document.querySelector('[name=lokasi]').value.trim();
+      const wm  = document.querySelector('[name=waktu_mulai]').value;
+      const ws  = document.querySelector('[name=waktu_selesai]').value;
+      if (!tgl || !lok || !wm || !ws) { showAlert('error', 'Tanggal, waktu, dan lokasi wajib diisi!'); return; }
+    }
+    hideAlert();
+    setStep(from + 1);
+  }
+
+  function prevStep(from) { setStep(from - 1); }
+
+  function pilihTema(el, nama) {
+    document.querySelectorAll('.tema-card').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('temaValue').value = nama;
+  }
+
+  function showAlert(type, msg) {
+    hideAlert();
+    const el = document.getElementById(type === 'error' ? 'alertError' : 'alertSuccess');
+    el.textContent = msg;
+    el.style.display = 'block';
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  function hideAlert() {
+    document.getElementById('alertError').style.display   = 'none';
+    document.getElementById('alertSuccess').style.display = 'none';
+  }
+
+  // Submit form via AJAX
+  document.getElementById('formUndangan').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const wa = document.querySelector('[name=no_whatsapp]').value.trim();
+    if (!wa) { showAlert('error', 'Nomor WhatsApp wajib diisi!'); return; }
+
+    document.getElementById('loadingOverlay').classList.add('show');
+    hideAlert();
+
+    const formData = new FormData(this);
+
+    fetch('proses_undangan.php', { method: 'POST', body: formData })
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById('loadingOverlay').classList.remove('show');
+        if (data.status === 'success') {
+          document.getElementById('formUndangan').style.display = 'none';
+          document.getElementById('successPage').style.display  = 'block';
+          document.getElementById('kodeUndangan').textContent   = data.kode;
+          document.getElementById('waTarget').textContent       = wa;
+          document.querySelector('.steps-bar').style.display    = 'none';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          showAlert('error', data.message || 'Terjadi kesalahan, coba lagi.');
+        }
+      })
+      .catch(() => {
+        document.getElementById('loadingOverlay').classList.remove('show');
+        showAlert('error', 'Gagal terhubung ke server. Periksa koneksi kamu.');
+      });
+  });
+

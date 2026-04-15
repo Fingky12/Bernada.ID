@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="css/fitur.css">
   <link rel="stylesheet" href="css/tema.css">
   <link rel="stylesheet" href="css/harga.css">
-  <title>Website Undangan Digital - Benada.co.id</title>
+  <title>Website Undangan Digital - Benada.id</title>
 </head>
 <body>
   <?php include("./header/inc_header.php") ?>
@@ -53,7 +53,7 @@
           </span>
         </div>
         <div class="btn-create">
-          <a href="buat_undangan.php" class="btn1"><i class='bx bx-plus'></i>Buat Undangan Sekarang</a>
+          <a href="buat-undangan.php" class="btn1"><i class='bx bx-plus'></i>Buat Undangan Sekarang</a>
           <a href="tema.php" class="btn2">Lihat Contoh Undangan</a>
         </div>
       </div>
@@ -132,7 +132,6 @@
         </div>
       </div>
     </section>
-
   
     <section class="tema" id="tema">
       <div class="tema-title">
@@ -175,7 +174,7 @@
     </section>
 
     <section class="harga" id="harga">
-            <div class="pricing-title reveal">
+      <div class="pricing-title reveal">
         <h2>Pilih Paket Undangan Digital</h2>
         <p>Sesuaikan dengan kebutuhan acara spesial kamu</p>
       </div>
@@ -285,6 +284,7 @@
   </div>
   
   <?php include("./footer/inc_footer.php") ?>
+  
+  <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>

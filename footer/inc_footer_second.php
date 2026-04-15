@@ -13,7 +13,7 @@
         </div>
         <div class="footer-links">
           <a href="FAQ.php">FAQ</a>
-          <a href="cara_order.php">Cara Order</a>
+          <a href="buat-undangan.php">Cara Order</a>
           <a href="privacy.php">Kebijakan Privasi</a>
           <a href="therms.php">Syarat & Ketentuan</a>
         </div>

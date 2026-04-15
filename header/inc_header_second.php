@@ -24,9 +24,8 @@
     <?php else: ?>
     <div class="nav-btn">
       <a href="dashboard.php">
-        <button class="btn-login btn">Masuk</button>
+        <button class="btn-login">Masuk</button>
       </a>
     </div>
     <?php endif; ?>
   </header>
-    

@@ -11,7 +11,7 @@
     </nav>
 
     <?php if (isset($_SESSION['name'])): ?>
-    <div class="user-auth">
+    <div class="user-auth">                                                         
       <div class="profile-box">
         <div class="avatar-circle"><?= $_SESSION['name']; ?><i class='bx bx-user'></i></div>
           <!-- <img src="./img/avatar.png" alt="User Avatar" class="avatar-img" /> -->
@@ -25,7 +25,7 @@
     <?php else: ?>
     <div class="nav-btn">
       <a href="dashboard.php">
-        <button class="btn-login btn">Masuk</button>
+        <button class="btn-login">Masuk</button>
       </a>
     </div>
     <?php endif; ?>

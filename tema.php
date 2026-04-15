@@ -1,3 +1,18 @@
+<?php 
+  session_start();
+  require_once 'config/koneksi.php';
+  
+  $name = $_SESSION['name'] ?? null;
+  $alerts = $_SESSION['alerts'] ?? [];
+  $active_form = $_SESSION['active_form'] ?? '';
+
+  session_unset();
+
+  if ($name !== null) $_SESSION['name'] = $name;
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +25,7 @@
 </head>
 <body>
   <?php include("./header/inc_header_second.php") ?>
-    <section class="section" id="tema">
+  <section class="tema" id="tema">
     <div class="tema-title">
       <h2>Pilih Tema Undangan Digital</h2>
       <p>Temukan tema yang paling cocok untuk acara spesial Anda</p>
@@ -46,9 +61,8 @@
           </div>
         </a>
       </div>
-        <a href="index.html#pricing" class="btn-tema">Lihat Harga Paket Premium</a>
+        <a href="halaman.php#harga" class="btn-tema">Lihat Harga Paket Premium</a>
     </div>
-
   </section>
   
   <?php include("./footer/inc_footer_second.php") ?>
