@@ -68,7 +68,7 @@ span {
   text-decoration: none;
 }
 
-.btn {
+.btn-login {
   font-size: 1rem;
   font-weight: 600;
   padding: 4px 32px;
@@ -80,13 +80,11 @@ span {
   transition: 0.3s;
 }
 
-.btn:hover {
+.btn-login:hover {
   background: var(--ml);
   color: var(--ow);
 }
-
-
-
+  
 .profile-box .avatar-circle {
   display: flex;
   align-items: center;
