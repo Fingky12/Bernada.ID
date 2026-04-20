@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="css/fitur.css">
   <link rel="stylesheet" href="css/tema.css">
   <link rel="stylesheet" href="css/harga.css">
+  <link rel="stylesheet" href="css/kontak.css">
   <title>Website Undangan Digital - Benada.id</title>
 </head>
 <body>
@@ -188,7 +189,7 @@
           <div class="features">
             <ul>
               <li> Domain Bernada.Id</li>
-              <li> 2 Tema Premium</li>
+              <li> 1 Tema</li>
               <li> 3 Foto</li>
               <li> 3 Tamu</li>
               <li> Informasi Acara</li>
@@ -197,15 +198,15 @@
               <li> Link Lokasi</li>
               <li> Ucapan</li>
               <li> RSVP</li>
-              <li> Musik</li>
-              <li> Masa Aktif : 3 Hari</li>
+              <li> Masa Aktif : 30 hari</li>
               <li> Revisi : 2x</li>
             </ul>
           </div>
           <a href="#" class="btn-outline">Buat Sekarang</a>
         </div>
-        <div class="pricing-card">
+        <div class="pricing-card popular">
           <img src="./img/member/member-gold.png" alt="gold-member" class="member-icon">
+          <div class="popular-badge">PALING LARIS</div>
           <div class="plan-name">Gold</div>
           <div class="price">Rp. 95K</div>
           <div class="features">
@@ -222,42 +223,16 @@
               <li> RSVP</li>
               <li> Musik</li>
               <li> Story</li>
-              <li> Masa Aktif : 5 Hari</li>
+              <li> Masa Aktif : 30 Hari</li>
               <li> Revisi : 5x</li>
             </ul>
           </div>
           <a href="#" class="btn-outline">Buat Sekarang</a>
         </div>
-        <div class="pricing-card popular">
+        <div class="pricing-card">
           <img src="./img/member/member-platinum.png" alt="platinum-member" class="member-icon">
-          <div class="popular-badge">PALING LARIS</div>
           <div class="plan-name">Platinum</div>
           <div class="price">Rp. 190K</div>
-          <div class="features">
-            <ul>
-              <li> Domain Sendiri(my.id)</li>
-              <li> All Tema Premium</li>
-              <li> 1000 Tamu</li>
-              <li> 40 Foto & 4 Vidio</li>
-              <li> Informasi Acara</li>
-              <li> Countdown Timer</li>
-              <li> Amplop Digital</li>
-              <li> Link Lokasi</li>
-              <li> Ucapan</li>
-              <li> RSVP</li>
-              <li> Musik</li>
-              <li> Story</li>
-              <li> Scaner QR</li>
-              <li> Masa Aktif : 7 Hari</li>
-              <li> Revisi : 7x</li>
-            </ul>
-          </div>
-          <a href="#" class="btn-outline">Buat Sekarang</a>
-        </div>
-        <div class="pricing-card">
-          <img src="./img/member/member-diamond.png" alt="diamond-member" class="member-icon">
-          <div class="plan-name">Diamond</div>
-          <div class="price">Rp. 221K</div>
           <div class="features">
             <ul>
               <li> Domain Sendiri(my.id)</li>
@@ -273,7 +248,7 @@
               <li> Musik</li>
               <li> Story</li>
               <li> Scaner QR</li>
-              <li> Masa Aktif : Selamanya</li>
+              <li> Masa Aktif : 12 bulan</li>
               <li> Revisi : Bebas</li>
             </ul>
           </div>
@@ -281,7 +256,6 @@
         </div>
       </div>
     </section>
-
   </div>
   
   <?php include("./footer/inc_footer.php") ?>

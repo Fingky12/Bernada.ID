@@ -6,8 +6,8 @@
       <a href="halaman.php#fitur">Fitur</a>
       <a href="halaman.php#tema">Tema</a> 
       <a href="halaman.php#harga">Harga</a>
-      <a href="halaman.php#contact">Contact</a>
-      <a href="halaman.php#tentang">Tentang</a>
+      <a href="kontak.php">Hubungi Kami</a>
+      <a href="halaman.php#tentang">Tentang Kami</a>
     </nav>
     <?php if (isset($_SESSION['name'])): ?>
     <div class="user-auth">
@@ -15,9 +15,9 @@
         <div class="avatar-circle"><?= $_SESSION['name']; ?><i class='bx bx-user'></i></div>
           <!-- <img src="./img/avatar.png" alt="User Avatar" class="avatar-img" /> -->
           <div class="dropdown-content">
-            <a href="#">Profile</a>
-            <a href="#">Settings</a>
-            <a href="logout.php">Logout</a>
+            <a href="#">Akun</a>
+            <a href="#">Pengaturan</a>
+            <a href="logout.php">Keluar</a>
           </div>
       </div>
     </div>

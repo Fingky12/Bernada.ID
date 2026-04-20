@@ -73,7 +73,7 @@
 
           <?php else: ?>
       <div class="img-dashboard">
-        <img src="./img/gambar_dashboard.png" alt="Dashboard" />
+        <img src="./img/login-image.png" alt="Dashboard" />
       </div>
 
       <div class="wrapper <?= $active_form === 'register' ? 'active' : ''; ?>">

@@ -6,8 +6,8 @@
       <a href="#fitur">Fitur</a>
       <a href="#tema">Tema</a>
       <a href="#harga">Harga</a>
-      <a href="#contact">Kontak</a>
-      <a href="#tentang">Tentang</a>
+      <a href="kontak.php">Hubungi Kami</a>
+      <a href="#tentang">Tentang Kami</a>
     </nav>
 
     <?php if (isset($_SESSION['name'])): ?>
