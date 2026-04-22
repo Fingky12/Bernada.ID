@@ -27,42 +27,42 @@
     <div class="tema-wrapper">
       <div class="tema-container">
         <a href="https://fingky12.github.io/demo-bersua.id/?to=Arjuna" target="_blank" class="tema-card reveal">
-          <img src="img/tema1.jpeg" alt="tema1">
+          <img src="../img/tema1.jpeg" alt="tema1">
           <div class="tema-info">
             <h3>Adat</h3>
             <span class="badge free">Gratis</span>
           </div>
         </a>
         <a href="navy-elegant.php" target="_blank" class="tema-card reveal">
-          <img src="img/tema1.jpeg" alt="tema1">
+          <img src="../img/cs.jpg" alt="tema1">
           <div class="tema-info">
             <h3>Elegant</h3>
             <span class="badge free">Gratis</span>
           </div>
         </a>
         <a href="blush-pink.php" target="_blank" class="tema-card reveal">
-          <img src="img/cs.jpg" alt="tema2">
+          <img src="../img/cs.jpg" alt="tema2">
           <div class="tema-info">
             <h3>Minimalist</h3>
             <span class="badge free">Gratis</span>
           </div>
         </a>
-        <a href="#" target="_blank" class="tema-card reveal">
-          <img src="img/cs.jpg" alt="tema3">
+        <!-- <a href="#" target="_blank" class="tema-card reveal">
+          <img src="../img/cs.jpg" alt="tema3">
           <div class="tema-info">
             <h3>Modern</h3>
             <span class="badge free">Gratis</span>
           </div>
-        </a>
+        </a> -->
         <a href="merah-klasik.php" target="_blank"  class="tema-card reveal">
-          <img src="img/cs.jpg" alt="tema4">
+          <img src="../img/cs.jpg" alt="tema4">
           <div class="tema-info">
             <h3>Classic</h3>
             <span class="badge premium">Premium</span>
           </div>
         </a>
       </div>
-        <a href="halaman.php#harga" class="btn-tema">Lihat Harga Paket Premium</a>
+        <a href="../halaman.php#harga" class="btn-tema">Lihat Harga Paket Premium</a>
     </div>
   </section>
   

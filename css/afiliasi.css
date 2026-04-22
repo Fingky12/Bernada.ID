@@ -7,21 +7,21 @@
 }
 
 :root {
-  --red: #C0393B;
-  --red-d: #8a2020;
-  --red-l: #fff5f5;
-  --red-m: #fde0e0;
-  --dark: #1a1a1a;
-  --gray: #5a5a5a;
-  --light: #f8f6f6;
-  --white: #fff;
-  --border: #e8e0e0;
-  --gold: #c9a227;
-  --gold-l: #fdf8ec;
+  --red:     #cf3538; /* ml */
+  --red-d:   #a10909; /* m */  
+  --dark:    #1a1a1a;  /*g*/ /*c*/
+  --gray:    #5a5a5a;  /*g3*/ /*g2*/
+  --gray-l:  #B8B2AD; /*sg*/
+  --red-m:   #fde0e0; /* dr */
+  --red-l:   #fff5f5;
+  --light:   #f8f6f6; /*ow*/ /* iv */
+  --white:   #ffffff;
+  --border:  #eedede;
+  --gold:    #ffc811;
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   background: var(--light);
   color: var(--dark);
 }

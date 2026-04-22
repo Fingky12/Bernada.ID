@@ -20,7 +20,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="css/halaman.css">
+  <link rel="stylesheet" href="css/inc_footer_header.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/fitur.css">
   <link rel="stylesheet" href="css/tema.css">
@@ -44,7 +44,7 @@
     <?php endif; ?>
 
   <div class="main">
-    <section class="beranda" id="beranda">
+    <section class="beranda-grid" id="beranda">
       <div class="hero hero-left reveal-left">
         <h1 class="judul">BERNADA<span>.ID</span></h1>
         <p class="subjudul"> Kami membantu Anda membuat undangan digital berbasis website yang modern, responsif, dan mudah dibagikan ke siapa saja, kapan saja.</p>
@@ -65,11 +65,11 @@
     </section>
 
     <section class="fitur" id="fitur">
-      <div class="fitur-title reveal">
-        <h2>Fitur Undangan Digital Terbaik</h2>
-        <p>Bersua.id Memberikan Solusi Semua Yang Anda Butuhkan Untuk Membuat Halaman Undangan Digital Yang Kekinian, Simple, Minimalist, Elegant.</p>
-      </div>
       <div class="fitur-wrapper">
+        <div class="fitur-title reveal">
+          <h2>Fitur Undangan Digital Terbaik</h2>
+          <p>Bersua.id Memberikan Solusi Semua Yang Anda Butuhkan Untuk Membuat Halaman Undangan Digital Yang Kekinian, Simple, Minimalist, Elegant.</p>
+        </div>
         <div class="fitur-grid reveal">
           <div class="fitur-card">
             <div class="fitur-icon"><i class='bx bx-globe' ></i></div>
@@ -208,7 +208,7 @@
           <img src="./img/member/member-gold.png" alt="gold-member" class="member-icon">
           <div class="popular-badge">PALING LARIS</div>
           <div class="plan-name">Gold</div>
-          <div class="price">Rp. 95K</div>
+          <div class="price">Rp. 75K</div>
           <div class="features">
             <ul>
               <li> Domain Bernada.Id</li>
@@ -232,7 +232,7 @@
         <div class="pricing-card">
           <img src="./img/member/member-platinum.png" alt="platinum-member" class="member-icon">
           <div class="plan-name">Platinum</div>
-          <div class="price">Rp. 190K</div>
+          <div class="price">Rp. 99K</div>
           <div class="features">
             <ul>
               <li> Domain Sendiri(my.id)</li>

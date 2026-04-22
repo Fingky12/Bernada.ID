@@ -1,21 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Bebas+Neue&family=Carattere&family=DM+Serif+Display:ital@0;1&family=DM+Serif+Text:ital@0;1&family=Dancing+Script:wght@400..700&family=Dosis:wght@200..800&family=Imperial+Script&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend+Deca:wght@100..900&family=Lexend+Giga:wght@100..900&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Lilita+One&family=Luxurious+Script&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Oswald:wght@200..700&family=Permanent+Marker&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sacramento&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Tangerine:wght@400;700&family=Varela+Round&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Bebas+Neue&family=Carattere&family=DM+Serif+Display:ital@0;1&family=DM+Serif+Text:ital@0;1&family=Dancing+Script:wght@400..700&family=Dosis:wght@200..800&family=Imperial+Script&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend+Deca:wght@100..900&family=Lexend+Giga:wght@100..900&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Lilita+One&family=Luxurious+Script&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Oswald:wght@200..700&family=Permanent+Marker&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sacramento&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Tangerine:wght@400;700&family=Varela+Round&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 
 :root {
-  --mg: #ffc400;
-  --ml: #cf2e2e;
-  --m: #a12828;
-  --md: #6d0e1b;
-  --c: #1F1F1F;
-  --g: #252525;
-  --g2: #555555;
-  --dr: #C48A8A;
-  --ow: #FAFAFA;
-  --iv: #F7F3EF;
-  --bg-section: #fff0f0;
-  --sg: #B8B2AD;
-  --sg1: #e7e5e3;
+  --red:     #cf3538; /* ml */
+  --red-d:   #a10909; /* m */  
+  --dark:    #1a1a1a;  /*g*/ /*c*/
+  --gray:    #5a5a5a;  /*g3*/ /*g2*/
+  --gray-l:  #B8B2AD; /*sg*/
+  --red-m:   #fde0e0; /* dr */
+  --red-l:   #fff5f5;
+  --light:   #f8f6f6; /*ow*/ /* iv */
+  --white:   #ffffff;
+  --border:  #eedede;
+  --gold:    #ffc811;
 }
-
 /* =========================
   HEADER
 ========================= */
@@ -29,20 +27,20 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--ow);
+  background: var(--light);
   box-shadow: 1px 2px 2px 0 rgba(0, 0, 0, .1);
   z-index: 1000;
 }
 
 span {
-  color: var(--ml);
+  color: var(--red);
 }
 
 .logo {
   font-family: 'Playfair Display', serif;
   font-size: 24px;
   font-weight: 700;
-  color: var(--c);
+  color: var(--dark);
   text-decoration: none;
   letter-spacing: 2px;
 }
@@ -50,14 +48,14 @@ span {
 .navbar a {
   margin: 0 15px;
   text-decoration: none;
-  color: var(--g2);
+  color: var(--gray);
   font-size: .8rem;
   font-weight: 500;
   transition: 0.3s;
 }
 
 .navbar a:hover {
-  color: var(--m);
+  color: var(--red);
 }
 
 .nav-btn {
@@ -73,16 +71,16 @@ span {
   font-weight: 600;
   padding: 4px 32px;
   border-radius: 30px;
-  background: var(--m);
-  border: 1px solid var(--m);
-  color: var(--ow);
+  background: var(--red);
+  border: 1px solid var(--red);
+  color: var(--light);
   cursor: pointer;
   transition: 0.3s;
 }
 
 .btn-login:hover {
-  background: var(--ml);
-  color: var(--ow);
+  background: var(--red);
+  color: var(--light);
 }
 
 .profile-box .avatar-circle {
@@ -92,25 +90,24 @@ span {
   line-height: 40px;
   text-align: center;
   font-size: 1rem;
-  color: var(--c);
+  color: var(--dark);
   font-weight: 600;
   cursor: pointer;
 }
 .profile-box .avatar-circle i {
   font-size: 1.2rem;
-  color: var(--iv);
-  padding: 5px;
+  color: var(--light);
+  padding: 9px;
   margin-left: 12px;
-  background: var(--m);
+  background: var(--gray-l);
   border-radius: 50%;
-  border: 1px solid var(--m);
 }
 
 .profile-box .dropdown-content {
   position: absolute;
   top: 60px;
   right: 150px;
-  background: var(--ow);
+  background: var(--light);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
   display: flex;
@@ -133,24 +130,23 @@ span {
 .profile-box .dropdown-content a {
   padding: 8px 12px;
   border-radius: 4px;
-  color: var(--g2);
+  color: var(--gray);
   text-decoration: none;
   font-weight: 500;
   margin: 4px 0;
   transition: 0.3s;
 }
 .profile-box .dropdown-content a:hover {
-  background: var(--m);
-  color: var(--ow);
+  background: var(--red);
+  color: var(--light);
 }
-
 
 /*=========================
   FOOTER – ULTRA MINIMAL
 ========================= */
 
 .footer {
-  background: var(--g);
+  background: var(--dark);
   padding: 80px 8% 30px;
 }
 
@@ -166,16 +162,16 @@ span {
   font-size: 2rem;
   font-weight: 500;
   margin-bottom: 15px;
-  color: var(--ow);
+  color: var(--light);
 }
 
 .footer-brand span {
-  color: var(--ml);
+  color: var(--red);
 }
 
 .footer-brand p {
   font-size: 13px;
-  color: var(--sg);
+  color: var(--gray-l);
   line-height: 1.6;
   max-width: 500px;
 }
@@ -192,13 +188,13 @@ span {
   width: 38px;
   height: 38px;
   margin-right: 10px;
-  color: var(--sg);
+  color: var(--gray-l);
   text-decoration: none;
   transition: 0.3s ease;
 }
 
 .footer-social a:hover {
-  color: var(--ow);
+  color: var(--light);
   transform: translateY(-3px);
 }
 
@@ -206,33 +202,33 @@ span {
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 20px;
-  color: var(--ow);
+  color: var(--light);
 }
 
 .footer-links a {
   display: block;
   text-decoration: none;
   font-size: 13px;
-  color: var(--sg);
+  color: var(--gray-l);
   margin-bottom: 12px;
   transition: 0.3s ease;
 }
 
 .footer-links a:hover {
-  color: var(--ow);
+  color: var(--light);
   transform: translateX(4px);
 }
 
 .footer-bottom {
   margin-top: 40px;
   padding-top: 30px;
-  border-top: 1px solid var(--sg);
+  border-top: 1px solid var(--gray-l);
   text-align: center;
 }
 
 .footer-bottom p {
   font-size: 11px;
-  color: var(--sg);
+  color: var(--gray-l);
 }
 
 
@@ -261,7 +257,7 @@ span {
   display: flex;
   align-items: center;
   height: 100%;
-  color: var(--g);
+  color: var(--gray);
   font-weight: 500;
 }
 
@@ -281,7 +277,7 @@ span {
 }
 
 .alert span {
-  color: var(--c);
+  color: var(--dark);
 }
 
  @keyframes progress {

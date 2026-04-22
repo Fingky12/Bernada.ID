@@ -23,13 +23,13 @@
 .tema-title h2 {
   font-family: 'Playfair Display', serif;
   font-size: 3.2rem;
-  color: var(--c);
+  color: var(--dark);
 }
 
 .tema-title p {
   width: 100%;
   font-size: 1.1rem;
-  color: var(--g2);
+  color: var(--gray);
   line-height: 1.6;
   padding: 0 20%;
   /* margin-top: 7p; */
@@ -54,7 +54,7 @@
 .tema-card {
   width: 310px;
   text-decoration: none;
-  background: white;
+  background: var(--white);
   border-radius: 17px;
   overflow: hidden;
   box-shadow: 0 5px 20px rgba(0,0,0,0.05);
@@ -67,7 +67,7 @@
 
 .tema-card h3 {
   font-family: 'Inter', serif;
-  color: var(--g);
+  color: var(--dark);
   font-size: 1rem;
   padding: 15px;
 }
@@ -87,19 +87,20 @@
 
 .badge {
   padding: 6px 14px;
+  font-family: 'Inter', sans-serif;
   border-radius: 20px;
   font-size: 13px;
   font-weight: 600;
 }
 
 .free {
-  background: var(--ml);
-  color: white;
+  background: var(--red);
+  color: var(--white);
 }
 
 .premium {
-  background: var(--mg);
-  color: white;
+  background: var(--gold);
+  color: var(--white);
 }
 
 .btn-tema {
@@ -108,13 +109,13 @@
   font-size: 1.2rem;
   text-decoration: none;
   margin-top: 30px;
-  color: var(--ow);
-  background: var(--m);
+  color: var(--light);
+  background: var(--red-d);
   padding: 12px 20px;
   border-radius: 17px;
 }
 
 .btn-tema:hover {
-  background: var(--ml);
-  color: var(--ow);
+  background: var(--red);
+  color: var(--light);
 }

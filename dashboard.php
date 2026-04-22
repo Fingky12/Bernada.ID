@@ -34,41 +34,39 @@
         <h1>Hey! <span style="font-family: 'Playfair Display', serif;"><?= $name ? ' ' . $name : ''; ?></span> Welcome to <a href="halaman.php" class="logo">BERNADA<span>.ID</span></a></h1>
         <p>Selamat datang kembali! Silakan masuk ke akun Anda.</p>
       </div>
-
-      
-        <?php if ($name): ?>
-          <!-- ✅ SUDAH LOGIN: tampilkan info akun & tombol logout, sembunyikan form -->
-          <div class="already-login-box">
-            <div class="user-ready"><i class='bx bx-user-check' ></i></div>
-            <h3>Kamu sudah login sebagai</h3>
-            <p style="font-size: 20px; font-weight: 700; color: #C0393B; margin-bottom: 16px;">
-              <?= htmlspecialchars($name) ?>
-            </p>
-            <p style="font-size: 13px; color: #888; margin-bottom: 20px;">
-              Untuk masuk dengan akun lain, logout dulu ya!
-            </p>
-            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-              <a href="halaman.php" style="
-                padding: 10px 22px;
-                background: #C0393B;
-                color: #fff;
-                border-radius: 8px;
-                text-decoration: none;
-                font-size: 14px;
-                font-weight: 600;
-              ">Ke Halaman Utama</a>
-              <a href="logout.php" style="
-                padding: 10px 22px;
-                background: #fff;
-                color: #C0393B;
-                border: 2px solid #C0393B;
-                border-radius: 8px;
-                text-decoration: none;
-                font-size: 14px;
-                font-weight: 600;
-              ">Logout</a>
-            </div>
+      <?php if ($name): ?>
+        <!-- ✅ SUDAH LOGIN: tampilkan info akun & tombol logout, sembunyikan form -->
+        <div class="already-login-box">
+          <div class="user-ready"><i class='bx bx-user-check' ></i></div>
+          <h3>Kamu sudah login sebagai</h3>
+          <p style="font-size: 20px; font-weight: 700; color: #C0393B; margin-bottom: 16px;">
+            <?= htmlspecialchars($name) ?>
+          </p>
+          <p style="font-size: 13px; color: #888; margin-bottom: 20px;">
+            Untuk masuk dengan akun lain, logout dulu ya!
+          </p>
+          <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+            <a href="halaman.php" style="
+              padding: 10px 22px;
+              background: #C0393B;
+              color: #fff;
+              border-radius: 8px;
+              text-decoration: none;
+              font-size: 14px;
+              font-weight: 600;
+            ">Ke Halaman Utama</a>
+            <a href="logout.php" style="
+              padding: 10px 22px;
+              background: #fff;
+              color: #C0393B;
+              border: 2px solid #C0393B;
+              border-radius: 8px;
+              text-decoration: none;
+              font-size: 14px;
+              font-weight: 600;
+            ">Logout</a>
           </div>
+        </div>
 
 
           <?php else: ?>

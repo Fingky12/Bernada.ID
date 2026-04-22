@@ -55,11 +55,11 @@
 }
 
 .pricing-card {
-  background: #fff;
+  background:  var(--white);
   width: 250px;
   padding: 15px 32px;
   border-radius: 10px;
-  border: 1px solid rgb(160, 160, 160);
+  border: 1px solid var(--border);
   transition: 0.4s;
   position: relative;
   display: flex;
@@ -73,19 +73,19 @@
 }
 
 .popular {
-  border: 1px solid rgb(160, 160, 160);
+  border: 1px solid var(--gold);
 }
 
 .popular:hover {
-  border: 1px solid var(--mg);
+  border: 1px solid var(--gold);
 }
 
 .popular-badge {
   position: absolute;
   top: -12px;
   right: 20px;
-  background: var(--ml);
-  color: var(--ow);
+  background: var(--gold);
+  color: var(--white);
   padding: 5px 12px;
   font-size: 12px;
   border-radius: 20px;
@@ -100,7 +100,7 @@
 }
 
 .features {
-  color: var(--g2);
+  color: var(--gray);
   margin-bottom: auto;
   padding: 0 10px;
 }
@@ -118,7 +118,7 @@
 .price {
   font-size: 24px;
   font-weight: 600;
-  color: var(--g);
+  color: var(--gray);
   margin: 3px auto 25px auto;
 }
 
@@ -129,12 +129,12 @@
   width: 100%;
   padding: 12px 20px;
   border-radius: 6px;
-  color: var(--ow);
+  color: var(--light);
   transition: 0.3s;
-  background: var(--m);
+  background: var(--red-d);
 }
 
 .btn-outline:hover {
-  background: var(--ml);
+  background: var(--red);
 }
 
