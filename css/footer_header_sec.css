@@ -4,8 +4,8 @@
   --red:    #cf3538; /* ml */
   --red-d:  #a10909; /* m */  
   --dark:   #1a1a1a;  /*g*/ /*c*/
-  --gray:   #5a5a5a;  /*g3*/ /*g2*/
-  --gray-l: #B8B2AD; /*sg*/
+  --gray:   #5a5a5a;
+  --gray-l: #939393;
   --red-m:  #fde0e0; /* dr */
   --red-l:  #fff5f5;
   --light:  #f8f6f6; /*ow*/ /* iv */
@@ -32,7 +32,6 @@ body {
   font-family: 'Inter', sans-serif;
   background: var(--light);
   color: var(--dark);
-  overflow-x: hidden;
 }
 
 /* =========================
@@ -256,6 +255,6 @@ span {
   transition: 0.3s;
 }
 .profile-box .dropdown-content a:hover {
-  background: var(--red);
+  background: var(--r2);
   color: var(--light);
 }

@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['kirim_pesan'])) {
   <title>Hubungi Kami – Bernada.ID</title>
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/footer_header.css">
+  <link rel="stylesheet" href="css/footer_header_sec.css">
   <link rel="stylesheet" href="css/contact.css">
 </head>
 <body>
@@ -145,10 +145,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['kirim_pesan'])) {
     <div class="info-card">
       <h3><i class='bx bx-time-five'></i> Jam Operasional</h3>
       <div class="hours-grid">
-        <div class="hour-item"><div class="day">Senin – Jumat</div><div class="time">08.00 – 21.00</div></div>
-        <div class="hour-item"><div class="day">Sabtu</div><div class="time">09.00 – 18.00</div></div>
-        <div class="hour-item"><div class="day">Minggu</div><div class="time">Tutup</div></div>
-        <div class="hour-item"><div class="day">Libur Nasional</div><div class="time">Tutup</div></div>
+        <div class="hour-item"><div class="day">Senin – Jumat</div><div class="time">18.00 – 23.00</div></div>
+        <div class="hour-item"><div class="day">Sabtu</div><div class="time">20.00 – 01.00</div></div>
+        <div class="hour-item"><div class="day">Minggu</div><div class="time">18.00 – 23.00</div></div>
+        <div class="hour-item"><div class="day">Libur Nasional</div><div class="time">18.00 – 23.00</div></div>
       </div>
     </div>
 
@@ -230,5 +230,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['kirim_pesan'])) {
 </div>
 
 <?php include("./footer/inc_footer_second.php") ?>
+
+  <script src="scripts/script.js"></script>
 </body>
 </html>
