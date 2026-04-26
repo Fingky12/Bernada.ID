@@ -18,10 +18,10 @@ if ($name !== null) $_SESSION['name'] = $name;
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/inc_footer_header.css" />
-  <link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./favicon_io/favicon-16x16.png">
-  <link rel="apple-touch-icon" href="./favicon_io/apple-touch-icon.png">
-  <link rel="icon" href="./favicon_io/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="favicon_io/site.webmanifest">
   <title>Bernada.ID – Undangan Digital Modern</title>
   <style>
   </style>
@@ -216,8 +216,8 @@ if ($name !== null) $_SESSION['name'] = $name;
           <span class="badge baru">Baru</span>
         </div>
       </a>
-      
-        <!-- Tema 4: Sage Garden -->
+
+      <!-- Tema 4: Sage Garden -->
       <a href="undangan/sage-garden.php" target="_blank" class="tema-card">
         <div class="tema-card-preview">
           <div class="tema-preview-sage" style="height:220px;background:linear-gradient(160deg,#1e2d1f,#2d4a3e 40%,#3d6b44);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:1rem">
@@ -231,7 +231,21 @@ if ($name !== null) $_SESSION['name'] = $name;
         </div>
       </a>
 
-      <!-- Tema 4: Coming Soon -->
+      <!-- Tema 5: Rustic Brown -->
+      <a href="undangan/rustic-brown.php" target="_blank" class="tema-card">
+        <div class="tema-card-preview">
+          <div style="height:220px;background:linear-gradient(160deg,#2c1a0e,#5c3d1e 40%,#8b6340);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:1rem">
+            <div style="font-family:'Cinzel',serif;font-size:1.4rem;letter-spacing:.08em">RAKA & DIRA</div>
+            <div style="font-size:10px;letter-spacing:.2em;opacity:.45;text-transform:uppercase;margin-top:.75rem;font-family:'Cinzel',serif">Rustic Brown</div>
+          </div>
+          <div class="tema-hover-overlay"><span>👁 Lihat Preview</span></div>
+        </div>
+        <div class="tema-info">
+          <h3>Rustic Brown</h3><span class="badge baru">Baru</span>
+        </div>
+      </a>
+
+      <!-- Tema Premium: Coming Soon -->
       <div class="tema-card" style="cursor:default">
         <div class="tema-coming">
           <i class='bx bx-time-five'></i>
@@ -246,7 +260,7 @@ if ($name !== null) $_SESSION['name'] = $name;
 
     </div>
     <div class="btn-center">
-      <a href="./tema_undangan/tema.php" class="btn-lihat-semua"><i class='bx bx-palette'></i> Lihat Semua Tema</a>
+      <a href="./undangan/tema.php" class="btn-lihat-semua"><i class='bx bx-palette'></i> Lihat Semua Tema</a>
     </div>
   </section>
 
@@ -340,7 +354,7 @@ if ($name !== null) $_SESSION['name'] = $name;
   </section>
 
   <!-- ══════════════════════════════════════
-     CTA BANNER
+    CTA BANNER
 ══════════════════════════════════════ -->
   <div class="cta-banner reveal">
     <div class="cta-text">

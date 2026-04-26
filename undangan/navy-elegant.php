@@ -29,6 +29,7 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Undangan Pernikahan <?= $pria ?> & <?= $wanita ?></title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <style>
     *,
     *::before,
@@ -367,6 +368,9 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
     .btn-maps:hover {
       background: var(--n1);
     }
+    .btn-maps i {
+      font-size: 18px;
+    }
 
     /* RSVP */
     .rsvp-section {
@@ -582,14 +586,14 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
           <div class="detail-row"><strong>Tanggal</strong><?= $tgl_full ?></div>
           <div class="detail-row"><strong>Waktu</strong><?= $wm ?> WIB</div>
           <div class="detail-row"><strong>Lokasi</strong><?= $lokasi ?></div>
-          <a href="<?= $maps ?>" target="_blank" class="btn-maps">📍 Google Maps</a>
+          <a href="<?= $maps ?>" target="_blank" class="btn-maps"><i class='bx bx-map' ></i> Google Maps</a>
         </div>
         <div class="detail-card">
           <h3>RESEPSI PERNIKAHAN</h3>
           <div class="detail-row"><strong>Tanggal</strong><?= $tgl_full ?></div>
           <div class="detail-row"><strong>Waktu</strong><?= $wm ?> – <?= $ws ?> WIB</div>
           <div class="detail-row"><strong>Lokasi</strong><?= $lokasi ?></div>
-          <a href="<?= $maps ?>" target="_blank" class="btn-maps">📍 Google Maps</a>
+          <a href="<?= $maps ?>" target="_blank" class="btn-maps"><i class='bx bx-map' ></i> Google Maps</a>
         </div>
       </div>
     </section>
@@ -611,8 +615,9 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
           </div>
           <div class="rsvp-field"><label>Kehadiran</label>
             <select id="rsvpHadir">
-              <option value="hadir">Insya Allah Hadir</option>
-              <option value="tidak">Berhalangan Hadir</option>
+              <option value="hadir">✔️ Insya Allah Hadir</option>
+              <option value="tidak">❌ Berhalangan Hadir</option>
+              <option value="mungkin">❓ Mungkin Hadir</option>
             </select>
           </div>
           <button class="btn-rsvp" onclick="kirimRSVP()">Konfirmasi Kehadiran</button>
@@ -635,7 +640,7 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
 
   </div>
 
-  <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()"><i class='bx bx-music' ></i></button>
   <audio id="bgMusic" loop>
     <source src="../audio/wedding-music.mp3" type="audio/mpeg" />
   </audio>
@@ -653,11 +658,11 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
         btn = document.getElementById('musicBtn');
       if (playing) {
         m.pause();
-        btn.textContent = '🎵';
+        btn.textContent = "<i class='bx bx-music' ></i>";
         playing = false;
       } else {
         m.play().catch(() => {});
-        btn.textContent = '⏸';
+        btn.textContent = "⏸";
         playing = true;
       }
     }
@@ -684,7 +689,7 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
         return;
       }
       const jml = document.getElementById('rsvpJml').value;
-      const hadir = document.getElementById('rsvpHadir').value === 'hadir' ? 'Insya Allah Hadir' : 'Berhalangan Hadir';
+      const hadir = document.getElementById('rsvpHadir').value === 'hadir' ? 'Insya Allah Hadir' : document.getElementById('rsvpHadir').value === 'mungkin' ? 'Mungkin Hadir' : 'Berhalangan Hadir';
       const p = encodeURIComponent(`Halo! Saya ${nama} konfirmasi kehadiran di pernikahan <?= $pria ?> & <?= $wanita ?>.\nKehadiran: ${hadir}\nJumlah: ${jml}`);
       window.open(`https://wa.me/6281939195110?text=${p}`, '_blank');
       document.getElementById('rsvpForm').style.display = 'none';

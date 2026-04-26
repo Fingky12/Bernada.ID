@@ -29,7 +29,8 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Undangan Pernikahan <?= $pria ?> & <?= $wanita ?></title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Jost:ital,wght@0,300;0,400;0,500;1,300&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&display=swap" rel="stylesheet" />
-  <style>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+<style>
     *,
     *::before,
     *::after {
@@ -92,6 +93,10 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
       pointer-events: none;
     }
 
+    .petal i {
+      color: var(--p3);
+    }
+
     .petal-1 {
       top: 8%;
       left: 5%;
@@ -112,6 +117,16 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
 
     .petal-4 {
       bottom: 12%;
+      right: 36%;
+      transform: rotate(-35deg);
+    }
+    .petal-5 {
+      bottom: 52%;
+      left : 32%;
+      transform: rotate(-35deg);
+    }
+    .petal-6 {
+      bottom: 32%;
       right: 6%;
       transform: rotate(-35deg);
     }
@@ -386,6 +401,11 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
       margin-bottom: .75rem;
     }
 
+    .detail-icon img {
+      width: 32px;
+      height: 32px;
+    }
+
     .detail-card h3 {
       font-family: 'Great Vibes', cursive;
       font-size: 1.6rem;
@@ -586,10 +606,12 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
 <body>
 
   <div class="cover" id="cover">
-    <span class="petal petal-1">🌸</span>
-    <span class="petal petal-2">🌷</span>
-    <span class="petal petal-3">🌺</span>
-    <span class="petal petal-4">🌸</span>
+    <span class="petal petal-1"><i class='bx bx-heart-circle' ></i></span>
+    <span class="petal petal-2"><i class='bx bxs-florist' ></i></span>
+    <span class="petal petal-3"><i class='bx bxl-mongodb' ></i></span>
+    <span class="petal petal-4"><i class='bx bx-heart-circle' ></i></span>
+    <span class="petal petal-5"><i class='bx bxl-mongodb' ></i></span>
+    <span class="petal petal-6"><i class='bx bxl-mongodb' ></i></span>
     <div class="cover-script">The Wedding Of</div>
     <div class="cover-name">
       <?= $pria ?>
@@ -605,7 +627,7 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
 
     <section class="couple-section">
       <div class="sec-inner">
-        <div class="script-title">Bismillah</div>
+        <div class="script-title">Bismillahirrahmanirrahim</div>
         <div class="jost-label">Dengan Memohon Rahmat Allah SWT</div>
         <div class="pink-line"></div>
         <div class="couple-grid">
@@ -666,20 +688,20 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
         <div class="script-title">Acara</div>
         <div class="jost-label">Informasi Pernikahan</div>
         <div class="detail-card">
-          <div class="detail-icon">💍</div>
+          <div class="detail-icon" style="color: var(--p1); font-size: 24px;"><i class='bx bx-donate-heart' ></i></div>
           <h3>Akad Nikah</h3>
           <div class="detail-row"><strong>Tanggal</strong><?= $tgl_full ?></div>
           <div class="detail-row"><strong>Waktu</strong><?= $wm ?> WIB</div>
           <div class="detail-row"><strong>Lokasi</strong><?= $lokasi ?></div>
-          <a href="<?= $maps ?>" target="_blank" class="btn-maps">📍 Lihat Maps</a>
+          <a href="<?= $maps ?>" target="_blank" class="btn-maps"><i class='bx bx-map' ></i> Lihat Maps</a>
         </div>
         <div class="detail-card">
-          <div class="detail-icon">🎊</div>
+          <div class="detail-icon" style="color: var(--p1); font-size: 24px;"><i class='bx bx-home-heart' ></i></div>
           <h3>Resepsi</h3>
           <div class="detail-row"><strong>Tanggal</strong><?= $tgl_full ?></div>
           <div class="detail-row"><strong>Waktu</strong><?= $wm ?> – <?= $ws ?> WIB</div>
           <div class="detail-row"><strong>Lokasi</strong><?= $lokasi ?></div>
-          <a href="<?= $maps ?>" target="_blank" class="btn-maps">📍 Lihat Maps</a>
+          <a href="<?= $maps ?>" target="_blank" class="btn-maps"><i class='bx bx-map' ></i> Lihat Maps</a>
         </div>
       </div>
     </section>
@@ -700,14 +722,15 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
           </div>
           <div class="rsvp-field"><label>Kehadiran</label>
             <select id="rsvpHadir">
-              <option value="hadir">✅ Insya Allah Hadir</option>
+              <option value="hadir">✔️ Insya Allah Hadir</option>
               <option value="tidak">❌ Berhalangan Hadir</option>
+              <option value="mungkin">❓ Mungkin Hadir</option>
             </select>
           </div>
-          <button class="btn-rsvp" onclick="kirimRSVP()">💌 Kirim Konfirmasi</button>
+          <button class="btn-rsvp" onclick="kirimRSVP()"><i class='bx bx-mail-send' ></i> Kirim Konfirmasi</button>
         </div>
         <div class="rsvp-success" id="rsvpSuccess">
-          <div class="heart">💕</div>
+          <div class="heart"><i class='bx bxs-heart' ></i></div>
           <p style="font-family:'Great Vibes',cursive;font-size:1.8rem;color:var(--p1)">Terima kasih!</p>
           <p style="font-size:14px;color:var(--gray);margin-top:4px">Konfirmasi kehadiranmu sudah diterima.</p>
         </div>
@@ -716,7 +739,7 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
 
     <section class="closing-section">
       <div class="sec-inner">
-        <div class="floral-divider" style="color:rgba(255,255,255,.3)">🌸 🌷 🌸</div>
+        <div class="floral-divider" style="color:rgba(255,255,255,.3)"><i class='bx bxs-florist' ></i> <i class='bx bxs-bookmark-heart' ></i> <i class='bx bxs-florist' ></i></div>
         <h2>Sampai Jumpa di Hari Bahagia Kami</h2>
         <p>Doa dan kehadiran Bapak/Ibu/Saudara/i adalah hadiah terindah untuk kami.</p>
         <p style="font-family:'Great Vibes',cursive;font-size:2rem;color:rgba(255,255,255,.8)"><?= $pria ?> &amp; <?= $wanita ?></p>
@@ -726,7 +749,7 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
 
   </div>
 
-  <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()"><i class='bx bx-music' ></i></button>
   <audio id="bgMusic" loop>
     <source src="../audio/wedding-music.mp3" type="audio/mpeg" />
   </audio>
@@ -744,11 +767,11 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
         btn = document.getElementById('musicBtn');
       if (playing) {
         m.pause();
-        btn.textContent = '🎵';
+        btn.innerHTML = "<i class='bx bx-music' ></i>";
         playing = false;
       } else {
         m.play().catch(() => {});
-        btn.textContent = '⏸';
+        btn.textContent = "⏸";
         playing = true;
       }
     }
@@ -775,7 +798,7 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
         return;
       }
       const jml = document.getElementById('rsvpJml').value;
-      const hadir = document.getElementById('rsvpHadir').value === 'hadir' ? 'Insya Allah Hadir' : 'Berhalangan Hadir';
+      const hadir = document.getElementById('rsvpHadir').value === 'hadir' ? 'Insya Allah Hadir' : document.getElementById('rsvpHadir').value === 'mungkin' ? 'Mungkin Hadir' : 'Berhalangan Hadir';
       const p = encodeURIComponent(`Halo! Saya ${nama} ingin konfirmasi kehadiran di pernikahan <?= $pria ?> & <?= $wanita ?>.\nKehadiran: ${hadir}\nJumlah: ${jml}`);
       window.open(`https://wa.me/6281939195110?text=${p}`, '_blank');
       document.getElementById('rsvpForm').style.display = 'none';

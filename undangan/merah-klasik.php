@@ -39,10 +39,11 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Undangan Pernikahan <?= $pria ?> & <?= $wanita ?></title>
   <meta property="og:title" content="Undangan Pernikahan <?= $pria ?> & <?= $wanita ?>" />
   <meta property="og:description" content="<?= $tgl_full ?> · <?= $lokasi ?>" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <title>Undangan Pernikahan <?= $pria ?> & <?= $wanita ?></title>
   <style>
     *,
     *::before,
@@ -411,13 +412,18 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
       width: 44px;
       height: 44px;
       border-radius: 10px;
-      background: linear-gradient(135deg, var(--r1), var(--r2));
+      background: linear-gradient(135deg, #999, #c6c6c6);
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 20px;
     }
+
+    .detail-icon img {
+      width: 30px;
+      height: 30px;
+    } 
 
     .detail-card-header h3 {
       font-size: 16px;
@@ -627,7 +633,7 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
     <!-- COUPLE -->
     <section class="couple-section">
       <div class="sec-inner">
-        <div class="ornament">Bismillah</div>
+        <div class="ornament">Bismillahirrahmanirrahim</div>
         <div class="sec-label">Dengan Memohon Rahmat dan Ridho Allah SWT</div>
         <div class="divider">
           <div class="divider-diamond"></div>
@@ -683,7 +689,7 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
         <div class="sec-label">Informasi Pernikahan</div>
         <div class="detail-card">
           <div class="detail-card-header">
-            <div class="detail-icon">💍</div>
+            <div class="detail-icon"><img src="../img/tema-undangan/cincin.png" alt="Cincin"></div>
             <div>
               <h3>Akad Nikah</h3>
               <p>Prosesi sakral pernikahan</p>
@@ -692,11 +698,11 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
           <div class="detail-row"><strong>Tanggal</strong> <?= $tgl_full ?></div>
           <div class="detail-row"><strong>Waktu</strong> <?= $wm ?> WIB</div>
           <div class="detail-row"><strong>Lokasi</strong> <?= $lokasi ?></div>
-          <a href="<?= $maps ?>" target="_blank" class="btn-maps">📍 Lihat di Google Maps</a>
+          <a href="<?= $maps ?>" target="_blank" class="btn-maps"><i class='bx bxs-map' ></i> Lihat di Google Maps</a>
         </div>
         <div class="detail-card">
           <div class="detail-card-header">
-            <div class="detail-icon">🎊</div>
+            <div class="detail-icon"><img src="../img/tema-undangan/rumah.png" alt="Rumah"></div>
             <div>
               <h3>Resepsi Pernikahan</h3>
               <p>Syukuran & jamuan tamu</p>
@@ -705,7 +711,7 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
           <div class="detail-row"><strong>Tanggal</strong> <?= $tgl_full ?></div>
           <div class="detail-row"><strong>Waktu</strong> <?= $wm ?> – <?= $ws ?> WIB</div>
           <div class="detail-row"><strong>Lokasi</strong> <?= $lokasi ?></div>
-          <a href="<?= $maps ?>" target="_blank" class="btn-maps">📍 Lihat di Google Maps</a>
+          <a href="<?= $maps ?>" target="_blank" class="btn-maps"><i class='bx bxs-map' ></i> Lihat di Google Maps</a>
         </div>
       </div>
     </section>
@@ -736,9 +742,9 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
           <div class="rsvp-field">
             <label>Konfirmasi Kehadiran</label>
             <select id="rsvpHadir">
-              <option value="hadir">✅ Insya Allah Hadir</option>
+              <option value="hadir">✔️ Insya Allah Hadir</option>
               <option value="tidak">❌ Berhalangan Hadir</option>
-              <option value="mungkin">🤔 Mungkin Hadir</option>
+              <option value="mungkin">❓ Mungkin Hadir</option>
             </select>
           </div>
           <button class="btn-rsvp" onclick="kirimRSVP()">Kirim Konfirmasi</button>
@@ -768,7 +774,7 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
 
   </div><!-- end content -->
 
-  <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Musik">🎵</button>
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Musik"><i class='bx bx-music' ></i></button>
   <audio id="bgMusic" loop>
     <source src="../audio/wedding-music.mp3" type="audio/mpeg" />
   </audio>
@@ -791,11 +797,11 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
       const btn = document.getElementById('musicBtn');
       if (playing) {
         m.pause();
-        btn.textContent = '🎵';
+        btn.innerHTML = "<i class='bx bx-music' ></i>";
         playing = false;
       } else {
         m.play().catch(() => {});
-        btn.textContent = '⏸';
+        btn.textContent = "⏸";
         playing = true;
       }
     }

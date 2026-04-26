@@ -13,7 +13,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="../css/footer_header.css">
+  <link rel="stylesheet" href="../css/footer_header_sec.css">
   <link rel="stylesheet" href="../css/tema.css">
   <title>Tema Undangan - BERNADA.ID</title>
 </head>
@@ -84,8 +84,36 @@
           <span class="badge baru">Baru</span>
         </div>
       </a>
+      
+      <!-- Tema 4: Sage Garden -->
+      <a href="undangan/sage-garden.php" target="_blank" class="tema-card">
+        <div class="tema-card-preview">
+          <div class="tema-preview-sage" style="height:220px;background:linear-gradient(160deg,#1e2d1f,#2d4a3e 40%,#3d6b44);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:1rem">
+            <div style="font-family:'Libre Baskerville',serif;font-size:1.6rem">Hendra & Ayu</div>
+            <div style="font-size:11px;letter-spacing:.15em;opacity:.5;text-transform:uppercase;margin-top:.5rem">Sage Garden</div>
+          </div>
+          <div class="tema-hover-overlay"><span>👁 Lihat Preview</span></div>
+        </div>
+        <div class="tema-info">
+          <h3>Sage Garden</h3><span class="badge baru">Baru</span>
+        </div>
+      </a>
 
-      <!-- Tema 4: Coming Soon -->
+      <!-- Tema 5: Rustic Brown -->
+      <a href="undangan/rustic-brown.php" target="_blank" class="tema-card">
+        <div class="tema-card-preview">
+          <div style="height:220px;background:linear-gradient(160deg,#2c1a0e,#5c3d1e 40%,#8b6340);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:1rem">
+            <div style="font-family:'Cinzel',serif;font-size:1.4rem;letter-spacing:.08em">RAKA & DIRA</div>
+            <div style="font-size:10px;letter-spacing:.2em;opacity:.45;text-transform:uppercase;margin-top:.75rem;font-family:'Cinzel',serif">Rustic Brown</div>
+          </div>
+          <div class="tema-hover-overlay"><span>👁 Lihat Preview</span></div>
+        </div>
+        <div class="tema-info">
+          <h3>Rustic Brown</h3><span class="badge baru">Baru</span>
+        </div>
+      </a>
+
+      <!-- Tema Premium: Coming Soon -->
       <div class="tema-card" style="cursor:default">
         <div class="tema-coming">
           <i class='bx bx-time-five'></i>
@@ -100,7 +128,7 @@
 
     </div>
     <div class="btn-center">
-      <a href="./tema_undangan/tema.php" class="btn-lihat-semua"><i class='bx bx-palette'></i> Lihat Semua Tema</a>
+      <a href="../halaman.php#tema" class="btn-lihat-semua"><i class='bx bx-undo' ></i> Kembali Ke Beranda</a>
     </div>
   </section>
   

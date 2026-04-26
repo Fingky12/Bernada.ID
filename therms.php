@@ -11,7 +11,7 @@ $name = $_SESSION['name'] ?? null;
   <title>Syarat & Ketentuan – Bernada.ID</title>
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/footer_header.css">
+  <link rel="stylesheet" href="css/footer_header_sec.css">
   <link rel="stylesheet" href="css/therms.css">
 </head>
 <body>

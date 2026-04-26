@@ -30,7 +30,7 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
   <title>Undangan Pernikahan <?= $pria ?> & <?= $wanita ?></title>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet" />
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-<style>
+  <style>
     *,
     *::before,
     *::after {
@@ -96,6 +96,13 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
       font-size: clamp(3rem, 8vw, 6rem);
       opacity: .12;
       pointer-events: none;
+    }
+
+    .leaf-tl i,
+    .leaf-tr i,
+    .leaf-bl i,
+    .leaf-br i {
+      color: var(--s4);
     }
 
     .leaf-tl {
@@ -982,8 +989,8 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
 <body>
 
   <div class="cover" id="cover">
-    <span class="leaf-tl">🌿</span><span class="leaf-tr">🌿</span>
-    <span class="leaf-bl">🍃</span><span class="leaf-br">🍃</span>
+    <span class="leaf-tl"><i class='bx bxs-florist'></i></span><span class="leaf-tr"><i class='bx bxs-florist'></i></span>
+    <span class="leaf-bl"><i class='bx bxl-mongodb'></i></span><span class="leaf-br"><i class='bx bxl-mongodb'></i></span>
     <div class="cover-frame"></div>
     <div class="corner corner-tl"></div>
     <div class="corner corner-tr"></div>
@@ -1077,29 +1084,29 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
         <div class="event-cards">
           <div class="event-card">
             <div class="event-card-header">
-              <div class="event-icon">💍</div>
+              <div class="event-icon"><i class='bx bx-book-heart' ></i></div>
               <div>
                 <h3>Akad Nikah</h3>
                 <p>Prosesi Ijab Kabul</p>
               </div>
             </div>
-            <div class="event-detail-row"><span class="icon"><i class='bx bx-calendar-check' ></i></span><strong>Tanggal</strong><span><?= $tgl_full ?></span></div>
+            <div class="event-detail-row"><span class="icon"><i class='bx bx-calendar-check'></i></span><strong>Tanggal</strong><span><?= $tgl_full ?></span></div>
             <div class="event-detail-row"><span class="icon"><i class='bx bx-time'></i></span><strong>Waktu</strong><span><?= $wm ?> WIB – Selesai</span></div>
-            <div class="event-detail-row"><span class="icon"><i class='bx bx-map' ></i></span><strong>Lokasi</strong><span><?= $lokasi ?></span></div>
-            <a href="<?= $maps ?>" target="_blank" class="btn-maps"><i class='bx bx-map' ></i> Buka Google Maps</a>
+            <div class="event-detail-row"><span class="icon"><i class='bx bx-map-pin'></i></span><strong>Lokasi</strong><span><?= $lokasi ?></span></div>
+            <a href="<?= $maps ?>" target="_blank" class="btn-maps"><i class='bx bx-map'></i> Buka Google Maps</a>
           </div>
           <div class="event-card">
             <div class="event-card-header">
-              <div class="event-icon">🌿</div>
+              <div class="event-icon"><i class='bx bx-home-heart' ></i></div>
               <div>
                 <h3>Resepsi Pernikahan</h3>
                 <p>Syukuran &amp; Jamuan Tamu</p>
               </div>
             </div>
-            <div class="event-detail-row"><span class="icon"><i class='bx bx-calendar-check' ></i></span><strong>Tanggal</strong><span><?= $tgl_full ?></span></div>
+            <div class="event-detail-row"><span class="icon"><i class='bx bx-calendar-check'></i></span><strong>Tanggal</strong><span><?= $tgl_full ?></span></div>
             <div class="event-detail-row"><span class="icon"><i class='bx bx-time'></i></span><strong>Waktu</strong><span><?= $wm ?> – <?= $ws ?> WIB</span></div>
-            <div class="event-detail-row"><span class="icon"><i class='bx bx-map' ></i></span><strong>Lokasi</strong><span><?= $lokasi ?></span></div>
-            <a href="<?= $maps ?>" target="_blank" class="btn-maps"><i class='bx bx-map' ></i> Buka Google Maps</a>
+            <div class="event-detail-row"><span class="icon"><i class='bx bx-map-pin'></i></span><strong>Lokasi</strong><span><?= $lokasi ?></span></div>
+            <a href="<?= $maps ?>" target="_blank" class="btn-maps"><i class='bx bx-map'></i> Buka Google Maps</a>
           </div>
         </div>
       </div>
@@ -1113,11 +1120,11 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
           <div class="sage-rule-dot"></div>
         </div>
         <div class="galeri-grid">
-          <div class="galeri-item">🌿</div>
-          <div class="galeri-item">🍃</div>
-          <div class="galeri-item">🌾</div>
-          <div class="galeri-item">🌸</div>
-          <div class="galeri-item">🌿</div>
+          <div class="galeri-item"><i class='bx bxs-florist' ></i></div>
+          <div class="galeri-item"><i class='bx bxs-florist' ></i></div>
+          <div class="galeri-item"><i class='bx bxs-florist' ></i></div>
+          <div class="galeri-item"><i class='bx bxs-florist' ></i></div>
+          <div class="galeri-item"><i class='bx bxs-florist' ></i></div>
         </div>
         <p class="galeri-note">* Foto pre-wedding akan ditampilkan di sini</p>
       </div>
@@ -1143,9 +1150,9 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
           </div>
           <div class="rsvp-field"><label>Kehadiran</label>
             <select id="rsvpHadir">
-              <option value="hadir"><i class='bx bx-check' ></i> Insya Allah Hadir</option>
-              <option value="tidak"><i class='bx bx-x' ></i> Berhalangan Hadir</option>
-              <option value="mungkin"><i class='bx bx-confused' ></i> Belum Dapat Dipastikan</option>
+              <option value="hadir">✔️ Insya Allah Hadir</option>
+              <option value="tidak">❌ Berhalangan Hadir</option>
+              <option value="mungkin">❓ Mungkin Hadir</option>
             </select>
           </div>
           <div class="rsvp-field"><label>Ucapan &amp; Doa</label><textarea id="rsvpUcapan" placeholder="Tuliskan ucapan dan doa terbaik..."></textarea></div>
@@ -1175,7 +1182,7 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
 
     <section class="closing-section">
       <div class="sec-inner" style="position:relative">
-        <div class="closing-leaf-bg">🌿</div>
+        <div class="closing-leaf-bg"><i class='bx bxs-florist' style="color: var(--s3);"></i></div>
         <div class="lato-label" style="color:rgba(184,212,188,.4);position:relative">Dengan Sepenuh Hati</div>
         <div class="baskerville-italic" style="position:relative"><?= $pria ?> &amp; <?= $wanita ?></div>
         <div class="sage-rule" style="position:relative">
@@ -1187,7 +1194,7 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
     </section>
   </div>
 
-  <button class="music-btn" id="musicBtn" onclick="toggleMusic()"><i class='bx bx-music' ></i></button>
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()"><i class='bx bx-music'></i></button>
   <audio id="bgMusic" loop>
     <source src="../audio/wedding-music.mp3" type="audio/mpeg" />
   </audio>
@@ -1211,7 +1218,7 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
         playing = false;
       } else {
         m.play().catch(() => {});
-        btn.textContent = '⏸';
+        btn.textContent = "⏸";
         btn.classList.add('playing');
         playing = true;
       }
@@ -1235,10 +1242,9 @@ $tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
         return;
       }
       const jml = document.getElementById('rsvpJml').value;
-      const hadir = document.getElementById('rsvpHadir');
+      const hadir = document.getElementById('rsvpHadir').value === 'hadir' ? 'Insya Allah Hadir' : document.getElementById('rsvpHadir').value === 'mungkin' ? 'Mungkin Hadir' : 'Berhalangan Hadir';
       const ucapan = document.getElementById('rsvpUcapan').value.trim();
-      const status = hadir.options[hadir.selectedIndex].text.replace(/^[^\s]+\s+/, '');
-      const p = encodeURIComponent(`Assalamu'alaikum 🌿\n\nSaya ${nama} konfirmasi kehadiran di pernikahan <?= $pria ?> & <?= $wanita ?>.\n\nKehadiran : ${status}\nJumlah Tamu : ${jml}` + (ucapan ? `\n\nUcapan :\n"${ucapan}"` : ''));
+      const p = encodeURIComponent(`Assalamu'alaikum 🌿\n\nSaya ${nama} konfirmasi kehadiran di pernikahan <?= $pria ?> & <?= $wanita ?>.\n\nKehadiran : ${hadir}\nJumlah Tamu : ${jml}` + (ucapan ? `\n\nUcapan :\n"${ucapan}"` : ''));
       window.open(`https://wa.me/6281939195110?text=${p}`, '_blank');
       document.getElementById('rsvpForm').style.display = 'none';
       document.getElementById('rsvpSuccess').style.display = 'block';

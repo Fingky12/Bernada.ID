@@ -1,45 +1,51 @@
-<?php 
-  session_start();
-    require_once 'config/koneksi.php';
+<?php
+session_start();
+require_once 'config/koneksi.php';
 
-    $name = $_SESSION['name'] ?? null;
-    $alerts = $_SESSION['alerts'] ?? [];
-    $active_form = $_SESSION['active_form'] ?? '';
-    
-    if(!isset($_SESSION['name'])) {
-      header('Location: dashboard.php');
-      exit;
-      }
+$name = $_SESSION['name'] ?? null;
+$alerts = $_SESSION['alerts'] ?? [];
+$active_form = $_SESSION['active_form'] ?? '';
 
-      session_unset();
+if (!isset($_SESSION['name'])) {
+  header('Location: dashboard.php');
+  exit;
+}
 
-      if ($name !== null) $_SESSION['name'] = $name;
+session_unset();
+
+if ($name !== null) $_SESSION['name'] = $name;
 
 ?>
 
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="css/footer_header.css">
   <link rel="stylesheet" href="css/buat-undangan.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="favicon_io/site.webmanifest">
   <title>Buat Undangan Digital – Bernada.ID</title>
 </head>
+
 <body>
   <?php include("./header/inc_header_second.php") ?>
 
-<section class="buat-undangan" id="buat-undangan">
-  <!-- HERO -->
-  <div class="hero-strip">
-    <h1>Buat Undangan Digital</h1>
-    <p>Isi data pernikahan kamu, undangan siap dalam hitungan menit!</p>
-  </div>
-  
-  <!-- MAIN -->
-  <!-- FORM -->
+  <section class="buat-undangan" id="buat-undangan">
+    <!-- HERO -->
+    <div class="hero-strip">
+      <h1>Buat Undangan Digital</h1>
+      <p>Isi data pernikahan kamu, undangan siap dalam hitungan menit!</p>
+    </div>
+
+    <!-- MAIN -->
+    <!-- FORM -->
     <form id="formUndangan" action="config/proses_undangan.php" method="POST" novalidate>
       <!-- STEPS BAR -->
       <div class="steps-bar">
@@ -52,14 +58,14 @@
         <div class="step-item" id="tab4"><span class="step-num">4</span> Kontak</div>
       </div>
       <!-- ALERT -->
-      <div class="alert alert-error"   id="alertError"></div>
+      <div class="alert alert-error" id="alertError"></div>
       <div class="alert alert-success" id="alertSuccess"></div>
 
 
 
       <!-- STEP 1 - PENGANTIN -->
       <div class="card step-section" id="sec1">
-        <div class="card-title"><i class='bx bxs-book-heart' ></i> Data Pengantin</div>
+        <div class="card-title"><i class='bx bxs-book-heart'></i> Data Pengantin</div>
         <div class="field-row">
           <div class="field">
             <label>Nama Pengantin Pria <span class="req">*</span></label>
@@ -81,13 +87,13 @@
           </div>
         </div>
         <div class="btn-row">
-          <button type="button" class="btn btn-primary" onclick="nextStep(1)">Lanjut <i class='bx bx-right-arrow-alt' ></i></button>
+          <button type="button" class="btn btn-primary" onclick="nextStep(1)">Lanjut <i class='bx bx-right-arrow-alt'></i></button>
         </div>
       </div>
 
       <!-- STEP 2 - ACARA -->
       <div class="card step-section" id="sec2" style="display:none">
-        <div class="card-title"><i class='bx bx-calendar-heart' ></i> Info Acara</div>
+        <div class="card-title"><i class='bx bx-calendar-heart'></i> Info Acara</div>
         <div class="field">
           <label>Tanggal Pernikahan <span class="req">*</span></label>
           <input type="date" name="tanggal_nikah" required />
@@ -111,14 +117,14 @@
           <input type="url" name="link_maps" placeholder="https://maps.google.com/..." />
         </div>
         <div class="btn-row">
-          <button type="button" class="btn btn-outline" onclick="prevStep(2)"><i class='bx bx-left-arrow-alt' ></i> Kembali</button>
-          <button type="button" class="btn btn-primary" onclick="nextStep(2)">Lanjut <i class='bx bx-right-arrow-alt' ></i></button>
+          <button type="button" class="btn btn-outline" onclick="prevStep(2)"><i class='bx bx-left-arrow-alt'></i> Kembali</button>
+          <button type="button" class="btn btn-primary" onclick="nextStep(2)">Lanjut <i class='bx bx-right-arrow-alt'></i></button>
         </div>
       </div>
 
       <!-- STEP 3 - TEMA -->
       <div class="card step-section" id="sec3" style="display:none">
-        <div class="card-title"><i class='bx bx-palette' ></i> Pilih Tema</div>
+        <div class="card-title"><i class='bx bx-palette'></i> Pilih Tema</div>
         <input type="hidden" name="tema" id="temaValue" value="Merah Klasik" required />
         <div class="tema-grid">
           <div class="tema-card active" onclick="pilihTema(this,'Merah Klasik')">
@@ -153,8 +159,8 @@
           </div>
         </div>
         <div class="btn-row">
-          <button type="button" class="btn btn-outline" onclick="prevStep(3)"><i class='bx bx-left-arrow-alt' ></i> Kembali</button>
-          <button type="button" class="btn btn-primary" onclick="nextStep(3)">Lanjut <i class='bx bx-right-arrow-alt' ></i></i></button>
+          <button type="button" class="btn btn-outline" onclick="prevStep(3)"><i class='bx bx-left-arrow-alt'></i> Kembali</button>
+          <button type="button" class="btn btn-primary" onclick="nextStep(3)">Lanjut <i class='bx bx-right-arrow-alt'></i></i></button>
         </div>
       </div>
 
@@ -175,8 +181,8 @@
           <textarea name="catatan" placeholder="cth. Mohon tambahkan foto pre-wedding kami..."></textarea>
         </div>
         <div class="btn-row">
-          <button type="button" class="btn btn-outline" onclick="prevStep(4)"><i class='bx bx-left-arrow-alt' ></i> Kembali</button>
-          <button type="submit" class="btn btn-primary"><i class='bx bx-send' ></i> Buat Undangan Sekarang</button>
+          <button type="button" class="btn btn-outline" onclick="prevStep(4)"><i class='bx bx-left-arrow-alt'></i> Kembali</button>
+          <button type="submit" class="btn btn-primary"><i class='bx bx-send'></i> Buat Undangan Sekarang</button>
         </div>
       </div>
     </form>
@@ -197,17 +203,18 @@
       </div>
     </div>
 
-  <!-- LOADING OVERLAY -->
-  <div id="loadingOverlay">
-    <div class="spinner-box">
-      <div class="spinner"></div>
-      <p>Sedang memproses undanganmu...</p>
+    <!-- LOADING OVERLAY -->
+    <div id="loadingOverlay">
+      <div class="spinner-box">
+        <div class="spinner"></div>
+        <p>Sedang memproses undanganmu...</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-    <?php include("./footer/inc_footer_second.php") ?>
-<script src="script.js"></script>
+  <?php include("./footer/inc_footer_second.php") ?>
+  <script src="script.js"></script>
 
 </body>
+
 </html>
