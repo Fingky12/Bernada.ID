@@ -33,7 +33,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Login – Bernada.ID</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="../favicon_io/site.webmanifest">
   <style>
+  :root {
+  --red:    #cf3538; /* ml */
+  --red-d:  #a10909; /* m */  
+  --dark:   #1a1a1a;  /*g*/ /*c*/
+  }
     *,
     *::before,
     *::after {
@@ -44,7 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: #1a1a1a;
+      background-position: center;
+      background-size: cover;
+      background-image: url('../img/bg-admin.jpg');
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -54,6 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     .box {
       background: #fff;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .05), 0 4px 12px rgba(0, 0, 0, .1);
       border-radius: 16px;
       padding: 2.5rem 2rem;
       width: 100%;
@@ -65,14 +77,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       margin-bottom: 2rem
     }
 
-    .brand h1 {
+    .brand a {
+      font-weight: 600;
+      text-decoration: none;
       font-family: 'Playfair Display', serif;
       font-size: 1.8rem;
-      color: #1a1a1a
+      color: var(--dark);
     }
-
-    .brand h1 span {
-      color: #C0393B
+    
+    .brand a span {
+      font-family: 'Inter', serif;
+      color: var(--red);
     }
 
     .brand p {
@@ -136,6 +151,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     .back {
+      display: flex;
+      justify-content: space-between;
       text-align: center;
       margin-top: 1rem;
       font-size: 13px;
@@ -152,7 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
   <div class="box">
     <div class="brand">
-      <h1>BERNADA<span>.ID</span></h1>
+      <a href="../halaman.php" class="logo">BERNADA<span>.ID</span></a>
       <p>ADMIN PANEL</p>
     </div>
     <?php if ($error): ?>
@@ -163,9 +180,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <input type="text" name="username" placeholder="admin" required />
       <label>Password</label>
       <input type="password" name="password" placeholder="••••••••" required />
-      <button type="submit" class="btn">Masuk ke Dashboard</button>
+      <button type="submit" class="btn">Masuk</button>
     </form>
-    <div class="back"><a href="../halaman.php">← Kembali ke Website</a></div>
+    <div class="back">
+      <a href="../halaman.php">← Kembali ke Website</a>
+      <a href="../admin/buat_akun.php">+ Buat Akun</a>
+    </div>
   </div>
 </body>
 

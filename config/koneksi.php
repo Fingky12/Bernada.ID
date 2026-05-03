@@ -16,8 +16,8 @@ define('ADMIN_WA',     '6281939195110');
 // Konfigurasi Email (Gmail SMTP)
 define('MAIL_HOST', 'smtp.gmail.com');
 define('MAIL_PORT', 587);
-define('MAIL_USER', 'bernada.id811@gmail.com');
 define('MAIL_PASS', 'qkhl rwcs oocv zgin');
+define('MAIL_USER', 'bernada.id811@gmail.com');
 define('MAIL_FROM', 'bernada.id811@gmail.com');
 define('MAIL_NAME', 'Bernada.ID');
 

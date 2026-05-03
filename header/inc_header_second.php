@@ -13,7 +13,6 @@
     <div class="user-auth">
       <div class="profile-box">
         <div class="avatar-circle"><?= $_SESSION['name']; ?><i class='bx bx-user'></i></div>
-          <!-- <img src="./img/avatar.png" alt="User Avatar" class="avatar-img" /> -->
           <div class="dropdown-content">
             <a href="#">Akun</a>
             <a href="#">Pengaturan</a>
@@ -26,7 +25,7 @@
       <a href="./dashboard.php">
         <button class="btn-login">Masuk</button>
       </a>
-      <a href="../admin/admin_login.php">
+      <a href="../admin/admin_login.php" target="_blank">
         <button class="btn-login">Admin</button>
       </a>
     </div>

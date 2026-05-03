@@ -46,7 +46,7 @@ if ($name !== null) $_SESSION['name'] = $name;
 
     <!-- MAIN -->
     <!-- FORM -->
-    <form id="formUndangan" action="config/proses_order.php" method="POST" novalidate>
+    <form id="formUndangan" action="buat_undangan/proses_order.php" method="POST" novalidate>
       <!-- STEPS BAR -->
       <div class="steps-bar">
         <div class="step-item active" id="tab1"><span class="step-num">1</span> Data Pengantin</div>

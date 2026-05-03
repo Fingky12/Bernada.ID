@@ -40,7 +40,7 @@ if ($name !== null) $_SESSION['name'] = $name;
       <?php if ($name): ?>
         <!-- ✅ SUDAH LOGIN: tampilkan info akun & tombol logout, sembunyikan form -->
         <div class="already-login-box">
-          <div class="user-ready"><i class='bx bx-user-check'></i></div>
+          <div class="user-ready"><i class='bx bx-user-check bx-tada-hover'></i></div>
           <h3>Kamu sudah login sebagai</h3>
           <p style="font-size: 20px; font-weight: 700; color: #C0393B; margin-bottom: 16px;">
             <?= htmlspecialchars($name) ?>

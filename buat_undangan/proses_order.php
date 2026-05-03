@@ -5,7 +5,7 @@
 // ============================================
 
 header('Content-Type: application/json');
-require_once __DIR__ . '/koneksi.php';
+require_once __DIR__ . '/../config/koneksi.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(['status'=>'error','message'=>'Method tidak valid.']);
@@ -122,22 +122,22 @@ if ($paket === 'silver') {
     // Langsung kirim link
     $link = "http://localhost/WebDev/undangan/{$tema}.php?kode={$kode_undangan}&to=".urlencode($nama_pria);
     $pesan_wa = "🌿 *Halo, {$nama_pria}!*\n\n"
-              . "Selamat! Undangan digitalmu dari *Bernada.ID* sudah siap! 🎉\n\n"
-              . "📋 *Detail Order:*\n"
-              . "━━━━━━━━━━━━━━━━\n"
-              . "🔖 Kode Order   : {$kode_order}\n"
-              . "🔑 Kode Undangan: {$kode_undangan}\n"
-              . "👰 Pengantin    : {$nama_pria} & {$nama_wanita}\n"
-              . "📅 Tanggal      : {$tgl_fmt}\n"
-              . "📍 Lokasi       : {$lokasi}\n"
-              . "🎨 Tema         : {$tema_label}\n"
-              . "💎 Paket        : {$nama_paket} ({$harga_fmt})\n"
-              . "━━━━━━━━━━━━━━━━\n\n"
-              . "🔗 *Link Undangan Kamu:*\n"
-              . "{$link}\n\n"
-              . "Bagikan link ini ke tamu undanganmu!\n"
-              . "Contoh: {$link}&to=Nama+Tamu\n\n"
-              . "Tim Bernada.ID 💚";
+                . "Selamat! Undangan digitalmu dari *Bernada.ID* sudah siap! 🎉\n\n"
+                . "📋 *Detail Order:*\n"
+                . "━━━━━━━━━━━━━━━━\n"
+                . "🔖 Kode Order   : {$kode_order}\n"
+                . "🔑 Kode Undangan: {$kode_undangan}\n"
+                . "👰 Pengantin    : {$nama_pria} & {$nama_wanita}\n"
+                . "📅 Tanggal      : {$tgl_fmt}\n"
+                . "📍 Lokasi       : {$lokasi}\n"
+                . "🎨 Tema         : {$tema_label}\n"
+                . "💎 Paket        : {$nama_paket} ({$harga_fmt})\n"
+                . "━━━━━━━━━━━━━━━━\n\n"
+                . "🔗 *Link Undangan Kamu:*\n"
+                . "{$link}\n\n"
+                . "Bagikan link ini ke tamu undanganmu!\n"
+                . "Contoh: {$link}&to=Nama+Tamu\n\n"
+                . "Tim Bernada.ID 💚";
 } else {
     // Tunggu konfirmasi bayar
     $info_bayar = $bukti_path
@@ -145,20 +145,20 @@ if ($paket === 'silver') {
         : "⚠️ Mohon kirim bukti transfer ke nomor admin untuk mempercepat proses.";
 
     $pesan_wa = "🌿 *Halo, {$nama_pria}!*\n\n"
-              . "Pesanan undangan digitalmu di *Bernada.ID* sudah kami terima! 🎉\n\n"
-              . "📋 *Detail Order:*\n"
-              . "━━━━━━━━━━━━━━━━\n"
-              . "🔖 Kode Order: {$kode_order}\n"
-              . "👰 Pengantin : {$nama_pria} & {$nama_wanita}\n"
-              . "📅 Tanggal   : {$tgl_fmt}\n"
-              . "🎨 Tema      : {$tema_label}\n"
-              . "💎 Paket     : {$nama_paket}\n"
-              . "💰 Total     : {$harga_fmt}\n"
-              . "━━━━━━━━━━━━━━━━\n\n"
-              . "💳 *Status Pembayaran:*\n{$info_bayar}\n\n"
-              . "Setelah pembayaran terverifikasi, link undangan akan langsung kami kirimkan ke nomor ini.\n\n"
-              . "_Simpan kode order kamu: *{$kode_order}*_\n\n"
-              . "Tim Bernada.ID 💚";
+                . "Pesanan undangan digitalmu di *Bernada.ID* sudah kami terima! 🎉\n\n"
+                . "📋 *Detail Order:*\n"
+                . "━━━━━━━━━━━━━━━━\n"
+                . "🔖 Kode Order: {$kode_order}\n"
+                . "👰 Pengantin : {$nama_pria} & {$nama_wanita}\n"
+                . "📅 Tanggal   : {$tgl_fmt}\n"
+                . "🎨 Tema      : {$tema_label}\n"
+                . "💎 Paket     : {$nama_paket}\n"
+                . "💰 Total     : {$harga_fmt}\n"
+                . "━━━━━━━━━━━━━━━━\n\n"
+                . "💳 *Status Pembayaran:*\n{$info_bayar}\n\n"
+                . "Setelah pembayaran terverifikasi, link undangan akan langsung kami kirimkan ke nomor ini.\n\n"
+                . "_Simpan kode order kamu: *{$kode_order}*_\n\n"
+                . "Tim Bernada.ID 💚";
 }
 
 $wa_status = kirimWA($no_wa, $pesan_wa) ? 'terkirim' : 'gagal';
@@ -167,15 +167,15 @@ $pdo->prepare("UPDATE orders SET notif_order_wa=? WHERE kode_order=?")
 
 // Notif ke admin
 $pesan_admin = "🔔 *ORDER BARU MASUK!*\n\n"
-             . "Kode    : {$kode_order}\n"
-             . "Nama    : {$nama_pria} & {$nama_wanita}\n"
-             . "Tanggal : {$tgl_fmt}\n"
-             . "Tema    : {$tema_label}\n"
-             . "Paket   : {$nama_paket} ({$harga_fmt})\n"
-             . "WA      : {$no_wa}\n"
-             . "Bayar   : {$status_bayar}\n"
-             . ($bukti_path ? "Bukti   : ✅ Sudah upload\n" : "")
-             . "\nCek dashboard: http://localhost/WebDev/admin/";
+                . "Kode    : {$kode_order}\n"
+                . "Nama    : {$nama_pria} & {$nama_wanita}\n"
+                . "Tanggal : {$tgl_fmt}\n"
+                . "Tema    : {$tema_label}\n"
+                . "Paket   : {$nama_paket} ({$harga_fmt})\n"
+                . "WA      : {$no_wa}\n"
+                . "Bayar   : {$status_bayar}\n"
+                . ($bukti_path ? "Bukti   : ✅ Sudah upload\n" : "")
+                . "\nCek dashboard: http://localhost/WebDev/admin/";
 kirimWA(ADMIN_WA, $pesan_admin);
 
 // ── Response ────────────────────────────────
@@ -191,12 +191,12 @@ echo json_encode([
 ]);
 
 // ── Fungsi helper ────────────────────────────
-function kirimWA($nomor, $pesan) {
+function kirimWA($no_wa, $pesan) {
     $ch = curl_init();
     curl_setopt_array($ch, [
         CURLOPT_URL            => 'https://api.fonnte.com/send',
         CURLOPT_POST           => true,
-        CURLOPT_POSTFIELDS     => ['target'=>$nomor,'message'=>$pesan,'countryCode'=>'62'],
+        CURLOPT_POSTFIELDS     => ['target'=>$no_wa,'message'=>$pesan,'countryCode'=>'62'],
         CURLOPT_HTTPHEADER     => ['Authorization: '.FONNTE_TOKEN],
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_TIMEOUT        => 15,

@@ -1,1 +1,7 @@
--- Admin default — password: admin123
+-- Admin 1 : 
+username : ongky
+password : admin123
+
+-- Admin 2 : 
+username : sofi
+password : admin@2

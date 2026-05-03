@@ -370,7 +370,6 @@ body {
   background-position: center;
   background-size: cover;
   background-image: url('../img/bg-fitur.jpg');
-
   padding: 6rem 8%;
 }
 
@@ -450,8 +449,10 @@ body {
     TEMA
 ══════════════════════════════════════ */
 .tema {
+  background-image: url("../img/bg-tema.jpg");
+  background-position: center;
+  background-size: cover;
   padding: 6rem 8%;
-  background: var(--white);
 }
 
 .tema-grid {

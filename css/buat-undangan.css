@@ -125,7 +125,7 @@ form {
   background: var(--light);
   border-radius: 17px;
   border: 1px solid #ffffff;
-  box-shadow: 2px 2px 5px 2px rgb(0, 0, 0, .2) ;
+  box-shadow: 2px 2px 5px 2px rgb(0, 0, 0, .2);
 }
 
 /* ── CARD ── */
@@ -136,6 +136,7 @@ form {
   padding: 1.75rem 2rem;
   margin-bottom: 1.25rem;
 }
+
 .card-title {
   font-size: 1.1rem;
   font-weight: 600;
