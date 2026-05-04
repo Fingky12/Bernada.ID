@@ -56,7 +56,7 @@ if ($name !== null) $_SESSION['name'] = $name;
         <button class="search-btn"><i class='bx bx-search'></i></button>
       </div>
       <div class="hero-btns">
-        <a href="buat-undangan.php" class="btn-primary"><i class='bx bx-plus'></i> Buat Undangan Sekarang</a>
+        <a href="buat_undangan.php" class="btn-primary"><i class='bx bx-plus'></i> Buat Undangan Sekarang</a>
         <a href="#tema" class="btn-secondary"><i class='bx bx-palette'></i> Lihat Tema</a>
       </div>
       <div class="hero-stats">
@@ -260,7 +260,7 @@ if ($name !== null) $_SESSION['name'] = $name;
 
     </div>
     <div class="btn-center">
-      <a href="./undangan/tema.php" class="btn-lihat-semua"><i class='bx bx-palette'></i> Lihat Semua Tema</a>
+      <a href="tema.php" target="__blank" class="btn-lihat-semua"><i class='bx bx-palette'></i> Lihat Semua Tema</a>
     </div>
   </section>
 
@@ -295,7 +295,7 @@ if ($name !== null) $_SESSION['name'] = $name;
             <li>Revisi 2×</li>
           </ul>
         </div>
-        <a href="buat-undangan.php" class="btn-outline-price">Mulai Gratis</a>
+        <a href="buat_undangan.php" class="btn-outline-price">Mulai Gratis</a>
       </div>
 
       <!-- Gold (Popular) -->
@@ -321,7 +321,7 @@ if ($name !== null) $_SESSION['name'] = $name;
             <li>Revisi 5×</li>
           </ul>
         </div>
-        <a href="buat-undangan.php" class="btn-outline-price">Pilih Gold</a>
+        <a href="buat_undangan.php" class="btn-outline-price">Pilih Gold</a>
       </div>
 
       <!-- Platinum -->
@@ -347,7 +347,7 @@ if ($name !== null) $_SESSION['name'] = $name;
             <li>Revisi Unlimited</li>
           </ul>
         </div>
-        <a href="buat-undangan.php" class="btn-outline-price">Pilih Platinum</a>
+        <a href="buat_undangan.php" class="btn-outline-price">Pilih Platinum</a>
       </div>
 
     </div>
@@ -361,7 +361,7 @@ if ($name !== null) $_SESSION['name'] = $name;
       <h2>Siap membuat undangan impianmu?</h2>
       <p>Bergabung dengan 500+ pasangan yang telah mempercayakan undangan digital mereka kepada Bernada.ID</p>
     </div>
-    <a href="buat-undangan.php" class="cta-btn"><i class='bx bx-plus' style="font-size:18px"></i> Buat Undangan Sekarang</a>
+    <a href="buat_undangan.php" class="cta-btn"><i class='bx bx-plus' style="font-size:18px"></i> Buat Undangan Sekarang</a>
   </div>
 
   <?php include("footer/inc_footer.php") ?>

@@ -7,7 +7,7 @@ session_start();
 require_once '../config/koneksi.php';
 
 if (!isset($_SESSION['admin_id'])) {
-  header('Location: login.php');
+  header('Location: admin_login.php');
   exit;
 }
 
@@ -17,7 +17,7 @@ $order->execute([$id]);
 $o = $order->fetch();
 
 if (!$o) {
-  header('Location: index.php');
+  header('Location: admin_dashboard.php');
   exit;
 }
 
@@ -70,8 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['approve'])) {
 
     // URL undangan
     $base_url = rtrim($_POST['base_url'] ?? 'http://localhost/WebDev', '/');
-    $link     = "{$base_url}/undangan/?kode={$kode_undangan}&to=" . urlencode($o['nama_pria']);
-    $link_custom = "{$base_url}/undangan/?kode={$kode_undangan}&to=Nama+Tamu";
+    $link     = "{$base_url}/undangan/undangan_index.php?kode={$kode_undangan}&to=" . urlencode($o['nama_pria']);
+    $link_custom = "{$base_url}/undangan/undangan_index.php?kode={$kode_undangan}&to=Nama+Tamu";
 
     // Kirim WA ke customer
     $pesan_wa = "🎉 *Selamat, {$o['nama_pria']}!*\n\n"
@@ -92,8 +92,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['approve'])) {
       . "Ganti bagian akhir link dengan nama tamu:\n"
       . "`{$link_custom}`\n\n"
       . "Contoh:\n"
-      . "• {$base_url}/undangan/?kode={$kode_undangan}&to=Bapak+Hendra\n"
-      . "• {$base_url}/undangan/?kode={$kode_undangan}&to=Keluarga+Budi\n\n"
+      . "• {$base_url}/undangan/undangan_index.php?kode={$kode_undangan}&to=Bapak+Hendra\n"
+      . "• {$base_url}/undangan/undangan_index.php?kode={$kode_undangan}&to=Keluarga+Budi\n\n"
       . "Jika ada pertanyaan, balas pesan ini ya! 💚\n"
       . "Tim Bernada.ID";
 
@@ -143,10 +143,10 @@ function kirimWA($nomor, $pesan)
   <title>Konfirmasi Bayar – Bernada.ID Admin</title>
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
-  <link rel="manifest" href="favicon_io/site.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="../favicon_io/site.webmanifest">
   <style>
     *,
     *::before,
@@ -174,7 +174,7 @@ function kirimWA($nomor, $pesan)
     }
 
     .wrap {
-      max-width: 680px;
+      max-width: 700px;
       margin: 0 auto
     }
 
@@ -381,7 +381,7 @@ function kirimWA($nomor, $pesan)
 
     <!-- Detail Order -->
     <div class="card">
-      <div class="card-title">📋 Detail Order</div>
+      <div class="card-title"><i class='bx bx-detail' ></i> Detail Order</div>
       <div class="info-row"><strong>Kode Order</strong><span style="font-family:monospace;color:var(--r);font-weight:700"><?= $o['kode_order'] ?></span></div>
       <div class="info-row"><strong>Pengantin</strong><span><?= $o['nama_pria'] ?> & <?= $o['nama_wanita'] ?></span></div>
       <div class="info-row"><strong>Tanggal Nikah</strong><span><?= $tgl_fmt ?></span></div>
@@ -394,8 +394,8 @@ function kirimWA($nomor, $pesan)
       <?php if ($o['kode_undangan']): ?>
         <div class="info-row"><strong>Kode Undangan</strong><span style="font-family:monospace;color:var(--r);font-weight:700"><?= $o['kode_undangan'] ?></span></div>
         <div class="link-box">
-          <p>🔗 Link Undangan Aktif:</p>
-          <div class="link-url">http://localhost/WebDev/undangan/?kode=<?= $o['kode_undangan'] ?>&to=<?= urlencode($o['nama_pria']) ?></div>
+          <p><i class='bx bx-link-alt' ></i> Link Undangan Aktif:</p>
+          <div class="link-url">http://localhost/WebDev/undangan/undangan_index.php?kode=<?= $o['kode_undangan'] ?>&to=<?= urlencode($o['nama_pria']) ?></div>
         </div>
       <?php endif ?>
       <?php if ($o['catatan']): ?>
@@ -406,9 +406,9 @@ function kirimWA($nomor, $pesan)
     <!-- Bukti Bayar -->
     <?php if ($o['bukti_bayar']): ?>
       <div class="card">
-        <div class="card-title">🧾 Bukti Transfer</div>
+        <div class="card-title"><i class='bx bxs-arrow-to-bottom'></i> Bukti Transfer</div>
         <?php if (str_ends_with(strtolower($o['bukti_bayar']), '.pdf')): ?>
-          <a href="../<?= $o['bukti_bayar'] ?>" target="_blank" style="color:var(--r)">📄 Buka PDF Bukti Transfer</a>
+          <a href="../<?= $o['bukti_bayar'] ?>" target="_blank" style="color:var(--r)"><i class='bx bxs-file-pdf' ></i> Buka PDF Bukti Transfer</a>
         <?php else: ?>
           <img src="../<?= $o['bukti_bayar'] ?>" class="bukti-img" alt="Bukti Transfer" />
         <?php endif ?>
@@ -418,7 +418,7 @@ function kirimWA($nomor, $pesan)
     <!-- Form Approve -->
     <?php if ($o['status_order'] !== 'aktif'): ?>
       <div class="card">
-        <div class="card-title">✅ Konfirmasi Pembayaran</div>
+        <div class="card-title"><i class='bx bx-check' ></i> Konfirmasi Pembayaran</div>
         <form method="POST">
           <label>Metode Pembayaran</label>
           <select name="metode_bayar">
@@ -436,7 +436,7 @@ function kirimWA($nomor, $pesan)
           <input type="text" name="base_url" value="http://localhost/WebDev" placeholder="https://bernada.id" />
           <p style="font-size:12px;color:#aaa;margin-top:-8px;margin-bottom:1rem">URL ini digunakan untuk generate link undangan yang dikirim ke customer</p>
           <button type="submit" name="approve" class="btn-approve">
-            ✅ Konfirmasi Bayar & Aktifkan Undangan
+            <i class='bx bx-check' ></i> Konfirmasi Bayar & Aktifkan Undangan
           </button>
         </form>
       </div>

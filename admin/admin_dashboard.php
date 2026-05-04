@@ -787,7 +787,7 @@ $orders = $pdo->query("SELECT * FROM orders $where ORDER BY created_at DESC LIMI
                     <td>
                       <div style="display:flex;gap:4px;flex-wrap:wrap">
                         <!-- Detail -->
-                        <a href="detail.php?id=<?= $o['id'] ?>" class="act-btn act-view"><i class='bx bx-show'></i> Detail</a>
+                        <a href="admin_detail.php?id=<?= $o['id'] ?>" class="act-btn act-view"><i class='bx bx-show'></i> Detail</a>
 
                         <!-- Approve bayar -->
                         <?php if ($o['status_bayar'] === 'menunggu_konfirmasi' || ($o['paket'] !== 'silver' && $o['status_bayar'] === 'pending')): ?>
@@ -796,12 +796,12 @@ $orders = $pdo->query("SELECT * FROM orders $where ORDER BY created_at DESC LIMI
 
                         <!-- Link undangan -->
                         <?php if ($o['status_order'] === 'aktif' && $o['kode_undangan']): ?>
-                          <a href="../undangan/?kode=<?= $o['kode_undangan'] ?>" target="_blank" class="act-btn act-link"><i class='bx bx-link-external'></i> Link</a>
+                          <a href="../undangan/undangan_index.php?kode=<?= $o['kode_undangan'] ?>" target="_blank" class="act-btn act-link"><i class='bx bx-link-external'></i> Link</a>
                         <?php endif ?>
 
                         <!-- Batalkan -->
                         <?php if ($o['status_order'] !== 'batal' && $o['status_order'] !== 'aktif'): ?>
-                          <a href="batalkan.php?id=<?= $o['id'] ?>" class="act-btn act-cancel" onclick="return confirm('Yakin batalkan order ini?')"><i class='bx bx-x'></i></a>
+                          <a href="admin_batalkan.php?id=<?= $o['id'] ?>" class="act-btn act-cancel" onclick="return confirm('Yakin batalkan order ini?')"><i class='bx bx-x'></i></a>
                         <?php endif ?>
                       </div>
                     </td>

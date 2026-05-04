@@ -1,6 +1,6 @@
 <?php 
   session_start();
-  require_once '../config/koneksi.php';
+  require_once 'config/koneksi.php';
   $name = $_SESSION['name'] ?? null;
   session_unset();
 
@@ -13,12 +13,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="../css/footer_header_sec.css">
-  <link rel="stylesheet" href="../css/tema.css">
+  <link rel="stylesheet" href="css/footer_header_sec.css">
+  <link rel="stylesheet" href="css/tema.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="favicon_io/site.webmanifest">
   <title>Tema Undangan - BERNADA.ID</title>
 </head>
 <body>
-  <?php include("../header/inc_header_second.php") ?>
+  <?php include("header/inc_header_second.php") ?>
   
   <!-- ══════════════════════════════════════
     TEMA UNDANGAN
@@ -32,7 +36,7 @@
     <div class="tema-grid reveal">
 
       <!-- Tema 1: Merah Klasik -->
-      <a href="undangan/merah-klasik.php" target="_blank" class="tema-card">
+      <a href="merah-klasik.php" target="_blank" class="tema-card">
         <div class="tema-card-preview">
           <div class="tema-preview-merah">
             <div class="preview-name">Surya & Sofi</div>
@@ -50,7 +54,7 @@
       </a>
 
       <!-- Tema 2: Navy Elegant -->
-      <a href="undangan/navy-elegant.php" target="_blank" class="tema-card">
+      <a href="navy-elegant.php" target="_blank" class="tema-card">
         <div class="tema-card-preview">
           <div class="tema-preview-navy">
             <div class="preview-name" style="font-family:'Playfair Display',serif;letter-spacing:.05em">Rizal & Hana</div>
@@ -68,7 +72,7 @@
       </a>
 
       <!-- Tema 3: Blush Pink -->
-      <a href="undangan/blush-pink.php" target="_blank" class="tema-card">
+      <a href="blush-pink.php" target="_blank" class="tema-card">
         <div class="tema-card-preview">
           <div class="tema-preview-pink">
             <div class="preview-name" style="font-family:'Playfair Display',serif;font-style:italic">Daffa & Rania</div>
@@ -86,7 +90,7 @@
       </a>
       
       <!-- Tema 4: Sage Garden -->
-      <a href="undangan/sage-garden.php" target="_blank" class="tema-card">
+      <a href="sage-garden.php" target="_blank" class="tema-card">
         <div class="tema-card-preview">
           <div class="tema-preview-sage" style="height:220px;background:linear-gradient(160deg,#1e2d1f,#2d4a3e 40%,#3d6b44);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:1rem">
             <div style="font-family:'Libre Baskerville',serif;font-size:1.6rem">Hendra & Ayu</div>
@@ -100,7 +104,7 @@
       </a>
 
       <!-- Tema 5: Rustic Brown -->
-      <a href="undangan/rustic-brown.php" target="_blank" class="tema-card">
+      <a href="rustic-brown.php" target="_blank" class="tema-card">
         <div class="tema-card-preview">
           <div style="height:220px;background:linear-gradient(160deg,#2c1a0e,#5c3d1e 40%,#8b6340);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:1rem">
             <div style="font-family:'Cinzel',serif;font-size:1.4rem;letter-spacing:.08em">RAKA & DIRA</div>
@@ -128,10 +132,10 @@
 
     </div>
     <div class="btn-center">
-      <a href="../halaman.php#tema" class="btn-lihat-semua"><i class='bx bx-undo' ></i> Kembali Ke Beranda</a>
+      <a href="halaman.php#tema" class="btn-lihat-semua"><i class='bx bx-undo' ></i> Kembali Ke Beranda</a>
     </div>
   </section>
   
-  <?php include("../footer/inc_footer_second.php") ?>
+  <?php include("footer/inc_footer_second.php") ?>
 </body>
-</html>
+</html>                                               

@@ -27,7 +27,7 @@
       <a href="dashboard.php">
         <button class="btn-login">Masuk</button>
       </a>
-      <a href="../admin/admin_login.php" target="_blank">
+      <a href="admin/admin_login.php" target="_blank">
         <button class="btn-login">Admin</button>
       </a>
     </div>
