@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../config/koneksi.php';
+require_once 'config/koneksi.php';
 $name = $_SESSION['name'] ?? null;
 ?>
 <!DOCTYPE html>
@@ -12,11 +12,11 @@ $name = $_SESSION['name'] ?? null;
   <title>Buat Undangan Digital – Bernada.ID</title>
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/footer_header_sec.css" />
-  <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
-  <link rel="manifest" href="../favicon_io/site.webmanifest">
+  <link rel="stylesheet" href="css/footer_header_sec.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="favicon_io/site.webmanifest">
   <style>
     *,
     *::before,
@@ -217,7 +217,15 @@ $name = $_SESSION['name'] ?? null;
     .field {
       margin-bottom: 1rem
     }
-
+    .field-time {
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+    .field-time .waktu {
+      margin-bottom: .5rem;
+    }
+    
     label {
       display: block;
       font-size: 13px;
@@ -781,7 +789,7 @@ $name = $_SESSION['name'] ?? null;
 </head>
 
 <body>
-  <?php include("../header/inc_header_second.php") ?>
+  <?php include("header/inc_header_second.php") ?>
 
   <!-- HERO -->
   <div class="page-hero">
@@ -837,8 +845,20 @@ $name = $_SESSION['name'] ?? null;
           <div class="card-title"><i class='bx bx-calendar-heart'></i> Info Acara</div>
           <div class="field"><label>Tanggal Pernikahan <span class="req">*</span></label><input type="date" name="tanggal_nikah" required /></div>
           <div class="field-row">
-            <div class="field"><label>Waktu Mulai <span class="req">*</span></label><input type="time" name="waktu_mulai" value="09:00" required /></div>
-            <div class="field"><label>Waktu Selesai <span class="req">*</span></label><input type="time" name="waktu_selesai" value="13:00" required /></div>
+            <div class="field-time">
+              <label>Acara Akad <span class="req">*</span></label>
+              <label class="waktu" for="mulai_akad"><small style="color:#aaa">Mulai</small></label>
+              <input type="time" name="mulai_akad" value="08:00" required />
+              <label class="waktu" for="selesai_akad"><small style="color:#aaa">Selesai</small></label>
+              <input type="time" name="selesai_akad" value="09:00" required />
+            </div>
+            <div class="field-time">
+              <label>Acara Resepsi <span class="req">*</span></label>
+              <label class="waktu" for="mulai_resepsi"><small style="color:#aaa">Mulai</small></label>
+              <input type="time" name="mulai_resepsi" value="11:00" required />
+              <label class="waktu" for="selesai_resepsi"><small style="color:#aaa">Selesai</small></label>
+              <input type="time" name="selesai_resepsi" value="13:00" required />
+            </div>
           </div>
           <div class="field"><label>Nama Gedung / Lokasi <span class="req">*</span></label><input type="text" name="lokasi" placeholder="cth. Villa Kebun Kopi, Batu Malang" required /></div>
           <div class="field"><label>Link Google Maps <small style="color:#aaa">(opsional)</small></label><input type="url" name="link_maps" placeholder="https://maps.google.com/..." /></div>
@@ -1030,6 +1050,10 @@ $name = $_SESSION['name'] ?? null;
       <div class="summary-row"><span class="lbl">Pengantin</span><span class="val" id="sumNama">-</span></div>
       <div class="summary-row"><span class="lbl">Tanggal</span><span class="val" id="sumTgl">-</span></div>
       <div class="summary-row"><span class="lbl">Lokasi</span><span class="val" id="sumLokasi">-</span></div>
+      <div class="summary-row"><span class="lbl">Mulai Akad</span><span class="val" id="sumMulaiAkad">-</span></div>
+      <div class="summary-row"><span class="lbl">Selesai Akad</span><span class="val" id="sumSelesaiAkad">-</span></div>
+      <div class="summary-row"><span class="lbl">Mulai Resepsi</span><span class="val" id="sumMulaiResepsi">-</span></div>
+      <div class="summary-row"><span class="lbl">Selesai Resepsi</span><span class="val" id="sumSelesaiResepsi">-</span></div>
       <div class="summary-row"><span class="lbl">Tema</span><span class="val" id="sumTema">Merah Klasik</span></div>
       <div class="summary-row"><span class="lbl">Paket</span><span class="val" id="sumPaket">Silver</span></div>
       <hr class="summary-divider" />
@@ -1049,9 +1073,17 @@ $name = $_SESSION['name'] ?? null;
     </div>
   </div>
 
-  <?php include("../footer/inc_footer_second.php") ?>
+  <?php include("footer/inc_footer_second.php") ?>
 
   <script>
+    const profileBox = document.querySelector(".profile-box");
+    const avatarCircle = document.querySelector(".avatar-circle");
+
+    if (avatarCircle)
+      avatarCircle.addEventListener("click", () =>
+        profileBox.classList.toggle("show"),
+      );
+
     let currentStep = 1;
     const hargaMap = {
       silver: 0,
@@ -1086,21 +1118,33 @@ $name = $_SESSION['name'] ?? null;
       if (from === 1) {
         const p = q('[name=nama_pria]').value.trim();
         const w = q('[name=nama_wanita]').value.trim();
-        if (!p || !w) {
-          showAlert('error', 'Nama pengantin pria dan wanita wajib diisi!');
+        const ap = q('[name=ayah_pria]').value.trim();
+        const ip = q('[name=ibu_pria]').value.trim();
+        const aw = q('[name=ayah_wanita]').value.trim();
+        const iw = q('[name=ibu_wanita]').value.trim();
+        if (!p || !w || !ap || !ip || !aw || !iw) {
+          showAlert('error', 'Semua field wajib diisi!');
           return;
         }
-        updateSummary('nama', p + ' & ' + w);
+        updateSummary('nama', p + ' & ' + w + ' (Anak dari ' + ap + ' & ' + ip + ' dan ' + aw + ' & ' + iw + ')');
       }
       if (from === 2) {
         const tgl = q('[name=tanggal_nikah]').value;
         const lok = q('[name=lokasi]').value.trim();
-        if (!tgl || !lok) {
-          showAlert('error', 'Tanggal dan lokasi wajib diisi!');
+        const ma = q('[name=mulai_akad]').value.trim();
+        const sa = q('[name=selesai_akad]').value.trim();
+        const mr = q('[name=mulai_resepsi]').value.trim();
+        const sr = q('[name=selesai_resepsi]').value.trim();
+        if (!tgl || !lok || !ma || !sa || !mr || !sr) {
+          showAlert('error', 'Tanggal, Acara dan lokasi wajib diisi!');
           return;
         }
         updateSummary('tgl', tgl);
         updateSummary('lokasi', lok);
+        updateSummary('mulai_akad', 'Jam : ' + ma + ' WIB');
+        updateSummary('selesai_akad', 'Jam : ' + sa + ' WIB');
+        updateSummary('mulai_resepsi', 'Jam : ' + mr + ' WIB');
+        updateSummary('selesai_resepsi', 'Jam : ' + sr + ' WIB');
       }
       if (from === 3) {
         if (!q('#temaVal').value) {
@@ -1151,9 +1195,13 @@ $name = $_SESSION['name'] ?? null;
         nama: 'sumNama',
         tgl: 'sumTgl',
         lokasi: 'sumLokasi',
+        mulai_akad: 'sumMulaiAkad',
+        selesai_akad: 'sumSelesaiAkad',
+        mulai_resepsi: 'sumMulaiResepsi',
+        selesai_resepsi: 'sumSelesaiResepsi',
         tema: 'sumTema',
         paket: 'sumPaket',
-        harga: 'sumHarga'
+        harga: 'sumHarga',
       };
       if (map[key]) {
         const el = q('#' + map[key]);

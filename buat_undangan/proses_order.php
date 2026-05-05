@@ -22,8 +22,10 @@ $ibu_pria     = cl($_POST['ibu_pria']     ?? '');
 $ayah_wanita  = cl($_POST['ayah_wanita']  ?? '');
 $ibu_wanita   = cl($_POST['ibu_wanita']   ?? '');
 $tanggal      = cl($_POST['tanggal_nikah']?? '');
-$waktu_mulai  = cl($_POST['waktu_mulai']  ?? '');
-$waktu_selesai= cl($_POST['waktu_selesai']?? '');
+$mulai_akad   = cl($_POST['mulai_akad']   ?? '');
+$selesai_akad = cl($_POST['selesai_akad'] ?? '');
+$mulai_resepsi = cl($_POST['mulai_resepsi'] ?? '');
+$selesai_resepsi = cl($_POST['selesai_resepsi'] ?? '');
 $lokasi       = cl($_POST['lokasi']       ?? '');
 $link_maps    = cl($_POST['link_maps']    ?? '');
 $paket        = cl($_POST['paket']        ?? 'silver');
@@ -34,7 +36,7 @@ $email        = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
 $metode_bayar = cl($_POST['metode_bayar'] ?? '');
 
 // ── Validasi wajib ──────────────────────────
-if (!$nama_pria || !$nama_wanita || !$tanggal || !$waktu_mulai || !$waktu_selesai || !$lokasi || !$no_wa || !$paket || !$tema) {
+if (!$nama_pria || !$nama_wanita || !$tanggal || !$mulai_akad || !$selesai_akad || !$mulai_resepsi || !$selesai_resepsi || !$lokasi || !$no_wa || !$paket || !$tema) {
     echo json_encode(['status'=>'error','message'=>'Field wajib belum lengkap.']);
     exit;
 }
@@ -87,14 +89,35 @@ $status_order = ($paket === 'silver') ? 'diproses' : 'baru';
 // ── Simpan ke database ──────────────────────
 try {
     $sql = "INSERT INTO orders
-        (kode_order, nama_pria, nama_wanita, ayah_pria, ibu_pria, ayah_wanita, ibu_wanita,
-         no_whatsapp, email, tanggal_nikah, waktu_mulai, waktu_selesai, lokasi, link_maps,
-         paket, tema, catatan, harga, status_bayar, bukti_bayar, metode_bayar, status_order)
-        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            (kode_order,
+            nama_pria,
+            nama_wanita,
+            ayah_pria,
+            ibu_pria,
+            ayah_wanita,
+            ibu_wanita,
+            no_whatsapp,
+            email,
+            tanggal_nikah,
+            mulai_akad,
+            selesai_akad,
+            mulai_resepsi,
+            selesai_resepsi,
+            lokasi,
+            link_maps,
+            paket,
+            tema,
+            catatan,
+            harga,
+            status_bayar,
+            bukti_bayar,
+            metode_bayar,
+            status_order)
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     $pdo->prepare($sql)->execute([
         $kode_order, $nama_pria, $nama_wanita, $ayah_pria ?: null, $ibu_pria ?: null,
         $ayah_wanita ?: null, $ibu_wanita ?: null, $no_wa, $email ?: null,
-        $tanggal, $waktu_mulai, $waktu_selesai, $lokasi, $link_maps ?: null,
+        $tanggal, $mulai_akad, $selesai_akad, $mulai_resepsi, $selesai_resepsi, $lokasi, $link_maps ?: null,
         $paket, $tema, $catatan ?: null, $harga, $status_bayar,
         $bukti_path, $metode_bayar ?: null, $status_order
     ]);

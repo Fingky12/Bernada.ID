@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['approve'])) {
       . "⏰ Aktif hingga  : {$expired_fmt}\n"
       . "━━━━━━━━━━━━━━━━\n\n"
       . "🔗 *Link Undangan Kamu:*\n"
-      . "{$link}\n\n"
+      . "'{$link}'\n\n"
       . "📤 *Cara kirim ke tamu:*\n"
       . "Ganti bagian akhir link dengan nama tamu:\n"
       . "`{$link_custom}`\n\n"

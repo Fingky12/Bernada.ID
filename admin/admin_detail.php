@@ -3,7 +3,7 @@
 session_start();
 require_once '../config/koneksi.php';
 if (!isset($_SESSION['admin_id'])) {
-  header('Location: login.php');
+  header('Location: admin_login.php');
   exit;
 }
 
@@ -12,7 +12,7 @@ $stmt = $pdo->prepare("SELECT * FROM orders WHERE id = ?");
 $stmt->execute([$id]);
 $o = $stmt->fetch();
 if (!$o) {
-  header('Location: index.php');
+  header('Location: admin_dashboard.php');
   exit;
 }
 
@@ -22,7 +22,7 @@ $hari_id  = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
 $tgl_fmt  = $hari_id[(int)$tgl_obj->format('w')] . ', ' . $tgl_obj->format('j') . ' ' . $bulan_id[(int)$tgl_obj->format('n')] . ' ' . $tgl_obj->format('Y');
 $tema_label = ucwords(str_replace('-', ' ', $o['tema']));
 $base_url   = 'http://localhost/WebDev';
-$link_undangan = $o['kode_undangan'] ? "{$base_url}/undangan/?kode={$o['kode_undangan']}&to=" . urlencode($o['nama_pria']) : null;
+$link_undangan = $o['kode_undangan'] ? "{$base_url}/undangan/undangan_index.php?kode={$o['kode_undangan']}&to=" . urlencode($o['nama_pria']) : null;
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -33,6 +33,10 @@ $link_undangan = $o['kode_undangan'] ? "{$base_url}/undangan/?kode={$o['kode_und
   <title>Detail Order <?= $o['kode_order'] ?> – Admin Bernada.ID</title>
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="../favicon_io/site.webmanifest">
   <style>
     *,
     *::before,
@@ -446,9 +450,9 @@ $link_undangan = $o['kode_undangan'] ? "{$base_url}/undangan/?kode={$o['kode_und
       <p>Admin Panel</p>
     </div>
     <nav style="padding:1rem 0">
-      <a href="index.php" class="nav-item"><i class='bx bxs-dashboard'></i> Dashboard</a>
-      <a href="index.php?filter=bayar" class="nav-item"><i class='bx bx-credit-card'></i> Konfirmasi Bayar</a>
-      <a href="index.php?filter=aktif" class="nav-item"><i class='bx bx-check-circle'></i> Undangan Aktif</a>
+      <a href="admin_dashboard.php" class="nav-item"><i class='bx bxs-dashboard'></i> Dashboard</a>
+      <a href="admin_dashboard.php?filter=bayar" class="nav-item"><i class='bx bx-credit-card'></i> Konfirmasi Bayar</a>
+      <a href="admin_dashboard.php?filter=aktif" class="nav-item"><i class='bx bx-check-circle'></i> Undangan Aktif</a>
       <a href="../halaman.php" class="nav-item" target="_blank"><i class='bx bx-globe'></i> Website</a>
       <a href="logout.php" class="nav-item"><i class='bx bx-log-out'></i> Logout</a>
     </nav>
@@ -457,7 +461,7 @@ $link_undangan = $o['kode_undangan'] ? "{$base_url}/undangan/?kode={$o['kode_und
   <div class="main">
     <div class="topbar">
       <div class="topbar-title">Detail Order — <?= $o['kode_order'] ?></div>
-      <a href="index.php" class="back-btn"><i class='bx bx-arrow-back'></i> Kembali</a>
+      <a href="admin_dashboard.php" class="back-btn"><i class='bx bx-arrow-back'></i> Kembali</a>
     </div>
 
     <!-- ── LINK UNDANGAN (jika aktif) ── -->
@@ -472,12 +476,12 @@ $link_undangan = $o['kode_undangan'] ? "{$base_url}/undangan/?kode={$o['kode_und
         <div class="link-btns">
           <a href="<?= $link_undangan ?>" target="_blank" class="lbtn lbtn-open"><i class='bx bx-link-external'></i> Buka Undangan</a>
           <button class="lbtn lbtn-copy" onclick="salinLink()"><i class='bx bx-copy'></i> Salin Link</button>
-          <a href="https://wa.me/<?= $o['no_whatsapp'] ?>?text=<?= urlencode("Halo {$o['nama_pria']}! Ini link undangan digitalmu dari Bernada.ID 🎉\n\n{$link_undangan}\n\nBagikan ke tamu dengan mengganti bagian akhir:\n{$base_url}/undangan/?kode={$o['kode_undangan']}&to=Nama+Tamu") ?>" target="_blank" class="lbtn lbtn-wa"><i class='bx bxl-whatsapp'></i> Kirim ke Customer</a>
+          <a href="https://wa.me/<?= $o['no_whatsapp'] ?>?text=<?= urlencode("Halo {$o['nama_pria']}! Ini link undangan digitalmu dari Bernada.ID 🎉\n\n{$link_undangan}\n\nBagikan ke tamu dengan mengganti bagian akhir:\n{$base_url}/undangan/undangan_index.php?kode={$o['kode_undangan']}&to=Nama+Tamu") ?>" target="_blank" class="lbtn lbtn-wa"><i class='bx bxl-whatsapp'></i> Kirim ke Customer</a>
         </div>
         <div style="margin-top:1rem;padding:10px 14px;background:rgba(255,255,255,.7);border-radius:8px;font-size:12px;color:#2e6640">
           💡 <strong>Cara kirim ke tamu:</strong><br>
           Ganti bagian <code>&to=<?= urlencode($o['nama_pria']) ?></code> dengan nama tamu masing-masing.<br>
-          Contoh: <code><?= $base_url ?>/undangan/?kode=<?= $o['kode_undangan'] ?>&to=Bapak+Hendra</code>
+          Contoh: <code><?= $base_url ?>/undangan/undangan_index.php?kode=<?= $o['kode_undangan'] ?>&to=Bapak+Hendra</code>
         </div>
       </div>
     <?php elseif ($o['status_bayar'] === 'menunggu_konfirmasi' || $o['status_bayar'] === 'pending'): ?>
@@ -504,7 +508,8 @@ $link_undangan = $o['kode_undangan'] ? "{$base_url}/undangan/?kode={$o['kode_und
         <div class="card">
           <div class="card-title"><i class='bx bx-calendar-heart'></i> Info Acara</div>
           <div class="info-row"><span class="lbl">Tanggal Nikah</span><span class="val"><?= $tgl_fmt ?></span></div>
-          <div class="info-row"><span class="lbl">Waktu</span><span class="val"><?= $o['waktu_mulai'] ?> – <?= $o['waktu_selesai'] ?> WIB</span></div>
+          <div class="info-row"><span class="lbl">Waktu Akad</span><span class="val"><?= $o['mulai_akad'] ?> – <?= $o['selesai_akad'] ?> WIB</span></div>
+          <div class="info-row"><span class="lbl">Waktu Resepsi</span><span class="val"><?= $o['mulai_resepsi'] ?> – <?= $o['selesai_resepsi'] ?> WIB</span></div>
           <div class="info-row"><span class="lbl">Lokasi</span><span class="val"><?= $o['lokasi'] ?></span></div>
           <?php if ($o['link_maps']): ?>
             <div class="info-row"><span class="lbl">Google Maps</span><span class="val"><a href="<?= $o['link_maps'] ?>" target="_blank" style="color:var(--r)">Buka Maps</a></span></div>

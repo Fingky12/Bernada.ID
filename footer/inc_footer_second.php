@@ -15,7 +15,7 @@
         <div class="footer-links">
           <a href="FAQ.php">FAQ</a>
           <a href="afiliasi.php">Afiliasi</a>
-          <a href="buat-undangan.php">Cara Order</a>
+          <a href="buat_undangan.php">Cara Order</a>
           <a href="privacy.php">Kebijakan Privasi</a>
           <a href="therms.php">Syarat & Ketentuan</a>
         </div>
