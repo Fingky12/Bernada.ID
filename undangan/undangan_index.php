@@ -77,7 +77,7 @@ exit;
 
 
 // ── Render halaman error ──────────────────────
-function renderError($title, $msg)
+function renderError(string $title, string $msg)
 {
   return '<!DOCTYPE html>
 <html lang="id">

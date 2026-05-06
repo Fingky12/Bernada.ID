@@ -1,6 +1,25 @@
 <?php
-require_once '../config/koneksi.php';
-require_once '../config/ambil_data.php';
+$kode = $_GET['kode'] ?? '';
+$tamu = $_GET['to']   ?? 'Tamu Undangan';
+$data = [];
+if ($kode) {
+  require_once '../config/koneksi.php';
+  $stmt = $pdo->prepare("SELECT * FROM undangan WHERE kode_undangan = ?");
+  $stmt->execute([$kode]);
+  $data = $stmt->fetch() ?: [];
+}
+$pria    = $data['nama_pria']     ?? 'Daffa';
+$wanita  = $data['nama_wanita']   ?? 'Rania';
+$tgl_raw = $data['tanggal_nikah'] ?? '2026-08-08';
+$wm      = $data['waktu_mulai']   ?? '10:00';
+$ws      = $data['waktu_selesai'] ?? '14:00';
+$lokasi  = $data['lokasi']        ?? 'The Westin Surabaya, Jawa Timur';
+$maps    = $data['link_maps']     ?? 'https://maps.google.com';
+$tgl_obj = new DateTime($tgl_raw);
+$bulan_id = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+$hari_id = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+$tgl_full = $hari_id[(int)$tgl_obj->format('w')] . ', ' . $tgl_obj->format('j') . ' ' . $bulan_id[(int)$tgl_obj->format('n')] . ' ' . $tgl_obj->format('Y');
+$tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -615,13 +634,13 @@ require_once '../config/ambil_data.php';
           <div class="couple-card">
             <div class="couple-avatar"><?= strtoupper(substr($pria, 0, 1)) ?></div>
             <h3><?= $pria ?></h3>
-            <p>Putra dari<br><?= $pria_ayah ?> &amp; <?= $pria_ibu ?></p>
+            <p>Putra dari<br>Bpk. &amp; Ibu</p>
           </div>
           <div class="amp-script">&amp;</div>
           <div class="couple-card">
             <div class="couple-avatar"><?= strtoupper(substr($wanita, 0, 1)) ?></div>
             <h3><?= $wanita ?></h3>
-            <p>Putri dari<br><?= $wanita_ayah ?> &amp; <?= $wanita_ibu ?></p>
+            <p>Putri dari<br>Bpk. &amp; Ibu</p>
           </div>
         </div>
         <div class="ayat-box">
@@ -672,7 +691,7 @@ require_once '../config/ambil_data.php';
           <div class="detail-icon" style="color: var(--p1); font-size: 24px;"><i class='bx bx-donate-heart' ></i></div>
           <h3>Akad Nikah</h3>
           <div class="detail-row"><strong>Tanggal</strong><?= $tgl_full ?></div>
-          <div class="detail-row"><strong>Waktu</strong><?= $ma ?> - <?= $sa ?> WIB</div>
+          <div class="detail-row"><strong>Waktu</strong><?= $wm ?> WIB</div>
           <div class="detail-row"><strong>Lokasi</strong><?= $lokasi ?></div>
           <a href="<?= $maps ?>" target="_blank" class="btn-maps"><i class='bx bx-map' ></i> Lihat Maps</a>
         </div>
@@ -680,7 +699,7 @@ require_once '../config/ambil_data.php';
           <div class="detail-icon" style="color: var(--p1); font-size: 24px;"><i class='bx bx-home-heart' ></i></div>
           <h3>Resepsi</h3>
           <div class="detail-row"><strong>Tanggal</strong><?= $tgl_full ?></div>
-          <div class="detail-row"><strong>Waktu</strong><?= $mr ?> – <?= $sr ?> WIB</div>
+          <div class="detail-row"><strong>Waktu</strong><?= $wm ?> – <?= $ws ?> WIB</div>
           <div class="detail-row"><strong>Lokasi</strong><?= $lokasi ?></div>
           <a href="<?= $maps ?>" target="_blank" class="btn-maps"><i class='bx bx-map' ></i> Lihat Maps</a>
         </div>

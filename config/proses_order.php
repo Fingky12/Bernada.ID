@@ -3,17 +3,18 @@
 // FILE: config/proses_order.php
 // Proses order customer → simpan DB → notif WA
 // ============================================
-
 header('Content-Type: application/json');
 require_once __DIR__ . '/../config/koneksi.php';
+
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(['status'=>'error','message'=>'Method tidak valid.']);
     exit;
 }
-
-// ── Sanitasi input ──────────────────────────
-function cl($v) { return htmlspecialchars(trim($v ?? ''), ENT_QUOTES, 'UTF-8'); }
+// ── Sanitafunction cl($v) { return htmlspecialchars(trim($v ?? ''), ENT_QUOTES, 'UTF-8'); }si input ──────────────────────────
+function cl(?string $v): string {
+    return htmlspecialchars(trim($v ?? ''), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+}
 
 $nama_pria    = cl($_POST['nama_pria']    ?? '');
 $nama_wanita  = cl($_POST['nama_wanita']  ?? '');
@@ -52,7 +53,8 @@ $harga = $paket_data['harga'] ?? 0;
 $aktif_hari = $paket_data['aktif'] ?? 30;
 
 // ── Generate kode order unik ────────────────
-function genKodeOrder($pdo, $prefix, $col) {
+
+function genKodeOrder(PDO $pdo, string $prefix, string $col) {
     do {
         $kode = $prefix.'-'.strtoupper(substr(bin2hex(random_bytes(3)), 0, 6));
         $cek  = $pdo->prepare("SELECT id FROM orders WHERE $col = ?");
@@ -214,12 +216,12 @@ echo json_encode([
 ]);
 
 // ── Fungsi helper ────────────────────────────
-function kirimWA($no_wa, $pesan) {
+function kirimWA(string $nomor, string $pesan) {
     $ch = curl_init();
     curl_setopt_array($ch, [
         CURLOPT_URL            => 'https://api.fonnte.com/send',
         CURLOPT_POST           => true,
-        CURLOPT_POSTFIELDS     => ['target'=>$no_wa,'message'=>$pesan,'countryCode'=>'62'],
+        CURLOPT_POSTFIELDS     => ['target'=>$nomor,'message'=>$pesan,'countryCode'=>'62'],
         CURLOPT_HTTPHEADER     => ['Authorization: '.FONNTE_TOKEN],
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_TIMEOUT        => 15,

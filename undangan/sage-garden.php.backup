@@ -1,6 +1,25 @@
 <?php
-require_once '../config/koneksi.php';
-require_once '../config/ambil_data.php';
+$kode = $_GET['kode'] ?? '';
+$tamu = $_GET['to']   ?? 'Tamu Undangan';
+$data = [];
+if ($kode) {
+  require_once '../config/koneksi.php';
+  $stmt = $pdo->prepare("SELECT * FROM undangan WHERE kode_undangan = ?");
+  $stmt->execute([$kode]);
+  $data = $stmt->fetch() ?: [];
+}
+$pria    = $data['nama_pria']     ?? 'Hendra';
+$wanita  = $data['nama_wanita']   ?? 'Ayu';
+$tgl_raw = $data['tanggal_nikah'] ?? '2026-09-12';
+$wm      = $data['waktu_mulai']   ?? '09:00';
+$ws      = $data['waktu_selesai'] ?? '13:00';
+$lokasi  = $data['lokasi']        ?? 'The Botanica Garden, Malang';
+$maps    = $data['link_maps']     ?? 'https://maps.google.com';
+$tgl_obj = new DateTime($tgl_raw);
+$bulan_id = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+$hari_id = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+$tgl_full = $hari_id[(int)$tgl_obj->format('w')] . ', ' . $tgl_obj->format('j') . ' ' . $bulan_id[(int)$tgl_obj->format('n')] . ' ' . $tgl_obj->format('Y');
+$tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -516,11 +535,8 @@ require_once '../config/ambil_data.php';
     }
 
     .cd-grid {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      text-align: center;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
       max-width: 420px;
       margin: 2rem auto 0;
@@ -1075,7 +1091,7 @@ require_once '../config/ambil_data.php';
               </div>
             </div>
             <div class="event-detail-row"><span class="icon"><i class='bx bx-calendar-check'></i></span><strong>Tanggal</strong><span><?= $tgl_full ?></span></div>
-            <div class="event-detail-row"><span class="icon"><i class='bx bx-time'></i></span><strong>Waktu</strong><span><?= $ma ?> – <?= $sa ?> WIB</span></div>
+            <div class="event-detail-row"><span class="icon"><i class='bx bx-time'></i></span><strong>Waktu</strong><span><?= $wm ?> WIB – Selesai</span></div>
             <div class="event-detail-row"><span class="icon"><i class='bx bx-map-pin'></i></span><strong>Lokasi</strong><span><?= $lokasi ?></span></div>
             <a href="<?= $maps ?>" target="_blank" class="btn-maps"><i class='bx bx-map'></i> Buka Google Maps</a>
           </div>
@@ -1088,7 +1104,7 @@ require_once '../config/ambil_data.php';
               </div>
             </div>
             <div class="event-detail-row"><span class="icon"><i class='bx bx-calendar-check'></i></span><strong>Tanggal</strong><span><?= $tgl_full ?></span></div>
-            <div class="event-detail-row"><span class="icon"><i class='bx bx-time'></i></span><strong>Waktu</strong><span><?= $mr ?> – <?= $sr ?> WIB</span></div>
+            <div class="event-detail-row"><span class="icon"><i class='bx bx-time'></i></span><strong>Waktu</strong><span><?= $wm ?> – <?= $ws ?> WIB</span></div>
             <div class="event-detail-row"><span class="icon"><i class='bx bx-map-pin'></i></span><strong>Lokasi</strong><span><?= $lokasi ?></span></div>
             <a href="<?= $maps ?>" target="_blank" class="btn-maps"><i class='bx bx-map'></i> Buka Google Maps</a>
           </div>

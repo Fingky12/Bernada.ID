@@ -1,9 +1,37 @@
 <?php
-require_once '../config/koneksi.php';
-require_once '../config/ambil_data.php';
-// Setelah include ambil_data.php, variabel berikut sudah tersedia:
-// $pria, $wanita, $ayah_pria, $ibu_pria, $ayah_wanita, $ibu_wanita
-// $tgl_full, $tgl_countdown, $wm, $ws, $lokasi, $maps, $tamu
+// ══════════════════════════════════════
+// TEMA: Merah Klasik
+// URL: /undangan/merah-klasik.php?kode=BRN-XXXXXX
+// Atau preview: /undangan/merah-klasik.php (pakai data default)
+// ══════════════════════════════════════
+
+// Ambil data dari database jika ada kode
+$data = [];
+$kode = $_GET['kode'] ?? '';
+$tamu = $_GET['to'] ?? 'Tamu Undangan';
+
+if ($kode) {
+  require_once '../config/koneksi.php';
+  $stmt = $pdo->prepare("SELECT * FROM undangan WHERE kode_undangan = ?");
+  $stmt->execute([$kode]);
+  $data = $stmt->fetch() ?: [];
+}
+
+// Fallback ke data default (untuk preview / static)
+$pria    = $data['nama_pria']     ?? 'Surya';
+$wanita  = $data['nama_wanita']   ?? 'Sofi';
+$tgl_raw = $data['tanggal_nikah'] ?? '2026-06-14';
+$wm      = $data['waktu_mulai']   ?? '10:00';
+$ws      = $data['waktu_selesai'] ?? '14:00';
+$lokasi  = $data['lokasi']        ?? 'Gedung Graha Sabha Permana, Surabaya';
+$maps    = $data['link_maps']     ?? 'https://maps.google.com';
+
+// Format tanggal
+$tgl_obj  = new DateTime($tgl_raw);
+$bulan_id = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+$hari_id  = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+$tgl_full = $hari_id[(int)$tgl_obj->format('w')] . ', ' . $tgl_obj->format('j') . ' ' . $bulan_id[(int)$tgl_obj->format('n')] . ' ' . $tgl_obj->format('Y');
+$tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -11,10 +39,11 @@ require_once '../config/ambil_data.php';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Undangan Pernikahan <?= htmlspecialchars($pria) ?> & <?= htmlspecialchars($wanita) ?></title>
-  <meta property="og:title" content="Undangan – <?= htmlspecialchars($pria) ?> & <?= htmlspecialchars($wanita) ?>" />
-  <meta property="og:description" content="<?= $tgl_full ?> · <?= htmlspecialchars($lokasi) ?>" />
+  <meta property="og:title" content="Undangan Pernikahan <?= $pria ?> & <?= $wanita ?>" />
+  <meta property="og:description" content="<?= $tgl_full ?> · <?= $lokasi ?>" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <title>Undangan Pernikahan <?= $pria ?> & <?= $wanita ?></title>
   <style>
     *,
     *::before,
@@ -135,11 +164,36 @@ require_once '../config/ambil_data.php';
       cursor: pointer;
       border: none;
       font-family: inherit;
+      z-index: 100;
     }
 
     .btn-open:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(201, 162, 39, .4);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, .4);
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0)
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(8px)
+      }
     }
 
     /* CONTENT */
@@ -207,12 +261,44 @@ require_once '../config/ambil_data.php';
       background: #fff;
     }
 
+    .couple-names {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 7vw, 4rem);
+      line-height: 1.2;
+      margin-bottom: .5rem;
+      color: var(--dark);
+    }
+
+    .couple-names em {
+      color: var(--r2);
+      font-style: italic;
+    }
+
+    .couple-names .amp {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: .6em;
+      color: var(--gold);
+      display: block;
+      margin: .25rem 0;
+    }
+
+    .couple-sub {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.8;
+    }
+
     .couple-grid {
       display: grid;
       grid-template-columns: 1fr auto 1fr;
-      gap: 2rem;
+      gap: 1.5rem;
       align-items: center;
-      margin: 2.5rem 0;
+      margin: 2rem 0;
+    }
+
+    .couple-card {
+      text-align: center;
     }
 
     .couple-avatar {
@@ -237,10 +323,9 @@ require_once '../config/ambil_data.php';
       margin-bottom: 4px;
     }
 
-    .couple-card .ortu {
+    .couple-card p {
       font-size: 13px;
       color: #888;
-      line-height: 1.8;
     }
 
     .amp-big {
@@ -300,7 +385,7 @@ require_once '../config/ambil_data.php';
       margin-top: 4px;
     }
 
-    /* DETAIL */
+    /* DETAIL ACARA */
     .detail-section {
       background: var(--cream);
     }
@@ -327,13 +412,18 @@ require_once '../config/ambil_data.php';
       width: 44px;
       height: 44px;
       border-radius: 10px;
-      background: linear-gradient(135deg, var(--r1), var(--r2));
+      background: linear-gradient(135deg, #999, #c6c6c6);
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 20px;
     }
+
+    .detail-icon img {
+      width: 30px;
+      height: 30px;
+    } 
 
     .detail-card-header h3 {
       font-size: 16px;
@@ -444,6 +534,11 @@ require_once '../config/ambil_data.php';
       padding: 1.5rem;
     }
 
+    .rsvp-success .big-check {
+      font-size: 48px;
+      margin-bottom: 8px;
+    }
+
     /* PENUTUP */
     .closing-section {
       background: linear-gradient(160deg, #1a0505, var(--r1));
@@ -478,6 +573,7 @@ require_once '../config/ambil_data.php';
       color: var(--gold);
     }
 
+    /* MUSIC BTN */
     .music-btn {
       position: fixed;
       bottom: 1.5rem;
@@ -523,11 +619,12 @@ require_once '../config/ambil_data.php';
   <!-- COVER -->
   <div class="cover" id="cover">
     <div class="cover-ornament">The Wedding Of</div>
-    <h1><?= htmlspecialchars($pria) ?><em>&amp; <?= htmlspecialchars($wanita) ?></em></h1>
+    <h1><?= $pria ?><em>& <?= $wanita ?></em></h1>
     <div class="cover-date"><?= $tgl_full ?></div>
     <div class="cover-to">Kepada Yth.</div>
     <div class="cover-guest"><?= htmlspecialchars($tamu) ?></div>
     <button class="btn-open" onclick="bukaUndangan()">✉ Buka Undangan</button>
+    <div class="scroll-hint">↓ scroll</div>
   </div>
 
   <!-- CONTENT -->
@@ -536,7 +633,7 @@ require_once '../config/ambil_data.php';
     <!-- COUPLE -->
     <section class="couple-section">
       <div class="sec-inner">
-        <div class="ornament">Bismillah</div>
+        <div class="ornament">Bismillahirrahmanirrahim</div>
         <div class="sec-label">Dengan Memohon Rahmat dan Ridho Allah SWT</div>
         <div class="divider">
           <div class="divider-diamond"></div>
@@ -544,28 +641,17 @@ require_once '../config/ambil_data.php';
         <div class="couple-grid">
           <div class="couple-card">
             <div class="couple-avatar"><?= strtoupper(substr($pria, 0, 1)) ?></div>
-            <h3><?= htmlspecialchars($pria) ?></h3>
-            <div class="ortu">
-              Putra dari<br>
-              <?= $ayah_pria ? htmlspecialchars($ayah_pria) : 'Bpk.' ?>
-              <?php if ($ibu_pria): ?>&amp; <?= htmlspecialchars($ibu_pria) ?><?php endif ?>
-            </div>
+            <h3><?= $pria ?></h3>
+            <p>Putra dari<br>Bpk. &amp; Ibu</p>
           </div>
           <div class="amp-big">&amp;</div>
           <div class="couple-card">
             <div class="couple-avatar" style="background:linear-gradient(135deg,#8a2020,#C0393B)"><?= strtoupper(substr($wanita, 0, 1)) ?></div>
-            <h3><?= htmlspecialchars($wanita) ?></h3>
-            <div class="ortu">
-              Putri dari<br>
-              <?= $ayah_wanita ? htmlspecialchars($ayah_wanita) : 'Bpk.' ?>
-              <?php if ($ibu_wanita): ?>&amp; <?= htmlspecialchars($ibu_wanita) ?><?php endif ?>
-            </div>
+            <h3><?= $wanita ?></h3>
+            <p>Putri dari<br>Bpk. &amp; Ibu</p>
           </div>
         </div>
-        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:#888;line-height:1.9">
-          Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan.<br>
-          <em style="color:#aaa">— QS. Yasin: 36</em>
-        </p>
+        <p class="couple-sub">Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan.<br><em style="color:#aaa">— QS. Yasin: 36</em></p>
       </div>
     </section>
 
@@ -596,40 +682,36 @@ require_once '../config/ambil_data.php';
       </div>
     </section>
 
-    <!-- DETAIL ACARA -->
+    <!-- DETAIL -->
     <section class="detail-section">
       <div class="sec-inner">
         <div class="ornament">Acara</div>
         <div class="sec-label">Informasi Pernikahan</div>
         <div class="detail-card">
           <div class="detail-card-header">
-            <div class="detail-icon">💍</div>
+            <div class="detail-icon"><img src="../img/tema-undangan/cincin.png" alt="Cincin"></div>
             <div>
               <h3>Akad Nikah</h3>
               <p>Prosesi sakral pernikahan</p>
             </div>
           </div>
-          <div class="detail-row"><strong>Tanggal</strong><?= $tgl_full ?></div>
-          <div class="detail-row"><strong>Waktu</strong><?= $ma ?> - <?= $sa ?> WIB</div>
-          <div class="detail-row"><strong>Lokasi</strong><?= htmlspecialchars($lokasi) ?></div>
-          <?php if ($maps && $maps !== 'https://maps.google.com'): ?>
-            <a href="<?= htmlspecialchars($maps) ?>" target="_blank" class="btn-maps">📍 Lihat di Google Maps</a>
-          <?php endif ?>
+          <div class="detail-row"><strong>Tanggal</strong> <?= $tgl_full ?></div>
+          <div class="detail-row"><strong>Waktu</strong> <?= $wm ?> WIB</div>
+          <div class="detail-row"><strong>Lokasi</strong> <?= $lokasi ?></div>
+          <a href="<?= $maps ?>" target="_blank" class="btn-maps"><i class='bx bxs-map' ></i> Lihat di Google Maps</a>
         </div>
         <div class="detail-card">
           <div class="detail-card-header">
-            <div class="detail-icon">🎊</div>
+            <div class="detail-icon"><img src="../img/tema-undangan/rumah.png" alt="Rumah"></div>
             <div>
               <h3>Resepsi Pernikahan</h3>
-              <p>Syukuran &amp; jamuan tamu</p>
+              <p>Syukuran & jamuan tamu</p>
             </div>
           </div>
-          <div class="detail-row"><strong>Tanggal</strong><?= $tgl_full ?></div>
-          <div class="detail-row"><strong>Waktu</strong><?= $mr ?> – <?= $sr ?> WIB</div>
-          <div class="detail-row"><strong>Lokasi</strong><?= htmlspecialchars($lokasi) ?></div>
-          <?php if ($maps && $maps !== 'https://maps.google.com'): ?>
-            <a href="<?= htmlspecialchars($maps) ?>" target="_blank" class="btn-maps">📍 Lihat di Google Maps</a>
-          <?php endif ?>
+          <div class="detail-row"><strong>Tanggal</strong> <?= $tgl_full ?></div>
+          <div class="detail-row"><strong>Waktu</strong> <?= $wm ?> – <?= $ws ?> WIB</div>
+          <div class="detail-row"><strong>Lokasi</strong> <?= $lokasi ?></div>
+          <a href="<?= $maps ?>" target="_blank" class="btn-maps"><i class='bx bxs-map' ></i> Lihat di Google Maps</a>
         </div>
       </div>
     </section>
@@ -644,40 +726,45 @@ require_once '../config/ambil_data.php';
         </div>
         <p style="font-size:14px;color:#888;margin-bottom:1.5rem">Mohon konfirmasi kehadiran kamu paling lambat 7 hari sebelum acara</p>
         <div class="rsvp-form" id="rsvpForm">
-          <div class="rsvp-field"><label>Nama Lengkap</label><input type="text" id="rsvpNama" placeholder="Nama kamu..." value="<?= htmlspecialchars($tamu) ?>" /></div>
-          <div class="rsvp-field"><label>Jumlah Tamu</label>
+          <div class="rsvp-field">
+            <label>Nama Lengkap</label>
+            <input type="text" id="rsvpNama" placeholder="Nama kamu..." value="<?= htmlspecialchars($tamu) ?>" />
+          </div>
+          <div class="rsvp-field">
+            <label>Jumlah Tamu</label>
             <select id="rsvpJml">
-              <option>1 orang</option>
-              <option>2 orang</option>
-              <option>3 orang</option>
-              <option>4+ orang</option>
+              <option value="1">1 orang</option>
+              <option value="2">2 orang</option>
+              <option value="3">3 orang</option>
+              <option value="4">4 orang</option>
             </select>
           </div>
-          <div class="rsvp-field"><label>Konfirmasi Kehadiran</label>
+          <div class="rsvp-field">
+            <label>Konfirmasi Kehadiran</label>
             <select id="rsvpHadir">
-              <option value="hadir">✅ Insya Allah Hadir</option>
+              <option value="hadir">✔️ Insya Allah Hadir</option>
               <option value="tidak">❌ Berhalangan Hadir</option>
-              <option value="mungkin">🤔 Mungkin Hadir</option>
+              <option value="mungkin">❓ Mungkin Hadir</option>
             </select>
           </div>
           <button class="btn-rsvp" onclick="kirimRSVP()">Kirim Konfirmasi</button>
         </div>
         <div class="rsvp-success" id="rsvpSuccess">
-          <div style="font-size:48px;margin-bottom:8px">🎉</div>
+          <div class="big-check">🎉</div>
           <p style="font-size:16px;font-weight:600">Terima kasih!</p>
           <p style="font-size:14px;color:#888">Konfirmasi kehadiranmu sudah kami terima.</p>
         </div>
       </div>
     </section>
 
-    <!-- PENUTUP -->
+    <!-- CLOSING -->
     <section class="closing-section">
       <div class="sec-inner">
         <div class="ornament" style="color:var(--gold)">♥</div>
         <h2>Merupakan suatu kehormatan dan kebahagiaan bagi kami</h2>
         <p>apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kami.</p>
         <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.2rem;color:rgba(255,255,255,.8);margin-top:1rem">
-          <?= htmlspecialchars($pria) ?> &amp; <?= htmlspecialchars($wanita) ?>
+          <?= $pria ?> &amp; <?= $wanita ?>
         </p>
         <div style="margin-top:3rem" class="closing-brand">
           Dibuat dengan ♥ oleh <span>Bernada.ID</span>
@@ -685,57 +772,77 @@ require_once '../config/ambil_data.php';
       </div>
     </section>
 
-  </div>
+  </div><!-- end content -->
 
-  <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Musik">🎵</button>
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Musik"><i class='bx bx-music' ></i></button>
   <audio id="bgMusic" loop>
     <source src="../audio/wedding-music.mp3" type="audio/mpeg" />
   </audio>
 
   <script>
+    // Buka undangan
     function bukaUndangan() {
       document.getElementById('cover').style.display = 'none';
       document.getElementById('mainContent').classList.add('show');
-      document.getElementById('bgMusic').play().catch(() => {});
+      // Auto play music
+      const music = document.getElementById('bgMusic');
+      music.play().catch(() => {});
     }
+
+    // Music toggle
     let playing = false;
 
     function toggleMusic() {
-      const m = document.getElementById('bgMusic'),
-        btn = document.getElementById('musicBtn');
+      const m = document.getElementById('bgMusic');
+      const btn = document.getElementById('musicBtn');
       if (playing) {
         m.pause();
-        btn.textContent = '🎵';
+        btn.innerHTML = "<i class='bx bx-music' ></i>";
         playing = false;
       } else {
         m.play().catch(() => {});
-        btn.textContent = '⏸';
+        btn.textContent = "⏸";
         playing = true;
       }
     }
 
+    // Countdown
     function updateCountdown() {
-      const diff = new Date('<?= $tgl_countdown ?>').getTime() - Date.now();
-      if (diff <= 0) return;
-      document.getElementById('cd-h').textContent = String(Math.floor(diff / 864e5)).padStart(2, '0');
-      document.getElementById('cd-j').textContent = String(Math.floor(diff % 864e5 / 36e5)).padStart(2, '0');
-      document.getElementById('cd-m').textContent = String(Math.floor(diff % 36e5 / 6e4)).padStart(2, '0');
-      document.getElementById('cd-s').textContent = String(Math.floor(diff % 6e4 / 1e3)).padStart(2, '0');
+      const target = new Date('<?= $tgl_countdown ?>').getTime();
+      const now = new Date().getTime();
+      const diff = target - now;
+      if (diff <= 0) {
+        document.getElementById('cd-h').textContent = '00';
+        document.getElementById('cd-j').textContent = '00';
+        document.getElementById('cd-m').textContent = '00';
+        document.getElementById('cd-s').textContent = '00';
+        return;
+      }
+      const h = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const j = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
+      document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
+      document.getElementById('cd-j').textContent = String(j).padStart(2, '0');
+      document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
+      document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
     }
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
+    // RSVP
     function kirimRSVP() {
       const nama = document.getElementById('rsvpNama').value.trim();
+      const jml = document.getElementById('rsvpJml').value;
+      const hadir = document.getElementById('rsvpHadir').value;
       if (!nama) {
         alert('Mohon isi nama kamu!');
         return;
       }
-      const jml = document.getElementById('rsvpJml').value;
-      const hadir = document.getElementById('rsvpHadir');
-      const status = hadir.options[hadir.selectedIndex].text.replace(/^[^\s]+\s+/, '');
-      const p = encodeURIComponent(`Halo! Saya ${nama} ingin konfirmasi kehadiran di pernikahan <?= addslashes($pria) ?> & <?= addslashes($wanita) ?>.\nKehadiran: ${status}\nJumlah: ${jml}`);
-      window.open(`https://wa.me/6281939195110?text=${p}`, '_blank');
+      // Kirim via WhatsApp
+      const status = hadir === 'hadir' ? 'Insya Allah Hadir' : hadir === 'tidak' ? 'Berhalangan Hadir' : 'Mungkin Hadir';
+      const pesan = encodeURIComponent(`Halo! Saya ${nama} ingin konfirmasi kehadiran di pernikahan <?= $pria ?> & <?= $wanita ?>.\n\nKehadiran: ${status}\nJumlah tamu: ${jml} orang`);
+      window.open(`https://wa.me/6281939195110?text=${pesan}`, '_blank');
       document.getElementById('rsvpForm').style.display = 'none';
       document.getElementById('rsvpSuccess').style.display = 'block';
     }

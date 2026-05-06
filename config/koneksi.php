@@ -20,6 +20,7 @@ define('MAIL_PASS', 'qkhl rwcs oocv zgin');
 define('MAIL_USER', 'bernada.id811@gmail.com');
 define('MAIL_FROM', 'bernada.id811@gmail.com');
 define('MAIL_NAME', 'Bernada.ID');
+define('TEMA_INCLUDE', true);
 
 // Koneksi mysqli (untuk auth)
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);

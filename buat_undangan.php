@@ -1028,7 +1028,7 @@ $name = $_SESSION['name'] ?? null;
 
       <!-- SUCCESS PAGE -->
       <div class="success-page card" id="successPage">
-        <div class="success-icon"><img src="../img/gif/confetti-ball.gif" alt="Selamat"></div>
+        <div class="success-icon"><img src="img/gif/confetti-ball.gif" alt="Selamat"></div>
         <h2>Pesanan Berhasil!</h2>
         <div class="kode-box">
           <div class="lbl">Kode Order Kamu</div>
@@ -1256,7 +1256,7 @@ $name = $_SESSION['name'] ?? null;
 
       const formData = new FormData(this);
 
-      fetch('../buat_undangan/proses_order.php', {
+      fetch('config/proses_order.php', {
           method: 'POST',
           body: formData
         })

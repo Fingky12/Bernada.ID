@@ -1,6 +1,25 @@
 <?php
-require_once '../config/koneksi.php';
-require_once '../config/ambil_data.php';
+$kode = $_GET['kode'] ?? '';
+$tamu = $_GET['to']   ?? 'Tamu Undangan';
+$data = [];
+if ($kode) {
+  require_once '../config/koneksi.php';
+  $stmt = $pdo->prepare("SELECT * FROM undangan WHERE kode_undangan = ?");
+  $stmt->execute([$kode]);
+  $data = $stmt->fetch() ?: [];
+}
+$pria    = $data['nama_pria']     ?? 'Raka';
+$wanita  = $data['nama_wanita']   ?? 'Dira';
+$tgl_raw = $data['tanggal_nikah'] ?? '2026-10-10';
+$wm      = $data['waktu_mulai']   ?? '09:00';
+$ws      = $data['waktu_selesai'] ?? '13:00';
+$lokasi  = $data['lokasi']        ?? 'Villa Kebun Kopi, Batu Malang';
+$maps    = $data['link_maps']     ?? 'https://maps.google.com';
+$tgl_obj  = new DateTime($tgl_raw);
+$bulan_id = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+$hari_id  = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+$tgl_full = $hari_id[(int)$tgl_obj->format('w')] . ', ' . $tgl_obj->format('j') . ' ' . $bulan_id[(int)$tgl_obj->format('n')] . ' ' . $tgl_obj->format('Y');
+$tgl_countdown = $tgl_obj->format('Y-m-d') . 'T' . $wm . ':00';
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -1261,7 +1280,7 @@ require_once '../config/ambil_data.php';
               </div>
             </div>
             <div class="event-row"><span class="ico"><i class='bx bx-calendar'></i></span><strong>Tanggal</strong><span><?= $tgl_full ?></span></div>
-            <div class="event-row"><span class="ico"><i class='bx bx-time'></i></span><strong>Waktu</strong><span><?= $ma ?> – <?= $sa ?> WIB</span></div>
+            <div class="event-row"><span class="ico"><i class='bx bx-time'></i></span><strong>Waktu</strong><span><?= $wm ?> WIB – Selesai</span></div>
             <div class="event-row"><span class="ico"><i class='bx bx-map-pin' ></i></span><strong>Lokasi</strong><span><?= $lokasi ?></span></div>
             <a href="<?= $maps ?>" target="_blank" class="btn-maps"><i class='bx bx-map'></i> Buka Google Maps</a>
           </div>
@@ -1274,7 +1293,7 @@ require_once '../config/ambil_data.php';
               </div>
             </div>
             <div class="event-row"><span class="ico"><i class='bx bx-calendar'></i></span><strong>Tanggal</strong><span><?= $tgl_full ?></span></div>
-            <div class="event-row"><span class="ico"><i class='bx bx-time'></i></span><strong>Waktu</strong><span><?= $mr ?> – <?= $sr ?> WIB</span></div>
+            <div class="event-row"><span class="ico"><i class='bx bx-time'></i></span><strong>Waktu</strong><span><?= $wm ?> – <?= $ws ?> WIB</span></div>
             <div class="event-row"><span class="ico"><i class='bx bx-map-pin' ></i></span><strong>Lokasi</strong><span><?= $lokasi ?></span></div>
             <a href="<?= $maps ?>" target="_blank" class="btn-maps"><i class='bx bx-map'></i> Buka Google Maps</a>
           </div>
@@ -1293,21 +1312,21 @@ require_once '../config/ambil_data.php';
         <p class="amplop-intro">Doa restu Bapak/Ibu/Saudara/i adalah hadiah terindah bagi kami. Namun bagi yang ingin memberikan tanda kasih, kami menyediakan rekening berikut.</p>
         <div class="amplop-grid">
           <div class="amplop-card">
-            <div class="amplop-bank-logo"><i class='bx bx-credit-card'></i></div>
+            <div class="amplop-bank-logo"><i class='bx bxl-bca'></i></div>
             <h3>Bank BCA</h3>
             <div class="rekening" id="norek-bca">1234567890</div>
             <div class="atas-nama">a.n. <?= $pria ?></div>
             <button class="btn-salin" id="btn-bca" onclick="salinRekening('1234567890','btn-bca')">
-              <i class='bx bx-copy'></i> &nbsp; Salin Nomor
+              📋 &nbsp; Salin Nomor
             </button>
           </div>
           <div class="amplop-card">
-            <div class="amplop-bank-logo"><i class='bx bx-credit-card'></i></div>
-            <h3>DANA/GoPay/OVO</h3>
+            <div class="amplop-bank-logo">💳</div>
+            <h3>GoPay / OVO</h3>
             <div class="rekening" id="norek-gopay">0812-3456-789</div>
             <div class="atas-nama">a.n. <?= $wanita ?></div>
             <button class="btn-salin" id="btn-gopay" onclick="salinRekening('08123456789','btn-gopay')">
-              <i class='bx bx-copy'></i> &nbsp; Salin Nomor
+              📋 &nbsp; Salin Nomor
             </button>
           </div>
         </div>

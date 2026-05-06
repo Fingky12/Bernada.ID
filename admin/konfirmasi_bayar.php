@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['approve'])) {
 $tema_label = ucwords(str_replace('-', ' ', $o['tema']));
 $tgl_fmt = date('d M Y', strtotime($o['tanggal_nikah']));
 
-function kirimWA($nomor, $pesan)
+function kirimWA(string $nomor, string $pesan)
 {
   $ch = curl_init();
   curl_setopt_array($ch, [

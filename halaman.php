@@ -9,6 +9,7 @@ $active_form = $_SESSION['active_form'] ?? '';
 session_unset();
 if ($name !== null) $_SESSION['name'] = $name;
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 
