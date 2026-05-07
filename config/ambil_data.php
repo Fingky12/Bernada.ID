@@ -35,10 +35,10 @@ if ($kode) {
 // ── Data pengantin ──────────────────────────
 $pria        = $data['nama_pria']      ?? 'Nama Pria';
 $wanita      = $data['nama_wanita']    ?? 'Nama Wanita';
-$ayah_pria   = $data['ayah_pria']      ?? '';
-$ibu_pria    = $data['ibu_pria']       ?? '';
-$ayah_wanita = $data['ayah_wanita']    ?? '';
-$ibu_wanita  = $data['ibu_wanita']     ?? '';
+$ayah_pria   = $data['ayah_pria']      ?? 'Ayah Pria';
+$ibu_pria    = $data['ibu_pria']       ?? 'Ibu Pria';
+$ayah_wanita = $data['ayah_wanita']    ?? 'Ayah Wanita';
+$ibu_wanita  = $data['ibu_wanita']     ?? 'Ibu Wanita';
 
 // ── Data acara ──────────────────────────────
 $tgl_raw       = $data['tanggal_nikah'] ?? date('Y-m-d', strtotime('+30 days'));
@@ -99,8 +99,9 @@ if ($is_expired && $kode) {
   http_response_code(410);
   die('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Undangan Expired</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:"Plus Jakarta Sans",sans-serif;background:#f8f5f5;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}.box{background:#fff;border-radius:16px;padding:3rem 2rem;text-align:center;max-width:420px;width:100%;border:1px solid #eedede}.icon{font-size:3.5rem;margin-bottom:1.25rem}h1{font-family:"Playfair Display",serif;font-size:1.6rem;color:#1a1a1a;margin-bottom:.75rem}p{font-size:14px;color:#666;line-height:1.8;margin-bottom:1.5rem}a{display:inline-flex;align-items:center;gap:6px;padding:11px 24px;background:#C0393B;color:#fff;border-radius:50px;text-decoration:none;font-size:13px;font-weight:600}.brand{margin-top:2rem;font-size:12px;color:#aaa}.brand span{color:#C0393B;font-weight:600}</style>
-    </head><body><div class="box"><div class="icon">⏰</div>
+    </head><body><div class="box"><div class="icon"><i class="bx bx-timer"></i></div>
     <h1>Undangan Sudah Expired</h1>
     <p>Masa aktif undangan <strong>' . $pria . ' &amp; ' . $wanita . '</strong> telah berakhir pada ' . ($tgl_expired ? date('d M Y', strtotime($tgl_expired)) : '-') . '.</p>
     <a href="/">← Beranda</a>

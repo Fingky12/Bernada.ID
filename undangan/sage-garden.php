@@ -982,14 +982,14 @@ require_once '../config/ambil_data.php';
     <div class="corner corner-br"></div>
     <div class="cover-monogram"><?= strtoupper(substr($pria, 0, 1) . substr($wanita, 0, 1)) ?></div>
     <div class="cover-eyebrow">The Wedding Of</div>
-    <div class="cover-name"><?= $pria ?></div>
+    <div class="cover-name"><?= htmlspecialchars($pria) ?></div>
     <div class="cover-amp">&amp;</div>
-    <div class="cover-name-wanita"><?= $wanita ?></div>
+    <div class="cover-name-wanita"><?= htmlspecialchars($wanita) ?></div>
     <div class="cover-rule"></div>
-    <div class="cover-date"><?= $tgl_full ?></div>
+    <div class="cover-date"><?= htmlspecialchars($tgl_full) ?></div>
     <div class="cover-to-label">Kepada Yang Terhormat</div>
     <div class="cover-guest"><?= htmlspecialchars($tamu) ?></div>
-    <button class="btn-open" onclick="bukaUndangan()"><span>✉</span> Buka Undangan</button>
+    <button class="btn-open" onclick="bukaUndangan()"><i class='bx bx-envelope'></i> &nbsp; Buka Undangan</button>
   </div>
 
   <div class="content" id="mainContent">
@@ -1019,14 +1019,14 @@ require_once '../config/ambil_data.php';
             <div class="couple-avatar"><?= strtoupper(substr($pria, 0, 1)) ?></div>
             <h3><?= $pria ?></h3>
             <div class="putra-putri">Putra dari</div>
-            <div class="ortu">Bapak &amp; Ibu</div>
+            <div class="ortu"><?= $ayah_pria ?> &amp; <?= $ibu_pria ?></div>
           </div>
           <div class="amp-center">&amp;</div>
           <div class="couple-card">
             <div class="couple-avatar" style="background:linear-gradient(135deg,var(--s2),var(--s3))"><?= strtoupper(substr($wanita, 0, 1)) ?></div>
-            <h3><?= $wanita ?></h3>
+            <h3><?= htmlspecialchars($wanita) ?></h3>
             <div class="putra-putri">Putri dari</div>
-            <div class="ortu">Bapak &amp; Ibu</div>
+            <div class="ortu"><?= htmlspecialchars($ayah_wanita) ?> &amp; <?= htmlspecialchars($ibu_wanita) ?></div>
           </div>
         </div>
       </div>
@@ -1036,7 +1036,7 @@ require_once '../config/ambil_data.php';
       <div class="sec-inner">
         <div class="baskerville-heading" style="color:var(--s4);position:relative">Menuju Hari Bahagia</div>
         <div class="lato-label" style="color:rgba(184,212,188,.5);position:relative">Hitung Mundur</div>
-        <div class="baskerville-italic" style="font-size:1.1rem;color:rgba(255,255,255,.6);position:relative"><?= $tgl_full ?></div>
+        <div class="baskerville-italic" style="font-size:1.1rem;color:rgba(255,255,255,.6);position:relative"><?= htmlspecialchars($tgl_full) ?></div>
         <div class="cd-grid">
           <div class="cd-box">
             <div class="cd-num" id="cd-h">00</div>
@@ -1074,9 +1074,9 @@ require_once '../config/ambil_data.php';
                 <p>Prosesi Ijab Kabul</p>
               </div>
             </div>
-            <div class="event-detail-row"><span class="icon"><i class='bx bx-calendar-check'></i></span><strong>Tanggal</strong><span><?= $tgl_full ?></span></div>
-            <div class="event-detail-row"><span class="icon"><i class='bx bx-time'></i></span><strong>Waktu</strong><span><?= $ma ?> – <?= $sa ?> WIB</span></div>
-            <div class="event-detail-row"><span class="icon"><i class='bx bx-map-pin'></i></span><strong>Lokasi</strong><span><?= $lokasi ?></span></div>
+            <div class="event-detail-row"><span class="icon"><i class='bx bx-calendar-check'></i></span><strong>Tanggal</strong><span><?= htmlspecialchars($tgl_full) ?></span></div>
+            <div class="event-detail-row"><span class="icon"><i class='bx bx-time'></i></span><strong>Waktu</strong><span><?= htmlspecialchars($ma) ?> – <?= htmlspecialchars($sa) ?> WIB</span></div>
+            <div class="event-detail-row"><span class="icon"><i class='bx bx-map-pin'></i></span><strong>Lokasi</strong><span><?= htmlspecialchars($lokasi) ?></span></div>
             <a href="<?= $maps ?>" target="_blank" class="btn-maps"><i class='bx bx-map'></i> Buka Google Maps</a>
           </div>
           <div class="event-card">
@@ -1087,9 +1087,9 @@ require_once '../config/ambil_data.php';
                 <p>Syukuran &amp; Jamuan Tamu</p>
               </div>
             </div>
-            <div class="event-detail-row"><span class="icon"><i class='bx bx-calendar-check'></i></span><strong>Tanggal</strong><span><?= $tgl_full ?></span></div>
-            <div class="event-detail-row"><span class="icon"><i class='bx bx-time'></i></span><strong>Waktu</strong><span><?= $mr ?> – <?= $sr ?> WIB</span></div>
-            <div class="event-detail-row"><span class="icon"><i class='bx bx-map-pin'></i></span><strong>Lokasi</strong><span><?= $lokasi ?></span></div>
+            <div class="event-detail-row"><span class="icon"><i class='bx bx-calendar-check'></i></span><strong>Tanggal</strong><span><?= htmlspecialchars($tgl_full) ?></span></div>
+            <div class="event-detail-row"><span class="icon"><i class='bx bx-time'></i></span><strong>Waktu</strong><span><?= htmlspecialchars($mr) ?> – <?= htmlspecialchars($sr) ?> WIB</span></div>
+            <div class="event-detail-row"><span class="icon"><i class='bx bx-map-pin'></i></span><strong>Lokasi</strong><span><?= htmlspecialchars($lokasi) ?></span></div>
             <a href="<?= $maps ?>" target="_blank" class="btn-maps"><i class='bx bx-map'></i> Buka Google Maps</a>
           </div>
         </div>
@@ -1168,7 +1168,7 @@ require_once '../config/ambil_data.php';
       <div class="sec-inner" style="position:relative">
         <div class="closing-leaf-bg"><i class='bx bxs-florist' style="color: var(--s3);"></i></div>
         <div class="lato-label" style="color:rgba(184,212,188,.4);position:relative">Dengan Sepenuh Hati</div>
-        <div class="baskerville-italic" style="position:relative"><?= $pria ?> &amp; <?= $wanita ?></div>
+        <div class="baskerville-italic" style="position:relative"><?= htmlspecialchars($pria) ?> &amp; <?= htmlspecialchars($wanita) ?></div>
         <div class="sage-rule" style="position:relative">
           <div class="sage-rule-dot"></div>
         </div>
@@ -1208,14 +1208,31 @@ require_once '../config/ambil_data.php';
       }
     }
 
+    const target = new Date("<?= $tgl_countdown ?>").getTime();
+
     function updateCountdown() {
-      const diff = new Date('<?= $tgl_countdown ?>').getTime() - Date.now();
-      if (diff <= 0) return;
-      document.getElementById('cd-h').textContent = String(Math.floor(diff / 864e5)).padStart(2, '0');
-      document.getElementById('cd-j').textContent = String(Math.floor(diff % 864e5 / 36e5)).padStart(2, '0');
-      document.getElementById('cd-m').textContent = String(Math.floor(diff % 36e5 / 6e4)).padStart(2, '0');
-      document.getElementById('cd-s').textContent = String(Math.floor(diff % 6e4 / 1e3)).padStart(2, '0');
+      const now = Date.now();
+      const diff = target - now;
+
+      if (diff <= 0) {
+        document.getElementById('cd-h').textContent = '00';
+        document.getElementById('cd-j').textContent = '00';
+        document.getElementById('cd-m').textContent = '00';
+        document.getElementById('cd-s').textContent = '00';
+        return;
+      }
+
+      const h = Math.floor(diff / 86400000);
+      const j = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+
+      document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
+      document.getElementById('cd-j').textContent = String(j).padStart(2, '0');
+      document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
+      document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
     }
+
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
@@ -1228,7 +1245,7 @@ require_once '../config/ambil_data.php';
       const jml = document.getElementById('rsvpJml').value;
       const hadir = document.getElementById('rsvpHadir').value === 'hadir' ? 'Insya Allah Hadir' : document.getElementById('rsvpHadir').value === 'mungkin' ? 'Mungkin Hadir' : 'Berhalangan Hadir';
       const ucapan = document.getElementById('rsvpUcapan').value.trim();
-      const p = encodeURIComponent(`Assalamu'alaikum 🌿\n\nSaya ${nama} konfirmasi kehadiran di pernikahan <?= $pria ?> & <?= $wanita ?>.\n\nKehadiran : ${hadir}\nJumlah Tamu : ${jml}` + (ucapan ? `\n\nUcapan :\n"${ucapan}"` : ''));
+      const p = encodeURIComponent(`Assalamu'alaikum 🌿\n\nSaya ${nama} konfirmasi kehadiran di pernikahan <?= htmlspecialchars($pria) ?> & <?= htmlspecialchars($wanita) ?>.\n\nKehadiran : ${hadir}\nJumlah Tamu : ${jml}` + (ucapan ? `\n\nUcapan :\n"${ucapan}"` : ''));
       window.open(`https://wa.me/6281939195110?text=${p}`, '_blank');
       document.getElementById('rsvpForm').style.display = 'none';
       document.getElementById('rsvpSuccess').style.display = 'block';

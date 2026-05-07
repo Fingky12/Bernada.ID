@@ -601,7 +601,7 @@ require_once '../config/ambil_data.php';
     <div class="cover-date"><?= $tgl_full ?></div>
     <div class="cover-to">Kepada Yth.</div>
     <div class="cover-guest"><?= htmlspecialchars($tamu) ?></div>
-    <button class="btn-open" onclick="bukaUndangan()">✉ Buka Undangan</button>
+    <button class="btn-open" onclick="bukaUndangan()"><i class='bx bx-envelope'></i> Buka Undangan</button>
   </div>
 
   <div class="content" id="mainContent">
@@ -609,7 +609,7 @@ require_once '../config/ambil_data.php';
     <section class="couple-section">
       <div class="sec-inner">
         <div class="script-title">Bismillahirrahmanirrahim</div>
-        <div class="jost-label">Dengan Memohon Rahmat Allah SWT</div>
+        <div class="jost-label">Dengan Memohon Rahmat dan Ridho Allah SWT</div>
         <div class="pink-line"></div>
         <div class="couple-grid">
           <div class="couple-card">
@@ -757,18 +757,31 @@ require_once '../config/ambil_data.php';
       }
     }
 
+    const target = new Date("<?= $tgl_countdown ?>").getTime();
+
     function updateCountdown() {
-      const diff = new Date('<?= $tgl_countdown ?>').getTime() - new Date().getTime();
-      if (diff <= 0) return;
-      const h = Math.floor(diff / (864e5)),
-        j = Math.floor(diff % 864e5 / 36e5),
-        m = Math.floor(diff % 36e5 / 6e4),
-        s = Math.floor(diff % 6e4 / 1e3);
+      const now = Date.now();
+      const diff = target - now;
+
+      if (diff <= 0) {
+        document.getElementById('cd-h').textContent = '00';
+        document.getElementById('cd-j').textContent = '00';
+        document.getElementById('cd-m').textContent = '00';
+        document.getElementById('cd-s').textContent = '00';
+        return;
+      }
+
+      const h = Math.floor(diff / 86400000);
+      const j = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+
       document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
       document.getElementById('cd-j').textContent = String(j).padStart(2, '0');
       document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
       document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
     }
+
     setInterval(updateCountdown, 1000);
     updateCountdown();
 

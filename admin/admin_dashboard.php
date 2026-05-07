@@ -16,7 +16,7 @@ $admin_nama = $_SESSION['admin_nama'] ?? 'Admin';
 $total   = $pdo->query("SELECT COUNT(*) FROM orders")->fetchColumn();
 $baru    = $pdo->query("SELECT COUNT(*) FROM orders WHERE status_order='baru'")->fetchColumn();
 $aktif   = $pdo->query("SELECT COUNT(*) FROM orders WHERE status_order='aktif'")->fetchColumn();
-$pending = $pdo->query("SELECT COUNT(*) FROM orders WHERE status_bayar='menunggu_konfirmasi'")->fetchColumn();
+$pending = $pdo->query("SELECT COUNT(*) FROM orders WHERE status_bayar IN ('menunggu_konfirmasi','pending') AND paket != 'silver'")->fetchColumn();
 $revenue = $pdo->query("SELECT SUM(harga) FROM orders WHERE status_bayar='lunas'")->fetchColumn() ?? 0;
 
 // Filter
@@ -26,7 +26,7 @@ $search = trim($_GET['q'] ?? '');
 $where = "WHERE 1=1";
 if ($filter === 'baru')    $where .= " AND status_order='baru'";
 if ($filter === 'aktif')   $where .= " AND status_order='aktif'";
-if ($filter === 'bayar')   $where .= " AND status_bayar='menunggu_konfirmasi'";
+if ($filter === 'bayar')   $where .= " AND status_bayar IN ('menunggu_konfirmasi','pending') AND paket != 'silver'";
 if ($filter === 'silver')  $where .= " AND paket='silver'";
 if ($search) $where .= " AND (nama_pria LIKE '%{$search}%' OR nama_wanita LIKE '%{$search}%' OR kode_order LIKE '%{$search}%' OR no_whatsapp LIKE '%{$search}%')";
 

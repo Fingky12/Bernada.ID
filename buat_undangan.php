@@ -1,7 +1,15 @@
 <?php
 session_start();
 require_once 'config/koneksi.php';
+
 $name = $_SESSION['name'] ?? null;
+$alerts = $_SESSION['alerts'] ?? [];
+$active_form = $_SESSION['active_form'] ?? '';
+
+session_unset();
+
+if ($name !== null) $_SESSION['name'] = $name;
+
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -976,9 +984,9 @@ $name = $_SESSION['name'] ?? null;
               <i class='bx bx-credit-card' ></i> <strong>BCA: 1234567890</strong> a.n. Bernada ID<br>
               <i class='bx bx-wallet-alt' ></i> <strong>DANA/GoPay/OVO: 0819-3919-5110</strong>
             </div>
-            <div class="field">
+            <div class="field" >
               <label>Metode Pembayaran</label>
-              <select name="metode_bayar">
+              <select name="metode_bayar" id="metodeVal">
                 <option value="">-- Pilih Metode --</option>
                 <option value="BCA">Transfer BCA</option>
                 <option value="Mandiri">Transfer Mandiri</option>
@@ -1290,7 +1298,7 @@ $name = $_SESSION['name'] ?? null;
         })
         .catch(() => {
           q('#loadingOverlay').classList.remove('show');
-          showAlert('error', 'Gagal terhubung ke server.');
+          showAlert('error', 'Gagal terhubung ke server, Sudah Login? Coba lagi.');
         });
     });
   </script>

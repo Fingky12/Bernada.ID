@@ -506,7 +506,7 @@ require_once '../config/ambil_data.php';
     <div class="cover-date"><?= $tgl_full ?></div>
     <div class="cover-to">KEPADA YTH.</div>
     <div class="cover-guest"><?= htmlspecialchars($tamu) ?></div>
-    <button class="btn-open" onclick="bukaUndangan()">✉ Buka Undangan</button>
+    <button class="btn-open" onclick="bukaUndangan()"><i class='bx bx-envelope'></i> Buka Undangan</button>
   </div>
 
   <div class="content" id="mainContent">
@@ -515,7 +515,7 @@ require_once '../config/ambil_data.php';
       <div class="sec-inner">
         <div class="cinzel-title">Bismillahirrahmanirrahim</div>
         <div class="gold-line"></div>
-        <p class="sec-sub">Dengan memohon rahmat dan ridho Allah SWT</p>
+        <p class="sec-sub">Dengan Memohon Rahmat dan Ridho Allah SWT</p>
         <div class="couple-grid">
           <div class="couple-card">
             <div class="couple-avatar"><?= strtoupper(substr($pria, 0, 1)) ?></div>
@@ -639,7 +639,7 @@ require_once '../config/ambil_data.php';
         btn = document.getElementById('musicBtn');
       if (playing) {
         m.pause();
-        btn.textContent = "<i class='bx bx-music' ></i>";
+        btn.innerHTML = "<i class='bx bx-music' ></i>";
         playing = false;
       } else {
         m.play().catch(() => {});

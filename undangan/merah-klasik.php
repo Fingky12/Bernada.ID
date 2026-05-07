@@ -1,9 +1,6 @@
 <?php
 require_once '../config/koneksi.php';
 require_once '../config/ambil_data.php';
-// Setelah include ambil_data.php, variabel berikut sudah tersedia:
-// $pria, $wanita, $ayah_pria, $ibu_pria, $ayah_wanita, $ibu_wanita
-// $tgl_full, $tgl_countdown, $wm, $ws, $lokasi, $maps, $tamu
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -14,6 +11,7 @@ require_once '../config/ambil_data.php';
   <title>Undangan Pernikahan <?= htmlspecialchars($pria) ?> & <?= htmlspecialchars($wanita) ?></title>
   <meta property="og:title" content="Undangan – <?= htmlspecialchars($pria) ?> & <?= htmlspecialchars($wanita) ?>" />
   <meta property="og:description" content="<?= $tgl_full ?> · <?= htmlspecialchars($lokasi) ?>" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *,
@@ -55,7 +53,6 @@ require_once '../config/ambil_data.php';
       text-align: center;
       padding: 3rem 1.5rem;
       position: relative;
-      overflow: hidden;
     }
 
     .cover::before {
@@ -132,9 +129,11 @@ require_once '../config/ambil_data.php';
       font-weight: 600;
       letter-spacing: .05em;
       transition: transform .2s, box-shadow .2s;
-      cursor: pointer;
       border: none;
+      cursor: pointer;
       font-family: inherit;
+      z-index: 9999;
+      pointer-events: auto;
     }
 
     .btn-open:hover {
@@ -326,13 +325,13 @@ require_once '../config/ambil_data.php';
     .detail-icon {
       width: 44px;
       height: 44px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--r1), var(--r2));
-      color: #fff;
+      /* border-radius: 10px; */
+      /* background: linear-gradient(135deg, var(--r1), var(--r2)); */
+      color: var(--r2);
       display: flex;
       align-items: center;
+      font-size: 2.2rem;
       justify-content: center;
-      font-size: 20px;
     }
 
     .detail-card-header h3 {
@@ -370,7 +369,7 @@ require_once '../config/ambil_data.php';
       border-radius: 8px;
       text-decoration: none;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 500;
       transition: background .2s;
     }
 
@@ -519,15 +518,14 @@ require_once '../config/ambil_data.php';
 </head>
 
 <body>
-
   <!-- COVER -->
   <div class="cover" id="cover">
     <div class="cover-ornament">The Wedding Of</div>
-    <h1><?= htmlspecialchars($pria) ?><em>&amp; <?= htmlspecialchars($wanita) ?></em></h1>
+    <h1><?= htmlspecialchars($pria) ?><em>& <?= htmlspecialchars($wanita) ?></em></h1>
     <div class="cover-date"><?= $tgl_full ?></div>
     <div class="cover-to">Kepada Yth.</div>
     <div class="cover-guest"><?= htmlspecialchars($tamu) ?></div>
-    <button class="btn-open" onclick="bukaUndangan()">✉ Buka Undangan</button>
+    <button class="btn-open" onclick="bukaUndangan()"><i class='bx bx-envelope'></i> &nbsp; Buka Undangan</button>
   </div>
 
   <!-- CONTENT -->
@@ -536,7 +534,7 @@ require_once '../config/ambil_data.php';
     <!-- COUPLE -->
     <section class="couple-section">
       <div class="sec-inner">
-        <div class="ornament">Bismillah</div>
+        <div class="ornament">Bismillahirrahmanirrahim</div>
         <div class="sec-label">Dengan Memohon Rahmat dan Ridho Allah SWT</div>
         <div class="divider">
           <div class="divider-diamond"></div>
@@ -603,7 +601,7 @@ require_once '../config/ambil_data.php';
         <div class="sec-label">Informasi Pernikahan</div>
         <div class="detail-card">
           <div class="detail-card-header">
-            <div class="detail-icon">💍</div>
+            <div class="detail-icon"><i class='bx bx-heart-circle'></i></div>
             <div>
               <h3>Akad Nikah</h3>
               <p>Prosesi sakral pernikahan</p>
@@ -613,12 +611,12 @@ require_once '../config/ambil_data.php';
           <div class="detail-row"><strong>Waktu</strong><?= $ma ?> - <?= $sa ?> WIB</div>
           <div class="detail-row"><strong>Lokasi</strong><?= htmlspecialchars($lokasi) ?></div>
           <?php if ($maps && $maps !== 'https://maps.google.com'): ?>
-            <a href="<?= htmlspecialchars($maps) ?>" target="_blank" class="btn-maps">📍 Lihat di Google Maps</a>
+            <a href="<?= htmlspecialchars($maps) ?>" target="_blank" class="btn-maps"><i class='bx bxs-map' ></i> Lihat di Google Maps</a>
           <?php endif ?>
         </div>
         <div class="detail-card">
           <div class="detail-card-header">
-            <div class="detail-icon">🎊</div>
+            <div class="detail-icon"><i class='bx bx-home-heart' ></i></div>
             <div>
               <h3>Resepsi Pernikahan</h3>
               <p>Syukuran &amp; jamuan tamu</p>
@@ -628,7 +626,7 @@ require_once '../config/ambil_data.php';
           <div class="detail-row"><strong>Waktu</strong><?= $mr ?> – <?= $sr ?> WIB</div>
           <div class="detail-row"><strong>Lokasi</strong><?= htmlspecialchars($lokasi) ?></div>
           <?php if ($maps && $maps !== 'https://maps.google.com'): ?>
-            <a href="<?= htmlspecialchars($maps) ?>" target="_blank" class="btn-maps">📍 Lihat di Google Maps</a>
+            <a href="<?= htmlspecialchars($maps) ?>" target="_blank" class="btn-maps"><i class='bx bxs-map' ></i> Lihat di Google Maps</a>
           <?php endif ?>
         </div>
       </div>
@@ -655,9 +653,9 @@ require_once '../config/ambil_data.php';
           </div>
           <div class="rsvp-field"><label>Konfirmasi Kehadiran</label>
             <select id="rsvpHadir">
-              <option value="hadir">✅ Insya Allah Hadir</option>
+              <option value="hadir">✔️ Insya Allah Hadir</option>
               <option value="tidak">❌ Berhalangan Hadir</option>
-              <option value="mungkin">🤔 Mungkin Hadir</option>
+              <option value="mungkin">❓ Mungkin Hadir</option>
             </select>
           </div>
           <button class="btn-rsvp" onclick="kirimRSVP()">Kirim Konfirmasi</button>
@@ -687,9 +685,9 @@ require_once '../config/ambil_data.php';
 
   </div>
 
-  <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Musik">🎵</button>
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Musik"><i class='bx bx-music' ></i></button>
   <audio id="bgMusic" loop>
-    <source src="../audio/wedding-music.mp3" type="audio/mpeg" />
+    <!-- <source src="../audio/" type="audio/mpeg" /> -->
   </audio>
 
   <script>
@@ -705,7 +703,7 @@ require_once '../config/ambil_data.php';
         btn = document.getElementById('musicBtn');
       if (playing) {
         m.pause();
-        btn.textContent = '🎵';
+        btn.innerHTML = '<i class="bx bx-music"></i>';
         playing = false;
       } else {
         m.play().catch(() => {});
@@ -714,14 +712,31 @@ require_once '../config/ambil_data.php';
       }
     }
 
+    const target = new Date("<?= $tgl_countdown ?>").getTime();
+
     function updateCountdown() {
-      const diff = new Date('<?= $tgl_countdown ?>').getTime() - Date.now();
-      if (diff <= 0) return;
-      document.getElementById('cd-h').textContent = String(Math.floor(diff / 864e5)).padStart(2, '0');
-      document.getElementById('cd-j').textContent = String(Math.floor(diff % 864e5 / 36e5)).padStart(2, '0');
-      document.getElementById('cd-m').textContent = String(Math.floor(diff % 36e5 / 6e4)).padStart(2, '0');
-      document.getElementById('cd-s').textContent = String(Math.floor(diff % 6e4 / 1e3)).padStart(2, '0');
+      const now = Date.now();
+      const diff = target - now;
+
+      if (diff <= 0) {
+        document.getElementById('cd-h').textContent = '00';
+        document.getElementById('cd-j').textContent = '00';
+        document.getElementById('cd-m').textContent = '00';
+        document.getElementById('cd-s').textContent = '00';
+        return;
+      }
+
+      const h = Math.floor(diff / 86400000);
+      const j = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+
+      document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
+      document.getElementById('cd-j').textContent = String(j).padStart(2, '0');
+      document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
+      document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
     }
+
     setInterval(updateCountdown, 1000);
     updateCountdown();
 

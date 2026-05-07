@@ -1124,7 +1124,7 @@ require_once '../config/ambil_data.php';
     <div class="cover-date"><?= $tgl_full ?></div>
     <div class="cover-to-lbl">Kepada Yang Terhormat</div>
     <div class="cover-guest"><?= htmlspecialchars($tamu) ?></div>
-    <button class="btn-open" onclick="bukaUndangan()">✉ &nbsp; Buka Undangan</button>
+    <button class="btn-open" onclick="bukaUndangan()"><i class='bx bx-envelope'></i> &nbsp; Buka Undangan</button>
   </div>
 
   <!-- ══ CONTENT ══ -->
@@ -1158,14 +1158,14 @@ require_once '../config/ambil_data.php';
             <div class="couple-avatar"><?= strtoupper(substr($pria, 0, 1)) ?></div>
             <h3><?= strtoupper($pria) ?></h3>
             <div class="sub">Putra dari</div>
-            <div class="ortu">Bapak &amp; Ibu</div>
+            <div class="ortu"><?= $ayah_pria ?> &amp; <?= $ibu_pria ?></div>
           </div>
           <div class="amp-rustic">&amp;</div>
           <div class="couple-card">
             <div class="couple-avatar" style="background:linear-gradient(135deg,var(--b2),var(--b3))"><?= strtoupper(substr($wanita, 0, 1)) ?></div>
             <h3><?= strtoupper($wanita) ?></h3>
             <div class="sub">Putri dari</div>
-            <div class="ortu">Bapak &amp; Ibu</div>
+            <div class="ortu"><?= $ayah_wanita ?> &amp; <?= $ibu_wanita ?></div>
           </div>
         </div>
       </div>
@@ -1401,7 +1401,7 @@ require_once '../config/ambil_data.php';
       const btn = document.getElementById('musicBtn');
       if (playing) {
         m.pause();
-        btn.textContent = "<i class='bx bx-music' ></i>";
+        btn.innerHTML = "<i class='bx bx-music' ></i>";
         playing = false;
       } else {
         m.play().catch(() => {});
@@ -1410,15 +1410,31 @@ require_once '../config/ambil_data.php';
       }
     }
 
-    // Countdown
+    const target = new Date("<?= $tgl_countdown ?>").getTime();
+
     function updateCountdown() {
-      const diff = new Date('<?= $tgl_countdown ?>').getTime() - Date.now();
-      if (diff <= 0) return;
-      document.getElementById('cd-h').textContent = String(Math.floor(diff / 864e5)).padStart(2, '0');
-      document.getElementById('cd-j').textContent = String(Math.floor(diff % 864e5 / 36e5)).padStart(2, '0');
-      document.getElementById('cd-m').textContent = String(Math.floor(diff % 36e5 / 6e4)).padStart(2, '0');
-      document.getElementById('cd-s').textContent = String(Math.floor(diff % 6e4 / 1e3)).padStart(2, '0');
+      const now = Date.now();
+      const diff = target - now;
+
+      if (diff <= 0) {
+        document.getElementById('cd-h').textContent = '00';
+        document.getElementById('cd-j').textContent = '00';
+        document.getElementById('cd-m').textContent = '00';
+        document.getElementById('cd-s').textContent = '00';
+        return;
+      }
+
+      const h = Math.floor(diff / 86400000);
+      const j = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+
+      document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
+      document.getElementById('cd-j').textContent = String(j).padStart(2, '0');
+      document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
+      document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
     }
+
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
@@ -1450,7 +1466,7 @@ require_once '../config/ambil_data.php';
       const hadir = document.getElementById('rsvpHadir').value === 'hadir' ? 'Insya Allah Hadir' : document.getElementById('rsvpHadir').value === 'mungkin' ? 'Mungkin Hadir' : 'Berhalangan Hadir';
       const ucapan = document.getElementById('rsvpUcapan').value.trim();
       const pesan = encodeURIComponent(
-        `Assalamu'alaikum 🌾\n\nSaya ${nama} ingin mengkonfirmasi kehadiran di pernikahan ${`<?= $pria ?>`} & ${`<?= $wanita ?>`}.\n\n` +
+        `Assalamu'alaikum \n\nSaya ${nama} ingin mengkonfirmasi kehadiran di pernikahan ${`<?= $pria ?>`} & ${`<?= $wanita ?>`}.\n\n` +
         `Kehadiran   : ${status}\nJumlah Tamu : ${jml}` +
         (ucapan ? `\n\nUcapan & Doa :\n"${ucapan}"` : '')
       );
